@@ -21,10 +21,11 @@ class ACAlert: NSObject {
         title:String,
         message:String){
         
-        ACAlert.showInformation(
-            title: title,
-            message: message,
-            viewController: (UIApplication.shared.delegate?.window!!.rootViewController!)!)
+//        ACAlert.showInformation(
+//            title: title,
+//            message: message,
+////            viewController: (UIApplication.shared.delegate?.window!!.rootViewController!)!)
+//        ))
     }
     
     static func show(

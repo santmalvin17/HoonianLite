@@ -22,16 +22,16 @@ class ACAPI: NSObject {
             URL(string: url)!,
             method: .get,
             parameters: nil,
-            encoding : URLEncoding.default,
+            encoding : JSONEncoding.default,
             headers: header
-            ).responseJSON{ (response) in
-                
-                if response.result.isSuccess {
-                    completion(response.result.value!)
-                } else {
-                    SVProgressHUD.dismiss()
-                    ACAlert.show(message: "Your internet connection have a problem")
-                }
+        ).responseJSON{ (response) in
+            
+            if response.result.isSuccess {
+                completion(response.result.value!)
+            } else {
+                SVProgressHUD.dismiss()
+                print("Your internet connection have a problem")
+            }
         }
     }
     
@@ -45,78 +45,12 @@ class ACAPI: NSObject {
             parameters: parameter,
             encoding: JSONEncoding.default,
             headers: header).responseJSON { (response) in
-            if response.result.isSuccess {
-                completion(response.result.value!)
-            } else {
-                SVProgressHUD.dismiss()
-                ACAlert.show(message: "Your internet connection have a problem")
-            }
-        }
-    }
-    
-    static func POST_WITH_UPLOAD_VIDEO(
-        url:String,
-        parameter:Parameters,
-        file:Data,
-        fileName:String,
-        fileParameter:String,
-        mimeType:String,
-        showHUD:Bool,
-        header: HTTPHeaders,
-        completion:@escaping (Any) -> Void) {
-        if(showHUD) {
-            SVProgressHUD.show(withStatus: "Please wait...")
-        }
-        
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
-            //            multipartFormData.append(file, withName: fileName, fileName: fileParameter, mimeType: ".mp3")
-//            multipartFormData.append(file, withName: fileName)
-            multipartFormData.append(file, withName: fileName, fileName: fileName, mimeType: mimeType)
-            for (key, value) in parameter {
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
-            }
-        }, to:url, headers: header) { (result) in
-            switch result {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
+                if response.result.isSuccess {
                     completion(response.result.value!)
+                    print(response)
+                } else {
+                    
                 }
-            case .failure( _):
-                SVProgressHUD.dismiss()
-                ACAlert.show(message: "Your internet connection have a problem")
-            }
-        }
-    }
-    
-    static func POST_WITH_UPLOAD_IMAGE(
-        url:String,
-        parameter:Parameters,
-        file:URL,
-        fileName:String,
-        fileParameter:String,
-        showHUD:Bool,
-        header: HTTPHeaders,
-        completion:@escaping (Any) -> Void) {
-        if(showHUD) {
-            SVProgressHUD.show(withStatus: "Please wait...")
-        }
-        
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
-//            multipartFormData.append(file, withName: fileName, fileName: fileParameter, mimeType: ".mp3")
-            multipartFormData.append(file, withName: fileName)
-            for (key, value) in parameter {
-                multipartFormData.append((value as AnyObject).data(using: String.Encoding.utf8.rawValue)!, withName: key)
-            }
-        }, to:url, headers: header) { (result) in
-            switch result {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                    completion(response.result.value!)
-                }
-            case .failure( _):
-                SVProgressHUD.dismiss()
-                ACAlert.show(message: "Your internet connection have a problem")
-            }
         }
     }
     

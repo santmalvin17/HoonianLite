@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class HomeViewController: UIViewController {
     enum HomeCellList {
@@ -244,10 +245,18 @@ extension HomeViewController: HomeLocationContentTableViewCellDelegate, HomeApar
 
 extension HomeViewController: HomeLocationHeaderTableViewCellDelegate, HomeApartmentHeaderTableViewCellDelegate, HomeLandedPropertyHeaderTableViewCellDelegate, HomeWarehouseHeaderTableViewCellDelegate {
     func moreLocationPressed() {
-        print("more location pressed")
+        ACRequest.GET_CITY_LIST(successCompletion: { (getHomeData) in
+            ACData.HOMEDATAMODEL = getHomeData
+            SVProgressHUD.dismiss()
+            let vc = LocationListViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
         
-        let vc = LocationListViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
     func moreApartmentPressed() {

@@ -36,4 +36,39 @@ class ACRequest:NSObject{
             }
         }
     }
+    
+    static func GET_CITY_LIST(
+        successCompletion:@escaping (GetHomeDataModel) -> Void,
+        failCompletion:@escaping (String) -> Void) {
+        let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.CITY_LIST)", header: headers, showHUD: true, completion: { (jsonData) in
+            let json = JSON(jsonData)
+            print("get city list: \(json)")
+            if(json["status_desc"] == "Success") {
+                let home = GetHomeDataModel()
+                home.objectMapping(json: json)
+                successCompletion(home)
+            } else {
+                failCompletion(json["status"].stringValue)
+            }
+        })
+    }
+    
+    static func GET_PURCHASED_LIST(
+        agentId:String,
+        successCompletion:@escaping (PurchaseListModel) -> Void,
+        failCompletion:@escaping (String) -> Void) {
+        let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.PURCHASE_LIST)=\(agentId)", header: headers, showHUD: true, completion: { (jsonData) in
+            let json = JSON(jsonData)
+            print("get purchase list: \(json)")
+            if(json["status_desc"] == "Success") {
+                let purchase = PurchaseListModel()
+                purchase.objectMapping(json: json)
+                successCompletion(purchase)
+            } else {
+                failCompletion(json["status"].stringValue)
+            }
+        })
+    }
 }

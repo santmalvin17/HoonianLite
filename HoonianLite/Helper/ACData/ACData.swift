@@ -11,5 +11,6 @@ import Foundation
 struct ACData{
     
     static var LOGINDATA:LoginModel!
-    
+    static var HOMEDATAMODEL:GetHomeDataModel!
+    static var PURCHASELISTMODEL:PurchaseListModel!
 }

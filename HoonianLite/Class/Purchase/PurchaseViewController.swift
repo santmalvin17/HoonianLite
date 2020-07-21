@@ -50,7 +50,7 @@ extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
         case .notice:
             return 1
         case .content:
-            return 10
+            return ACData.PURCHASELISTMODEL.projectPurchaseList.count
         }
     }
     
@@ -62,7 +62,8 @@ extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .content:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "purchaseItemTableViewCell", for: indexPath) as? PurchaseItemTableViewCell)!
-            
+            cell.position = indexPath.row
+            cell.detailObj = ACData.PURCHASELISTMODEL
             return cell
         }
     }

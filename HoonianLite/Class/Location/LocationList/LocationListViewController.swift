@@ -36,12 +36,13 @@ class LocationListViewController: UIViewController {
 
 extension LocationListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return ACData.HOMEDATAMODEL.homeData.cities.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "locationListCollectionViewCell", for: indexPath) as? LocationListCollectionViewCell)!
-        
+        cell.position = indexPath.row
+        cell.detailObj = ACData.HOMEDATAMODEL.homeData
         return cell
     }
     

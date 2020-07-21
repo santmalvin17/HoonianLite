@@ -14,6 +14,7 @@
 		0AB5259B24C6CE6000B32537 /* ACData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5259A24C6CE6000B32537 /* ACData.swift */; };
 		0AB5259D24C6CF9400B32537 /* ACUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5259C24C6CF9400B32537 /* ACUrl.swift */; };
 		0AB5259F24C6D02F00B32537 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5259E24C6D02F00B32537 /* LoginModel.swift */; };
+		0AB525A324C6EE4200B32537 /* PurchaseListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525A224C6EE4200B32537 /* PurchaseListModel.swift */; };
 		0AF89CB624C2E88E00AFCE2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB524C2E88E00AFCE2D /* AppDelegate.swift */; };
 		0AF89CB824C2E88E00AFCE2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */; };
 		0AF89CBF24C2E89100AFCE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CBE24C2E89100AFCE2D /* Assets.xcassets */; };
@@ -116,6 +117,7 @@
 		0AB5259A24C6CE6000B32537 /* ACData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACData.swift; sourceTree = "<group>"; };
 		0AB5259C24C6CF9400B32537 /* ACUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACUrl.swift; sourceTree = "<group>"; };
 		0AB5259E24C6D02F00B32537 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		0AB525A224C6EE4200B32537 /* PurchaseListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseListModel.swift; sourceTree = "<group>"; };
 		0AF89CB224C2E88E00AFCE2D /* HoonianLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoonianLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF89CB524C2E88E00AFCE2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			children = (
 				0AB5258E24C6CD0400B32537 /* HomeDataModel.swift */,
 				0AB5259E24C6D02F00B32537 /* LoginModel.swift */,
+				0AB525A224C6EE4200B32537 /* PurchaseListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 				A3E9B55724C5EF630052B894 /* ApartmentDetailVideoTableViewCell.swift in Sources */,
 				A365794324C442AE00C1EED4 /* HomeViewController.swift in Sources */,
 				A365799A24C56A4D00C1EED4 /* HomeApartmentHeaderTableViewCell.swift in Sources */,
+				0AB525A324C6EE4200B32537 /* PurchaseListModel.swift in Sources */,
 				A365794B24C442CB00C1EED4 /* ContactsViewController.swift in Sources */,
 				A365797224C44DB600C1EED4 /* HomeContentCollectionViewCell.swift in Sources */,
 				A365793724C42AC400C1EED4 /* LoginViewController.swift in Sources */,

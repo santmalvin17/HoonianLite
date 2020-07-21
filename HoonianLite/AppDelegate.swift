@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -55,8 +56,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().tintColor = #colorLiteral(red: 0.3933430612, green: 0.5921664834, blue: 0.6682108641, alpha: 1)
         
         let home = UINavigationController(rootViewController: homeViewController)
+        
+        ACRequest.GET_PURCHASED_LIST(agentId: ACData.LOGINDATA.agent.id,successCompletion: { (getPurchaseModel) in
+            ACData.PURCHASELISTMODEL = getPurchaseModel
+            SVProgressHUD.dismiss()
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        }
         let purchase = UINavigationController(rootViewController: purchaseViewController)
+        
         let contacts = UINavigationController(rootViewController: contactsViewController)
+        
         let scanAR = UINavigationController(rootViewController: scanARViewController)
         
         navArrayMenu.append(home)

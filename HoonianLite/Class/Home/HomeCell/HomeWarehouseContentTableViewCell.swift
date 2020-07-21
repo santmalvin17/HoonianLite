@@ -40,7 +40,7 @@ class HomeWarehouseContentTableViewCell: UITableViewCell {
 
 extension HomeWarehouseContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ACData.LOGINDATA.homeData.wareHouse.count
+        return ACData.LOGINDATA.homeData.wareHouse.projects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -12,7 +12,7 @@ class ApartmentDetailFacilityContentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var facilityLabel: UILabel!
-    
+    var position = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -28,6 +28,15 @@ class ApartmentDetailFacilityContentTableViewCell: UITableViewCell {
     func config() {
         numberLabel.layer.masksToBounds = true
         numberLabel.layer.cornerRadius = numberLabel.frame.width / 2
+    }
+    var detailObj: ProjectDetailModel? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        facilityLabel.text = obj.facilities[position].name
     }
     
 }

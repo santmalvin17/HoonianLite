@@ -107,4 +107,42 @@ class ACRequest:NSObject{
             }
         })
     }
+    
+    static func GET_PROJECT_LIST(
+        limitPage:String,
+        page:String,
+        selectCityId:String,
+        selectCategoryId:String,
+        successCompletion:@escaping (ProjectListModel) -> Void,
+        failCompletion:@escaping (String) -> Void) {
+        let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.PROJECT_LIST)limit_per_page=\(limitPage)&page=\(page)&selected_city_id=\(selectCityId)&selected_category_id=\(selectCategoryId)", header: headers, showHUD: true, completion: { (jsonData) in
+            let json = JSON(jsonData)
+            print("get project list: \(json)")
+            if(json["status_desc"] == "Success") {
+                let projectList = ProjectListModel()
+                projectList.objectMapping(json: json)
+                successCompletion(projectList)
+            } else {
+                failCompletion(json["status"].stringValue)
+            }
+        })
+    }
+    static func GET_PROJECT_DETAIL(
+        id:String,
+        successCompletion:@escaping (GetProjectDetailModel) -> Void,
+        failCompletion:@escaping (String) -> Void) {
+        let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.PROJECT_DETAIL)=\(id)", header: headers, showHUD: true, completion: { (jsonData) in
+            let json = JSON(jsonData)
+            print("get project detail: \(json)")
+            if(json["status_desc"] == "Success") {
+                let projectDetail = GetProjectDetailModel()
+                projectDetail.objectMapping(json: json)
+                successCompletion(projectDetail)
+            } else {
+                failCompletion(json["status"].stringValue)
+            }
+        })
+    }
 }

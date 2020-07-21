@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HomeApartmentContentTableViewCellDelegate {
-    func homeApartmentSelected()
+    func homeApartmentSelected(indexKe: Int)
 }
 
 class HomeApartmentContentTableViewCell: UITableViewCell {
@@ -39,7 +39,7 @@ class HomeApartmentContentTableViewCell: UITableViewCell {
 
 extension HomeApartmentContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ACData.LOGINDATA.homeData.apartment.count
+        return ACData.LOGINDATA.homeData.apartment.projects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -50,7 +50,7 @@ extension HomeApartmentContentTableViewCell: UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.homeApartmentSelected()
+        delegate?.homeApartmentSelected(indexKe: indexPath.row)
     }
     
 }

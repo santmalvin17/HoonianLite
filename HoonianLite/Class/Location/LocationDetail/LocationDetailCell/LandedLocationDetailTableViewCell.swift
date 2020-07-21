@@ -37,4 +37,24 @@ class LandedLocationDetailTableViewCell: UITableViewCell {
         priceView.layer.cornerRadius = 5
     }
     
+    var detailObj: ProjectListData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        self.landedImageView.sd_setImage(
+            with: URL(string: (obj.image)),
+            placeholderImage: UIImage(named: "Landed Image"),
+            options: .refreshCached
+        )
+        landedNameLabel.text = obj.name
+        locationLabel.text = obj.city
+        availableLabel.text = "Available: \(obj.availUnit)"
+        var text = "\(obj.startPrice)"
+        priceLabel.text = "\(text.prefix(3))JT"
+        
+    }
+    
 }

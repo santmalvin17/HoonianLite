@@ -21,6 +21,8 @@
 		0AB525AD24C7122E00B32537 /* ContactListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525AB24C7122E00B32537 /* ContactListTableViewCell.swift */; };
 		0AB525AE24C7122E00B32537 /* ContactListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB525AC24C7122E00B32537 /* ContactListTableViewCell.xib */; };
 		0AB525B024C71A7700B32537 /* ContactListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525AF24C71A7700B32537 /* ContactListModel.swift */; };
+		0AB525B224C72EE300B32537 /* ProjectListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525B124C72EE300B32537 /* ProjectListModel.swift */; };
+		0AB525B424C73F1D00B32537 /* ProjectDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525B324C73F1D00B32537 /* ProjectDetailModel.swift */; };
 		0AF89CB624C2E88E00AFCE2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB524C2E88E00AFCE2D /* AppDelegate.swift */; };
 		0AF89CB824C2E88E00AFCE2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */; };
 		0AF89CBF24C2E89100AFCE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CBE24C2E89100AFCE2D /* Assets.xcassets */; };
@@ -144,6 +146,8 @@
 		0AB525AB24C7122E00B32537 /* ContactListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTableViewCell.swift; sourceTree = "<group>"; };
 		0AB525AC24C7122E00B32537 /* ContactListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListTableViewCell.xib; sourceTree = "<group>"; };
 		0AB525AF24C71A7700B32537 /* ContactListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListModel.swift; sourceTree = "<group>"; };
+		0AB525B124C72EE300B32537 /* ProjectListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListModel.swift; sourceTree = "<group>"; };
+		0AB525B324C73F1D00B32537 /* ProjectDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailModel.swift; sourceTree = "<group>"; };
 		0AF89CB224C2E88E00AFCE2D /* HoonianLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoonianLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF89CB524C2E88E00AFCE2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -304,6 +308,8 @@
 				0AB525A224C6EE4200B32537 /* PurchaseListModel.swift */,
 				0AB525A424C6FDFD00B32537 /* NewsDataModel.swift */,
 				0AB525AF24C71A7700B32537 /* ContactListModel.swift */,
+				0AB525B124C72EE300B32537 /* ProjectListModel.swift */,
+				0AB525B324C73F1D00B32537 /* ProjectDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -905,6 +911,7 @@
 				0AB5259F24C6D02F00B32537 /* LoginModel.swift in Sources */,
 				A36579A624C56A6C00C1EED4 /* HomeLandedPropertyContentTableViewCell.swift in Sources */,
 				A3E9B54724C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.swift in Sources */,
+				0AB525B424C73F1D00B32537 /* ProjectDetailModel.swift in Sources */,
 				A365799224C56A2700C1EED4 /* HomeLocationHeaderTableViewCell.swift in Sources */,
 				A36579AE24C56A8800C1EED4 /* HomeWarehouseContentTableViewCell.swift in Sources */,
 				0AB5259524C6CDA000B32537 /* ACAPI.swift in Sources */,
@@ -927,6 +934,7 @@
 				0AF89CB824C2E88E00AFCE2D /* SceneDelegate.swift in Sources */,
 				0AB5259D24C6CF9400B32537 /* ACUrl.swift in Sources */,
 				A36579BF24C56D9900C1EED4 /* HomeWarehouseCollectionViewCell.swift in Sources */,
+				0AB525B224C72EE300B32537 /* ProjectListModel.swift in Sources */,
 				A36579C424C59B0C00C1EED4 /* ApartmentLocationDetailTableViewCell.swift in Sources */,
 				A38C85E424C6DF980086FA7B /* ApartmentUnitHeaderTableViewCell.swift in Sources */,
 				A365794724C442C200C1EED4 /* PurchaseViewController.swift in Sources */,

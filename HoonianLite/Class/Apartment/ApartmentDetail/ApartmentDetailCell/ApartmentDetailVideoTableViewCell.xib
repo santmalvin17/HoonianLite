@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -22,32 +22,30 @@
                         <color key="textColor" red="0.2275145948" green="0.26601815220000002" blue="0.53378772740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-19 at 14.52.13" translatesAutoresizingMaskIntoConstraints="NO" id="JKV-cI-UVu">
-                        <rect key="frame" x="20" y="50" width="374" height="199.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFV-Kg-17I">
+                        <rect key="frame" x="20" y="55" width="374" height="204"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="JKV-cI-UVu" secondAttribute="height" multiplier="15:8" id="6Tp-Ht-69d"/>
+                            <constraint firstAttribute="width" secondItem="KFV-Kg-17I" secondAttribute="height" multiplier="11:6" id="C7d-Bs-YoQ"/>
                         </constraints>
-                    </imageView>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="4Ak-lF-OVh" firstAttribute="leading" secondItem="EdM-06-pnk" secondAttribute="leading" constant="20" id="4hu-T4-gYB"/>
-                    <constraint firstAttribute="bottom" secondItem="JKV-cI-UVu" secondAttribute="bottom" constant="20" id="7uz-UF-Gtb"/>
-                    <constraint firstAttribute="trailing" secondItem="JKV-cI-UVu" secondAttribute="trailing" constant="20" id="Wx8-9N-IGd"/>
-                    <constraint firstItem="JKV-cI-UVu" firstAttribute="leading" secondItem="EdM-06-pnk" secondAttribute="leading" constant="20" id="dHf-nB-4yg"/>
+                    <constraint firstAttribute="trailing" secondItem="KFV-Kg-17I" secondAttribute="trailing" constant="20" id="Ugy-hI-ayR"/>
                     <constraint firstItem="4Ak-lF-OVh" firstAttribute="top" secondItem="EdM-06-pnk" secondAttribute="top" constant="20" id="e5q-cP-qAL"/>
                     <constraint firstAttribute="trailing" secondItem="4Ak-lF-OVh" secondAttribute="trailing" constant="20" id="fNi-tC-XkJ"/>
-                    <constraint firstItem="JKV-cI-UVu" firstAttribute="top" secondItem="4Ak-lF-OVh" secondAttribute="bottom" constant="10" id="gaf-ln-qeD"/>
+                    <constraint firstItem="KFV-Kg-17I" firstAttribute="leading" secondItem="EdM-06-pnk" secondAttribute="leading" constant="20" id="hEJ-gq-cn8"/>
+                    <constraint firstItem="KFV-Kg-17I" firstAttribute="top" secondItem="4Ak-lF-OVh" secondAttribute="bottom" constant="15" id="oDf-q0-xik"/>
+                    <constraint firstAttribute="bottom" secondItem="KFV-Kg-17I" secondAttribute="bottom" constant="10.5" id="zvi-C3-urb"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="cBR-JU-BvV"/>
             <connections>
-                <outlet property="videoImageView" destination="JKV-cI-UVu" id="Zsn-da-pgO"/>
                 <outlet property="videoLabel" destination="4Ak-lF-OVh" id="7pv-HM-yqr"/>
+                <outlet property="videoView" destination="KFV-Kg-17I" id="oSd-cl-nE6"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="87.723214285714278"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="Screen Shot 2020-07-19 at 14.52.13" width="880" height="318"/>
-    </resources>
 </document>

@@ -30,10 +30,10 @@ class HomeLandedPropertyCollectionViewCell: UICollectionViewCell {
     }
     func cellConfig() {
     guard let obj = detailObj else { return }
-        propertyNameLabel.text = obj.landedProperty[position].name
-        cityLabel.text = obj.landedProperty[position].city
+        propertyNameLabel.text = obj.landedProperty.projects[position].name
+        cityLabel.text = obj.landedProperty.projects[position].city
         self.imageView.sd_setImage(
-            with: URL(string: (obj.landedProperty[position].image)),
+            with: URL(string: (obj.landedProperty.projects[position].image)),
             placeholderImage: UIImage(named: "Landed Property Logo"),
             options: .refreshCached
         )

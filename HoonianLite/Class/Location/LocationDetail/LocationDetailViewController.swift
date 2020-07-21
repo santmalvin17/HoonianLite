@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class LocationDetailViewController: UIViewController {
 
@@ -14,12 +15,10 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var landedImageView: UIImageView!
     @IBOutlet weak var warehouseImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    
     var passedType: String = "Apartment"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         config()
     }
 
@@ -53,22 +52,52 @@ class LocationDetailViewController: UIViewController {
     @objc func apartmentAction() {
         print("apartment pressed")
         passedType = "Apartment"
-        tableView.reloadData()
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.PROJECTLISTMODEL.cityId, selectCategoryId: ACData.LOGINDATA.homeData.apartment.categoryId,  successCompletion: { (projectList) in
+            ACData.PROJECTLISTMODEL = projectList
+            SVProgressHUD.dismiss()
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
+
     }
     
     @objc func landedAction() {
         print("landed pressed")
         passedType = "Landed"
-        tableView.reloadData()
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.PROJECTLISTMODEL.cityId, selectCategoryId: ACData.LOGINDATA.homeData.landedProperty.categoryId,  successCompletion: { (projectList) in
+            ACData.PROJECTLISTMODEL = projectList
+            SVProgressHUD.dismiss()
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
+
     }
     
     @objc func warehouseAction() {
         print("warehouse pressed")
         passedType = "Warehouse"
-        tableView.reloadData()
-        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.PROJECTLISTMODEL.cityId, selectCategoryId: ACData.LOGINDATA.homeData.wareHouse.categoryId,  successCompletion: { (projectList) in
+            ACData.PROJECTLISTMODEL = projectList
+            SVProgressHUD.dismiss()
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
+
     }
 
 }
@@ -76,7 +105,7 @@ class LocationDetailViewController: UIViewController {
 extension LocationDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if passedType == "Apartment" {
-            return 8
+            return ACData.PROJECTLISTMODEL.projects.count
         }
         else if passedType == "Landed" {
             return 1
@@ -89,25 +118,34 @@ extension LocationDetailViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if passedType == "Apartment" {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentLocationDetailTableViewCell", for: indexPath) as? ApartmentLocationDetailTableViewCell)!
-            
+            cell.detailObj = ACData.PROJECTLISTMODEL.projects[indexPath.row]
             return cell
         }
         else if passedType == "Landed" {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "landedLocationDetailTableViewCell", for: indexPath) as? LandedLocationDetailTableViewCell)!
-            
+            cell.detailObj = ACData.PROJECTLISTMODEL.projects[indexPath.row]
             return cell
         }
         else {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "warehouseLocationDetailTableViewCell", for: indexPath) as? WarehouseLocationDetailTableViewCell)!
-            
+            cell.detailObj = ACData.PROJECTLISTMODEL.projects[indexPath.row]
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if passedType == "Apartment" {
-            let vc = ApartmentDetailViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            ACRequest.GET_PROJECT_DETAIL(id: ACData.PROJECTLISTMODEL.projects[indexPath.row].id,  successCompletion: { (projectDetail) in
+                ACData.PROJECTDETAILMODEL = projectDetail
+                SVProgressHUD.dismiss()
+                let vc = ApartmentDetailViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }) { (message) in
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+
         }
         else if passedType == "Landed" {
             

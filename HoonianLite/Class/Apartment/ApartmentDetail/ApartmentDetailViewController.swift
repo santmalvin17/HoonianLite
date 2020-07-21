@@ -144,7 +144,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .facility:
                 return 1
             case .facilityContent:
-                return 10
+                return ACData.PROJECTDETAILMODEL.projectData.facilities.count
             case .gallery:
                 return 1
             case .video:
@@ -169,32 +169,32 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             switch sectionsDetail[indexPath.section] {
             case .header:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentLocationDetailTableViewCell", for: indexPath) as? ApartmentLocationDetailTableViewCell)!
-                
+                cell.detailObj = ACData.PROJECTLISTMODEL.projects[indexPath.row]
                 return cell
             case .location:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailCellLocationTableViewCell", for: indexPath) as? ApartmentDetailCellLocationTableViewCell)!
-                
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
                 return cell
             case .description:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailDescriptionTableViewCell", for: indexPath) as? ApartmentDetailDescriptionTableViewCell)!
-                
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
                 return cell
             case .facility:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityTableViewCell", for: indexPath) as? ApartmentDetailFacilityTableViewCell)!
-                
                 return cell
             case .facilityContent:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityContentTableViewCell", for: indexPath) as? ApartmentDetailFacilityContentTableViewCell)!
+                cell.position = indexPath.row
                 cell.numberLabel.text = "\(indexPath.row + 1)"
-                
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
                 return cell
             case .gallery:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailGalleryTableViewCell", for: indexPath) as? ApartmentDetailGalleryTableViewCell)!
-                
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
                 return cell
             case .video:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailVideoTableViewCell", for: indexPath) as? ApartmentDetailVideoTableViewCell)!
-                
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
                 return cell
             }
         }

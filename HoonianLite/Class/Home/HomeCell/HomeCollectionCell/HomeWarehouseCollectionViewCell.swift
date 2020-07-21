@@ -30,10 +30,10 @@ class HomeWarehouseCollectionViewCell: UICollectionViewCell {
     }
     func cellConfig() {
     guard let obj = detailObj else { return }
-        propertyNameLabel.text = obj.wareHouse[position].name
-           cityLabel.text = obj.wareHouse[position].city
+        propertyNameLabel.text = obj.wareHouse.projects[position].name
+        cityLabel.text = obj.wareHouse.projects[position].city
            self.imageView.sd_setImage(
-               with: URL(string: (obj.wareHouse[position].image)),
+            with: URL(string: (obj.wareHouse.projects[position].image)),
                placeholderImage: UIImage(named: "WareHouse Logo"),
                options: .refreshCached
            )

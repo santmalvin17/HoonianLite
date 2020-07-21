@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HomeLocationContentTableViewCellDelegate {
-    func homeLocationSelected()
+    func homeLocationSelected(indexKe: Int)
 }
 
 class HomeLocationContentTableViewCell: UITableViewCell {
@@ -52,7 +52,7 @@ extension HomeLocationContentTableViewCell: UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.homeLocationSelected()
+        delegate?.homeLocationSelected(indexKe: indexPath.row)
     }
     
 }

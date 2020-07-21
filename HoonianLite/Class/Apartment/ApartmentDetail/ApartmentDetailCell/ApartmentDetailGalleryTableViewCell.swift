@@ -23,5 +23,18 @@ class ApartmentDetailGalleryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    var detailObj: ProjectDetailModel? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        self.galleryImageView.sd_setImage(
+            with: URL(string: (obj.gallery[0].link)),
+            placeholderImage: UIImage(named: "Gallery Logo"),
+            options: .refreshCached
+        )
+    }
     
 }

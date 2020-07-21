@@ -229,19 +229,35 @@ extension HomeViewController: HomeUpcomingProjectContentTableViewCellDelegate {
 }
 
 extension HomeViewController: HomeLocationContentTableViewCellDelegate, HomeApartmentContentTableViewCellDelegate, HomeLandedPropertyContentTableViewCellDelegate, HomeWarehouseContentTableViewCellDelegate {
-    func homeLocationSelected() {
-        print("Location selected")
-        
-        let vc = LocationDetailViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+    func homeLocationSelected(indexKe: Int) {
+        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.LOGINDATA.homeData.cities[indexKe].id, selectCategoryId: ACData.LOGINDATA.homeData.apartment.categoryId,  successCompletion: { (projectList) in
+            ACData.PROJECTLISTMODEL = projectList
+            SVProgressHUD.dismiss()
+            let vc = LocationDetailViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
+
     }
     
-    func homeApartmentSelected() {
-        print("Apartment selected")
+    func homeApartmentSelected(indexKe:Int) {
         
-        let vc = ApartmentDetailViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+        ACRequest.GET_PROJECT_DETAIL(id: ACData.LOGINDATA.homeData.apartment.projects[indexKe].id,  successCompletion: { (projectDetail) in
+                ACData.PROJECTDETAILMODEL = projectDetail
+                SVProgressHUD.dismiss()
+                let vc = ApartmentDetailViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }) { (message) in
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+
+        }
     
     func homeLandedPropertySelected() {
         print("Landed property selected")

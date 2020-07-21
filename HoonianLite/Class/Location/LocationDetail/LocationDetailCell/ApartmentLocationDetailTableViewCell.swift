@@ -37,4 +37,24 @@ class ApartmentLocationDetailTableViewCell: UITableViewCell {
         priceView.layer.cornerRadius = 5
     }
     
+    var detailObj: ProjectListData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        self.apartmentImageView.sd_setImage(
+            with: URL(string: (obj.image)),
+            placeholderImage: UIImage(named: "Apartment Image"),
+            options: .refreshCached
+        )
+        apartmentNameLabel.text = obj.name
+        apartmentLocationLabel.text = obj.city
+        availableLabel.text = "Available: \(obj.availUnit)"
+        var text = "\(obj.startPrice)"
+        priceLabel.text = "\(text.prefix(3))JT"
+        
+    }
+    
 }

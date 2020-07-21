@@ -23,5 +23,17 @@ class ApartmentDetailCellLocationTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    var detailObj: ProjectDetailModel? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        addressLabel.text = obj.address
+    }
+    
+    
+
     
 }

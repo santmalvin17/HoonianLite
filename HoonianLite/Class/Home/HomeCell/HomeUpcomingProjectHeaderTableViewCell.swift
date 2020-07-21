@@ -16,6 +16,7 @@ class HomeUpcomingProjectHeaderTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        usernameLabel.text = "Welcome Back, \(ACData.LOGINDATA.agent.name)"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

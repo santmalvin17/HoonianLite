@@ -20,9 +20,9 @@ class GetHomeDataModel:NSObject{
 class HomeDataModel:NSObject{
     var news = [HomeData]()
     var cities = [HomeData]()
-    var apartment = [HomeData]()
-    var landedProperty = [HomeData]()
-    var wareHouse = [HomeData]()
+    var apartment = CategoryData()
+    var landedProperty = CategoryData()
+    var wareHouse = CategoryData()
     
     func objectMapping(json: JSON){
         for data in json["news"].arrayValue{
@@ -35,20 +35,21 @@ class HomeDataModel:NSObject{
             d.objectMapping(json: data)
             cities.append(d)
         }
-        for data in json["apartment"]["projects"].arrayValue{
+        apartment.objectMapping(json: json["apartment"])
+        landedProperty.objectMapping(json: json["landed_property"])
+        wareHouse.objectMapping(json: json["warehouse"])
+    }
+}
+
+class CategoryData:NSObject{
+    var categoryId = ""
+    var projects = [HomeData]()
+    func objectMapping(json: JSON){
+        categoryId = json["project_category_id"].stringValue
+        for data in json["projects"].arrayValue{
             let d = HomeData()
             d.objectMapping(json: data)
-            apartment.append(d)
-        }
-        for data in json["landed_property"]["projects"].arrayValue{
-            let d = HomeData()
-            d.objectMapping(json: data)
-            landedProperty.append(d)
-        }
-        for data in json["warehouse"]["projects"].arrayValue{
-            let d = HomeData()
-            d.objectMapping(json: data)
-            wareHouse.append(d)
+            projects.append(d)
         }
     }
 }

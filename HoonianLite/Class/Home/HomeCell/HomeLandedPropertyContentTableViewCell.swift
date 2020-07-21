@@ -41,7 +41,7 @@ class HomeLandedPropertyContentTableViewCell: UITableViewCell {
 
 extension HomeLandedPropertyContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ACData.LOGINDATA.homeData.landedProperty.count
+        return ACData.LOGINDATA.homeData.landedProperty.projects.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

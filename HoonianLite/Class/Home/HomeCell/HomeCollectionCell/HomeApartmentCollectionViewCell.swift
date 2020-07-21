@@ -30,9 +30,9 @@ class HomeApartmentCollectionViewCell: UICollectionViewCell {
     }
     func cellConfig() {
     guard let obj = detailObj else { return }
-        propertyNameLabel.text = obj.apartment[position].name
+        propertyNameLabel.text = obj.apartment.projects[position].name
         self.imageView.sd_setImage(
-            with: URL(string: (obj.apartment[position].image)),
+            with: URL(string: (obj.apartment.projects[position].image)),
             placeholderImage: UIImage(named: "Apartment Logo"),
             options: .refreshCached
         )

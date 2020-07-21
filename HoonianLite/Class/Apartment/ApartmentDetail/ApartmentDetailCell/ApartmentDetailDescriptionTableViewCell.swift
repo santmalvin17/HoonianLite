@@ -14,7 +14,7 @@ class ApartmentDetailDescriptionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        config()
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -22,13 +22,14 @@ class ApartmentDetailDescriptionTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func config() {
-        descriptionLabel.text = """
-        Grand Sagara berlokasi di Surabaya Timur, tepatnya di kaki Jembatan Nasional Suramadu. Yang merupakan Jembatan terpanjang di Indonesia.
 
-        Sangat dekat menuju Fasilitas-fasilitas pendukung seperti Mall, Pendidikan, RS, dan Bandara.
-
-        Nikmati setiap hari spectacular view Jembatan Suramadu dan suasana Sunrise dan Sunset di Apartemen Grand Sagara.
-        """
+    var detailObj: ProjectDetailModel? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        descriptionLabel.text = obj.deskripsi
     }
 }

@@ -71,4 +71,22 @@ class ACRequest:NSObject{
             }
         })
     }
+    
+    static func GET_NEWS_DETAIL(
+        newsId:String,
+        successCompletion:@escaping (NewsDataModel) -> Void,
+        failCompletion:@escaping (String) -> Void) {
+        let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.NEWS_DETAIL)=\(newsId)", header: headers, showHUD: true, completion: { (jsonData) in
+            let json = JSON(jsonData)
+            print("get news detail: \(json)")
+            if(json["status_desc"] == "Success") {
+                let newsDetail = NewsDataModel()
+                newsDetail.objectMapping(json: json)
+                successCompletion(newsDetail)
+            } else {
+                failCompletion(json["status"].stringValue)
+            }
+        })
+    }
 }

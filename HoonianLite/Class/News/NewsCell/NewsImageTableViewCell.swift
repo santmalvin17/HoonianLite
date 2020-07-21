@@ -28,4 +28,18 @@ class NewsImageTableViewCell: UITableViewCell {
         newsImageView.layer.masksToBounds = true
         newsImageView.layer.cornerRadius = 5
     }
+    
+    var detailObj: NewsDataModel? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        self.newsImageView.sd_setImage(
+            with: URL(string: (obj.image)),
+            placeholderImage: UIImage(named: "News Image"),
+            options: .refreshCached
+        )
+    }
 }

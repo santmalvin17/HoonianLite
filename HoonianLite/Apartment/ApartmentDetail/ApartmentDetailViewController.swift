@@ -19,6 +19,11 @@ class ApartmentDetailViewController: UIViewController {
         case video
     }
     
+    enum ApartmentUnitCellList {
+        case header
+        case content
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedView: UIView!
     @IBOutlet weak var detailButton: UIButton!
@@ -28,7 +33,8 @@ class ApartmentDetailViewController: UIViewController {
     @IBOutlet weak var unitView: UIView!
     @IBOutlet weak var referredView: UIView!
     
-    var sections = [ApartmentDetailCellList]()
+    var sectionsDetail = [ApartmentDetailCellList]()
+    var sectionsUnit = [ApartmentUnitCellList]()
     var passedType: String = "Detail"
     
     override func viewDidLoad() {
@@ -51,6 +57,7 @@ class ApartmentDetailViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        //DETAIL
         tableView.register(UINib(nibName: "ApartmentLocationDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentLocationDetailTableViewCell")
         tableView.register(UINib(nibName: "ApartmentDetailCellLocationTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailCellLocationTableViewCell")
         tableView.register(UINib(nibName: "ApartmentDetailDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailDescriptionTableViewCell")
@@ -58,16 +65,23 @@ class ApartmentDetailViewController: UIViewController {
         tableView.register(UINib(nibName: "ApartmentDetailFacilityContentTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailFacilityContentTableViewCell")
         tableView.register(UINib(nibName: "ApartmentDetailGalleryTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailGalleryTableViewCell")
         tableView.register(UINib(nibName: "ApartmentDetailVideoTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailVideoTableViewCell")
+        
+        //UNIT & PRICE
+        tableView.register(UINib(nibName: "ApartmentUnitHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentUnitHeaderTableViewCell")
+        tableView.register(UINib(nibName: "ApartmentUnitContentTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentUnitContentTableViewCell")
     }
     
     func configSections() {
-        sections.append(.header)
-        sections.append(.location)
-        sections.append(.description)
-        sections.append(.facility)
-        sections.append(.facilityContent)
-        sections.append(.gallery)
-        sections.append(.video)
+        sectionsDetail.append(.header)
+        sectionsDetail.append(.location)
+        sectionsDetail.append(.description)
+        sectionsDetail.append(.facility)
+        sectionsDetail.append(.facilityContent)
+        sectionsDetail.append(.gallery)
+        sectionsDetail.append(.video)
+        
+        sectionsUnit.append(.header)
+        sectionsUnit.append(.content)
     }
     
     @objc func detailButtonAction() {
@@ -107,12 +121,20 @@ class ApartmentDetailViewController: UIViewController {
 
 extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        if passedType == "Detail" {
+            return sectionsDetail.count
+        }
+        else if passedType == "Unit" {
+            return sectionsUnit.count
+        }
+        else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if passedType == "Detail" {
-            switch sections[section] {
+            switch sectionsDetail[section] {
             case .header:
                 return 1
             case .location:
@@ -130,7 +152,12 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             }
         }
         else if passedType == "Unit" {
-            return 0
+            switch sectionsUnit[section] {
+            case .header:
+                return 1
+            case .content:
+                return 3
+            }
         }
         else {
             return 0
@@ -139,7 +166,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if passedType == "Detail" {
-            switch sections[indexPath.section] {
+            switch sectionsDetail[indexPath.section] {
             case .header:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentLocationDetailTableViewCell", for: indexPath) as? ApartmentLocationDetailTableViewCell)!
                 
@@ -172,7 +199,16 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             }
         }
         else if passedType == "Unit" {
-            return UITableViewCell()
+            switch sectionsUnit[indexPath.section] {
+            case .header:
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitHeaderTableViewCell", for: indexPath) as? ApartmentUnitHeaderTableViewCell)!
+                
+                return cell
+            case .content:
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitContentTableViewCell", for: indexPath) as? ApartmentUnitContentTableViewCell)!
+                
+                return cell
+            }
         }
         else {
             return UITableViewCell()

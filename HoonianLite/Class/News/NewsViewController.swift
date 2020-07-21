@@ -33,6 +33,7 @@ class NewsViewController: UIViewController {
         tableView.register(UINib(nibName: "NewsImageTableViewCell", bundle: nil), forCellReuseIdentifier: "newsImageTableViewCell")
         tableView.register(UINib(nibName: "NewsTitleTableViewCell", bundle: nil), forCellReuseIdentifier: "newsTitleTableViewCell")
         tableView.register(UINib(nibName: "NewsContentTableViewCell", bundle: nil), forCellReuseIdentifier: "newsContentTableViewCell")
+        tableView.register(UINib(nibName: "NewsLabelTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsLabelTableViewCellID")
     }
 
     func configSections() {
@@ -64,7 +65,7 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         case .title:
             return 1
         case .content:
-            return 1
+            return ACData.NEWSDETAILMODEL.content.count
         }
     }
     
@@ -79,7 +80,9 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.detailObj = ACData.NEWSDETAILMODEL
             return cell
         case .content:
-            let cell = (tableView.dequeueReusableCell(withIdentifier: "newsContentTableViewCell", for: indexPath) as? NewsContentTableViewCell)!
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "NewsLabelTableViewCellID", for: indexPath) as? NewsLabelTableViewCell)!
+            cell.position = indexPath.row
+            cell.detailObj = ACData.NEWSDETAILMODEL
             return cell
         }
     }

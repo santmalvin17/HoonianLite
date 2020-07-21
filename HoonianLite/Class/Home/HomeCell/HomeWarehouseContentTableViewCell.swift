@@ -1,22 +1,22 @@
 //
-//  HomeContentTableViewCell.swift
+//  HomeWarehouseContentTableViewCell.swift
 //  HoonianLite
 //
-//  Created by Gregory Kevin on 19/07/20.
+//  Created by Gregory Kevin on 20/07/20.
 //  Copyright © 2020 Malvin Santoso. All rights reserved.
 //
 
 import UIKit
 
-protocol HomeContentTableViewCellDelegate {
-    func selected()
+protocol HomeWarehouseContentTableViewCellDelegate {
+    func homeWarehouseSelected()
 }
 
-class HomeContentTableViewCell: UITableViewCell {
+class HomeWarehouseContentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var delegate: HomeContentTableViewCellDelegate?
+    var delegate: HomeWarehouseContentTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,26 +34,24 @@ class HomeContentTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.register(UINib(nibName: "HomeContentCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "homeContentCollectionViewCell")
+        collectionView.register(UINib(nibName: "HomeWarehouseCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "homeWarehouseCollectionViewCell")
     }
-    
 }
 
-extension HomeContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeWarehouseContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return ACData.LOGINDATA.homeData.wareHouse.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeContentCollectionViewCell", for: indexPath) as? HomeContentCollectionViewCell
-        
-        return cell!
+        let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "homeWarehouseCollectionViewCell", for: indexPath) as? HomeWarehouseCollectionViewCell)!
+                cell.position = indexPath.row
+        cell.detailObj = ACData.LOGINDATA.homeData
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.selected()
-        print(indexPath.row)
-        print(indexPath.section)
+        delegate?.homeWarehouseSelected()
     }
     
 }

@@ -1,5 +1,5 @@
 //
-//  HomeLocationContentTableViewCell.swift
+//  HomeLandedPropertyContentTableViewCell.swift
 //  HoonianLite
 //
 //  Created by Gregory Kevin on 20/07/20.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol HomeLocationContentTableViewCellDelegate {
-    func homeLocationSelected()
+protocol HomeLandedPropertyContentTableViewCellDelegate {
+    func homeLandedPropertySelected()
 }
 
-class HomeLocationContentTableViewCell: UITableViewCell {
+class HomeLandedPropertyContentTableViewCell: UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var delegate: HomeLocationContentTableViewCellDelegate?
+    var delegate: HomeLandedPropertyContentTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,24 +34,25 @@ class HomeLocationContentTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        collectionView.register(UINib(nibName: "HomeLocationCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "homeLocationCollectionViewCell")
+        collectionView.register(UINib(nibName: "HomeLandedPropertyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "homeLandedPropertyCollectionViewCell")
     }
     
 }
 
-extension HomeLocationContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeLandedPropertyContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return ACData.LOGINDATA.homeData.landedProperty.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "homeLocationCollectionViewCell", for: indexPath) as? HomeLocationCollectionViewCell)!
-        
+        let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "homeLandedPropertyCollectionViewCell", for: indexPath) as? HomeLandedPropertyCollectionViewCell)!
+                cell.position = indexPath.row
+        cell.detailObj = ACData.LOGINDATA.homeData
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.homeLocationSelected()
+        delegate?.homeLandedPropertySelected()
     }
     
 }

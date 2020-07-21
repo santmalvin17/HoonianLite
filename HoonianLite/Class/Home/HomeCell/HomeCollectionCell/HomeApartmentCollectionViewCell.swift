@@ -13,7 +13,7 @@ class HomeApartmentCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var propertyNameLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
-    
+    var position = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         config()
@@ -22,6 +22,20 @@ class HomeApartmentCollectionViewCell: UICollectionViewCell {
     func config() {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 5
+    }
+    var detailObj: HomeDataModel? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        propertyNameLabel.text = obj.apartment[position].name
+        self.imageView.sd_setImage(
+            with: URL(string: (obj.apartment[position].image)),
+            placeholderImage: UIImage(named: "Apartment Logo"),
+            options: .refreshCached
+        )
     }
 
 

@@ -1,0 +1,40 @@
+PODS:
+  - Alamofire (4.8.2)
+  - FlagPhoneNumber (0.8.0):
+    - FlagPhoneNumber/libPhoneNumberiOS (= 0.8.0)
+  - FlagPhoneNumber/libPhoneNumberiOS (0.8.0)
+  - Hex (6.1.0)
+  - SDWebImage (5.8.1):
+    - SDWebImage/Core (= 5.8.1)
+  - SDWebImage/Core (5.8.1)
+  - SVProgressHUD (2.2.5)
+  - SwiftyJSON (4.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8.2)
+  - FlagPhoneNumber
+  - Hex
+  - SDWebImage
+  - SVProgressHUD
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - FlagPhoneNumber
+    - Hex
+    - SDWebImage
+    - SVProgressHUD
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  FlagPhoneNumber: 3712455b95f66cb0f2016fef7d9e34cddf8c7f9a
+  Hex: 2f67dd0cbb178cb24992e7529b025b8d16ff0bdc
+  SDWebImage: e3eae2eda88578db0685a0c88597fdadd9433f05
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+
+PODFILE CHECKSUM: d8357ba5ed687ecb954f0598875cee507b722d9a
+
+COCOAPODS: 1.9.3

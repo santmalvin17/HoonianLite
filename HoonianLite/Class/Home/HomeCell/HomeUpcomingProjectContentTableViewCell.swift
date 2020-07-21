@@ -48,11 +48,10 @@ class HomeUpcomingProjectContentTableViewCell: UITableViewCell {
     }
     func cellConfig() {
     guard let obj = detailObj else { return }
-        self.imageView!.sd_setImage(
+        self.upcomingProjectImageView.sd_setImage(
             with: URL(string: (obj.news[0].image)),
-                   placeholderImage: UIImage(named: "News Logo"),
-                   options: .refreshCached
-               )
-    }
+            placeholderImage: UIImage(named: "School Logo"),
+            options: .refreshCached
+        )    }
     
 }

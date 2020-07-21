@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="locationListCollectionViewCell" id="gTV-IL-0wX" customClass="LocationListCollectionViewCell" customModule="HoonianLite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="172" height="110"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="172" height="110"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-19 at 14.52.13" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rQy-XC-mjt">
+                        <rect key="frame" x="0.0" y="0.0" width="172" height="110"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jakarta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCJ-SO-dQp">
+                        <rect key="frame" x="10" y="78.5" width="152" height="21.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="PCJ-SO-dQp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="022-8i-kXT"/>
+                <constraint firstAttribute="trailing" secondItem="rQy-XC-mjt" secondAttribute="trailing" id="326-N7-B1y"/>
+                <constraint firstAttribute="bottom" secondItem="rQy-XC-mjt" secondAttribute="bottom" id="6Lp-50-33r"/>
+                <constraint firstItem="rQy-XC-mjt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="958-co-nNh"/>
+                <constraint firstAttribute="trailing" secondItem="PCJ-SO-dQp" secondAttribute="trailing" constant="10" id="DfJ-Oh-yaO"/>
+                <constraint firstItem="rQy-XC-mjt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gNR-1Q-ONy"/>
+                <constraint firstAttribute="bottom" secondItem="PCJ-SO-dQp" secondAttribute="bottom" constant="10" id="h6t-JB-8kT"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="locationImageView" destination="rQy-XC-mjt" id="8EQ-jl-fGf"/>
+                <outlet property="locationLabel" destination="PCJ-SO-dQp" id="SSs-1l-XBd"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="88"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Screen Shot 2020-07-19 at 14.52.13" width="880" height="318"/>
+    </resources>
+</document>

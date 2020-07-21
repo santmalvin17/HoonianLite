@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="homeContentCollectionViewCell" id="gTV-IL-0wX" customClass="HomeContentCollectionViewCell" customModule="HoonianLite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-19 at 14.52.13" translatesAutoresizingMaskIntoConstraints="NO" id="wTM-Nr-z2M">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="90"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="90" id="onV-Bm-cib"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbx-yc-9dX">
+                        <rect key="frame" x="0.0" y="95" width="35.5" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gbx-yc-9dX" secondAttribute="bottom" constant="10" id="66h-um-0vk"/>
+                <constraint firstItem="wTM-Nr-z2M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ISy-yv-ocU"/>
+                <constraint firstAttribute="trailing" secondItem="wTM-Nr-z2M" secondAttribute="trailing" id="M4r-DP-tiZ"/>
+                <constraint firstItem="gbx-yc-9dX" firstAttribute="top" secondItem="wTM-Nr-z2M" secondAttribute="bottom" constant="5" id="agw-rk-Owi"/>
+                <constraint firstItem="wTM-Nr-z2M" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="g7C-Hn-UMg"/>
+                <constraint firstItem="gbx-yc-9dX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uqJ-wX-mH8"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="imageView" destination="wTM-Nr-z2M" id="CY7-fF-CL7"/>
+                <outlet property="label" destination="gbx-yc-9dX" id="lZh-Sd-4AO"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Screen Shot 2020-07-19 at 14.52.13" width="880" height="318"/>
+    </resources>
+</document>

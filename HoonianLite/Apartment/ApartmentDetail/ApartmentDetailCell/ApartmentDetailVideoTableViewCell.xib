@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="apartmentDetailVideoTableViewCell" id="14c-yN-jZq" customClass="ApartmentDetailVideoTableViewCell" customModule="HoonianLite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="269.5"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="14c-yN-jZq" id="EdM-06-pnk">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="269.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ak-lF-OVh">
+                        <rect key="frame" x="20" y="20" width="374" height="20"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <color key="textColor" red="0.2275145948" green="0.26601815220000002" blue="0.53378772740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-19 at 14.52.13" translatesAutoresizingMaskIntoConstraints="NO" id="JKV-cI-UVu">
+                        <rect key="frame" x="20" y="50" width="374" height="199.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="JKV-cI-UVu" secondAttribute="height" multiplier="15:8" id="6Tp-Ht-69d"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4Ak-lF-OVh" firstAttribute="leading" secondItem="EdM-06-pnk" secondAttribute="leading" constant="20" id="4hu-T4-gYB"/>
+                    <constraint firstAttribute="bottom" secondItem="JKV-cI-UVu" secondAttribute="bottom" constant="20" id="7uz-UF-Gtb"/>
+                    <constraint firstAttribute="trailing" secondItem="JKV-cI-UVu" secondAttribute="trailing" constant="20" id="Wx8-9N-IGd"/>
+                    <constraint firstItem="JKV-cI-UVu" firstAttribute="leading" secondItem="EdM-06-pnk" secondAttribute="leading" constant="20" id="dHf-nB-4yg"/>
+                    <constraint firstItem="4Ak-lF-OVh" firstAttribute="top" secondItem="EdM-06-pnk" secondAttribute="top" constant="20" id="e5q-cP-qAL"/>
+                    <constraint firstAttribute="trailing" secondItem="4Ak-lF-OVh" secondAttribute="trailing" constant="20" id="fNi-tC-XkJ"/>
+                    <constraint firstItem="JKV-cI-UVu" firstAttribute="top" secondItem="4Ak-lF-OVh" secondAttribute="bottom" constant="10" id="gaf-ln-qeD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="cBR-JU-BvV"/>
+            <connections>
+                <outlet property="videoImageView" destination="JKV-cI-UVu" id="Zsn-da-pgO"/>
+                <outlet property="videoLabel" destination="4Ak-lF-OVh" id="7pv-HM-yqr"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="87.723214285714278"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Screen Shot 2020-07-19 at 14.52.13" width="880" height="318"/>
+    </resources>
+</document>

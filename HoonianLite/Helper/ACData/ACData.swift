@@ -14,4 +14,5 @@ struct ACData{
     static var HOMEDATAMODEL:GetHomeDataModel!
     static var PURCHASELISTMODEL:PurchaseListModel!
     static var NEWSDETAILMODEL:NewsDataModel!
+    static var CONTACTLISTMODEL:ContactListModel!
 }

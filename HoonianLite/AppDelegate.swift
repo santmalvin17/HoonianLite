@@ -63,8 +63,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }) { (message) in
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         }
+    
         
         let purchase = UINavigationController(rootViewController: purchaseViewController)
+        
+        ACRequest.GET_CONTACT_LIST(agentId: ACData.LOGINDATA.agent.id,successCompletion: { (getContactList) in
+            ACData.CONTACTLISTMODEL = getContactList
+            SVProgressHUD.dismiss()
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        }
+        
+        
         let contacts = UINavigationController(rootViewController: contactsViewController)
         let scanAR = UINavigationController(rootViewController: scanARViewController)
         

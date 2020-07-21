@@ -80,8 +80,12 @@ class ProjectUnitTypesData:NSObject{
 class ClientData:NSObject{
     var id = ""
     var name = ""
+    var referred = 0
+    var purchased = 0
     func objectMapping(json:JSON){
         id = json["id"].stringValue
         name = json["name"].stringValue
+        referred = json["referred"].intValue
+        purchased = json["purchase"].intValue
     }
 }

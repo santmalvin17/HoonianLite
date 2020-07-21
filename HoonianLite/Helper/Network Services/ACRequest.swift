@@ -89,4 +89,22 @@ class ACRequest:NSObject{
             }
         })
     }
+    
+    static func GET_CONTACT_LIST(
+        agentId:String,
+        successCompletion:@escaping (ContactListModel) -> Void,
+        failCompletion:@escaping (String) -> Void) {
+        let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.CONTACT_LIST)=\(agentId)", header: headers, showHUD: true, completion: { (jsonData) in
+            let json = JSON(jsonData)
+            print("get contact list: \(json)")
+            if(json["status_desc"] == "Success") {
+                let contactList = ContactListModel()
+                contactList.objectMapping(json: json)
+                successCompletion(contactList)
+            } else {
+                failCompletion(json["status"].stringValue)
+            }
+        })
+    }
 }

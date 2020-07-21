@@ -215,5 +215,18 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if passedType == "Detail" {
+            
+        }
+        else if passedType == "Unit" {
+            let vc = ApartmentUnitDetailViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
+            
+        }
+    }
+    
     
 }

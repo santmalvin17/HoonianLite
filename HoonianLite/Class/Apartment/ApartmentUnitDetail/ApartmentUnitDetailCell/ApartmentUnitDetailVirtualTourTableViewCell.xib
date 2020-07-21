@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ApartmentUnitDetailVirtualTourTableViewCellID" id="xzq-kJ-BXf" customClass="ApartmentUnitDetailVirtualTourTableViewCell" customModule="HoonianLite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xzq-kJ-BXf" id="LAC-9B-GFX">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Virtual Tour" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfW-Qm-e1Z">
+                        <rect key="frame" x="20" y="10" width="280" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <color key="textColor" red="0.2275145948" green="0.26601815220000002" blue="0.53378772740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-19 at 14.52.13" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-x9-Ulc">
+                        <rect key="frame" x="20" y="41" width="280" height="149.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="yrm-x9-Ulc" secondAttribute="height" multiplier="15:8" id="MCg-nA-ee9"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="yrm-x9-Ulc" secondAttribute="trailing" constant="20" id="AAf-LL-FjX"/>
+                    <constraint firstItem="yrm-x9-Ulc" firstAttribute="top" secondItem="RfW-Qm-e1Z" secondAttribute="bottom" constant="10" id="DRp-SM-sJe"/>
+                    <constraint firstAttribute="bottom" secondItem="yrm-x9-Ulc" secondAttribute="bottom" constant="9.5" id="HFf-YT-uMh"/>
+                    <constraint firstItem="RfW-Qm-e1Z" firstAttribute="top" secondItem="LAC-9B-GFX" secondAttribute="top" constant="10" id="MhM-i6-Jpv"/>
+                    <constraint firstItem="RfW-Qm-e1Z" firstAttribute="leading" secondItem="LAC-9B-GFX" secondAttribute="leading" constant="20" id="RTp-gI-ux6"/>
+                    <constraint firstItem="yrm-x9-Ulc" firstAttribute="leading" secondItem="LAC-9B-GFX" secondAttribute="leading" constant="20" id="jfS-nZ-itJ"/>
+                    <constraint firstAttribute="trailing" secondItem="RfW-Qm-e1Z" secondAttribute="trailing" constant="20" id="nZK-XU-Mt4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="CIr-54-2hh"/>
+            <connections>
+                <outlet property="virtualTourImageView" destination="yrm-x9-Ulc" id="5xS-cQ-2gu"/>
+                <outlet property="virtualTourLabel" destination="RfW-Qm-e1Z" id="6YV-Ek-92o"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="110"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Screen Shot 2020-07-19 at 14.52.13" width="880" height="318"/>
+    </resources>
+</document>

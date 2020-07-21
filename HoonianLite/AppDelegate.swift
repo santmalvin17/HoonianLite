@@ -63,16 +63,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }) { (message) in
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         }
+        
         let purchase = UINavigationController(rootViewController: purchaseViewController)
-        
         let contacts = UINavigationController(rootViewController: contactsViewController)
-        
         let scanAR = UINavigationController(rootViewController: scanARViewController)
         
-        navArrayMenu.append(home)
-        navArrayMenu.append(purchase)
-        navArrayMenu.append(contacts)
-        navArrayMenu.append(scanAR)
+        let menuDictionary: [Int: UINavigationController] = [
+            1: home,
+            2: purchase,
+            3: contacts,
+            4: scanAR]
+        
+        var menuName: [Int: String] = [:]
+        for menuItem in ACData.LOGINDATA.menuNavBar {
+            let menu = menuItem.mobileMenuId
+            guard let menuNav = menuDictionary[menu] else {
+                return
+            }
+            menuName[menuItem.mobileMenuId] = menuItem.mobileMenuname
+            navArrayMenu.append(menuNav)
+        }
         
         let homeTab = UITabBarItem(title: "Home", image: .checkmark, selectedImage: .add)
         homeViewController.tabBarItem = homeTab

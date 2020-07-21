@@ -32,7 +32,7 @@ class NewsContentTableViewCell: UITableViewCell {
 
 }
 
-extension NewsContentTableViewCell:UITableViewDelegate,UITableViewDataSource{
+extension NewsContentTableViewCell: UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ACData.NEWSDETAILMODEL.content.count
     }

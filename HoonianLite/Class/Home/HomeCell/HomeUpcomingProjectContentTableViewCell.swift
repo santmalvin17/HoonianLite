@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 protocol HomeUpcomingProjectContentTableViewCellDelegate {
-    func imageViewPressed()
+    func imageViewPressed(indexKe:Int)
 }
 
 class HomeUpcomingProjectContentTableViewCell: UITableViewCell {
@@ -54,9 +54,6 @@ class HomeUpcomingProjectContentTableViewCell: UITableViewCell {
         pageControl.currentPage = 0
     }
     
-    @objc func imageViewAction(tapGestureRecognizer: UITapGestureRecognizer) {
-        delegate?.imageViewPressed()
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -113,6 +110,10 @@ extension HomeUpcomingProjectContentTableViewCell: UICollectionViewDelegate, UIC
         )
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.imageViewPressed(indexKe: indexPath.row)
     }
     
     

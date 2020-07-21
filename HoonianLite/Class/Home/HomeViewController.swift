@@ -125,7 +125,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .locationContent:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "homeLocationContentTableViewCell", for: indexPath) as? HomeLocationContentTableViewCell)!
             cell.delegate = self
-            
             return cell
         case .apartmentHeader:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "homeApartmentHeaderTableViewCell", for: indexPath) as? HomeApartmentHeaderTableViewCell)!
@@ -213,9 +212,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HomeViewController: HomeUpcomingProjectContentTableViewCellDelegate {
-    func imageViewPressed() {
-        let vc = NewsViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+
+    func imageViewPressed(indexKe:Int) {
+        ACRequest.GET_NEWS_DETAIL(newsId: ACData.LOGINDATA.homeData.news[indexKe].id, successCompletion: { (getNewsDetail) in
+            ACData.NEWSDETAILMODEL = getNewsDetail
+            SVProgressHUD.dismiss()
+            let vc = NewsViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
     }
 }
 

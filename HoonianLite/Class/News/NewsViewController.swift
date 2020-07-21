@@ -72,15 +72,14 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         switch sections[indexPath.section] {
         case .image:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "newsImageTableViewCell", for: indexPath) as? NewsImageTableViewCell)!
-            
+            cell.detailObj = ACData.NEWSDETAILMODEL
             return cell
         case .title:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "newsTitleTableViewCell", for: indexPath) as? NewsTitleTableViewCell)!
-            
+            cell.detailObj = ACData.NEWSDETAILMODEL
             return cell
         case .content:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "newsContentTableViewCell", for: indexPath) as? NewsContentTableViewCell)!
-            
             return cell
         }
     }

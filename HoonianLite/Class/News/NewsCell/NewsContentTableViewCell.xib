@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -9,34 +9,30 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsContentTableViewCell" id="KGk-i7-Jjw" customClass="NewsContentTableViewCell" customModule="HoonianLite" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsContentTableViewCell" rowHeight="318" id="KGk-i7-Jjw" customClass="NewsContentTableViewCell" customModule="HoonianLite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="318"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="318"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQJ-bn-RzO">
-                        <rect key="frame" x="20" y="11" width="280" height="22"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FV1-K5-Lej">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="318"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </tableView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="ZQJ-bn-RzO" secondAttribute="trailing" constant="20" id="NQc-24-UGn"/>
-                    <constraint firstItem="ZQJ-bn-RzO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="b0x-F2-Nny"/>
-                    <constraint firstItem="ZQJ-bn-RzO" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="boo-W9-CrR"/>
-                    <constraint firstAttribute="bottom" secondItem="ZQJ-bn-RzO" secondAttribute="bottom" constant="11" id="jj7-vP-QKf"/>
-                    <constraint firstItem="ZQJ-bn-RzO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="pUy-nZ-Ph9"/>
-                    <constraint firstItem="ZQJ-bn-RzO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="tFC-jt-C2u"/>
+                    <constraint firstAttribute="bottom" secondItem="FV1-K5-Lej" secondAttribute="bottom" id="4fd-KD-D6c"/>
+                    <constraint firstAttribute="trailing" secondItem="FV1-K5-Lej" secondAttribute="trailing" id="dyR-K4-trD"/>
+                    <constraint firstItem="FV1-K5-Lej" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hVb-Kr-2Yc"/>
+                    <constraint firstItem="FV1-K5-Lej" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kaY-gK-Sif"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="newsContentLabel" destination="ZQJ-bn-RzO" id="mzb-Eo-Sw5"/>
+                <outlet property="tableView" destination="FV1-K5-Lej" id="13G-tJ-V1o"/>
             </connections>
-            <point key="canvasLocation" x="139" y="87"/>
+            <point key="canvasLocation" x="137.68115942028987" y="154.01785714285714"/>
         </tableViewCell>
     </objects>
 </document>

@@ -19,6 +19,10 @@
 		0AF89CBF24C2E89100AFCE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CBE24C2E89100AFCE2D /* Assets.xcassets */; };
 		0AF89CC224C2E89100AFCE2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CC024C2E89100AFCE2D /* LaunchScreen.storyboard */; };
 		A0169D83AFEEBC514A31D356 /* Pods_HoonianLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C2576ABAC32EC8EF8AC4EE /* Pods_HoonianLite.framework */; };
+		A3206F6424C6CEC400D45001 /* ApartmentUnitHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3206F6224C6CEC400D45001 /* ApartmentUnitHeaderTableViewCell.swift */; };
+		A3206F6524C6CEC400D45001 /* ApartmentUnitHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3206F6324C6CEC400D45001 /* ApartmentUnitHeaderTableViewCell.xib */; };
+		A3206F6824C6CECE00D45001 /* ApartmentUnitContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3206F6624C6CECE00D45001 /* ApartmentUnitContentTableViewCell.swift */; };
+		A3206F6924C6CECE00D45001 /* ApartmentUnitContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3206F6724C6CECE00D45001 /* ApartmentUnitContentTableViewCell.xib */; };
 		A365793724C42AC400C1EED4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A365793524C42AC400C1EED4 /* LoginViewController.swift */; };
 		A365793824C42AC400C1EED4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A365793624C42AC400C1EED4 /* LoginViewController.xib */; };
 		A365793C24C42B4400C1EED4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A365793B24C42B4400C1EED4 /* Colors.swift */; };
@@ -119,6 +123,10 @@
 		0AF89CC124C2E89100AFCE2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AF89CC324C2E89100AFCE2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8920766A90E9E795814136D9 /* Pods-HoonianLite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoonianLite.debug.xcconfig"; path = "Target Support Files/Pods-HoonianLite/Pods-HoonianLite.debug.xcconfig"; sourceTree = "<group>"; };
+		A3206F6224C6CEC400D45001 /* ApartmentUnitHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentUnitHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		A3206F6324C6CEC400D45001 /* ApartmentUnitHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentUnitHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		A3206F6624C6CECE00D45001 /* ApartmentUnitContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentUnitContentTableViewCell.swift; sourceTree = "<group>"; };
+		A3206F6724C6CECE00D45001 /* ApartmentUnitContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentUnitContentTableViewCell.xib; sourceTree = "<group>"; };
 		A365793524C42AC400C1EED4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A365793624C42AC400C1EED4 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		A365793B24C42B4400C1EED4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -328,6 +336,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A3206F6124C6CEB100D45001 /* ApartmentUnitCell */ = {
+			isa = PBXGroup;
+			children = (
+				A3206F6224C6CEC400D45001 /* ApartmentUnitHeaderTableViewCell.swift */,
+				A3206F6324C6CEC400D45001 /* ApartmentUnitHeaderTableViewCell.xib */,
+				A3206F6624C6CECE00D45001 /* ApartmentUnitContentTableViewCell.swift */,
+				A3206F6724C6CECE00D45001 /* ApartmentUnitContentTableViewCell.xib */,
+			);
+			path = ApartmentUnitCell;
+			sourceTree = "<group>";
+		};
 		A365793424C42A7800C1EED4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -533,6 +552,7 @@
 		A36579D924C5D2DB00C1EED4 /* ApartmentDetail */ = {
 			isa = PBXGroup;
 			children = (
+				A3206F6124C6CEB100D45001 /* ApartmentUnitCell */,
 				A36579DE24C5D37800C1EED4 /* ApartmentDetailCell */,
 				A36579DA24C5D30300C1EED4 /* ApartmentDetailViewController.swift */,
 				A36579DB24C5D30300C1EED4 /* ApartmentDetailViewController.xib */,
@@ -665,6 +685,7 @@
 				A36579A324C56A6200C1EED4 /* HomeLandedPropertyHeaderTableViewCell.xib in Resources */,
 				A36579D224C5B59900C1EED4 /* LocationListViewController.xib in Resources */,
 				A365798224C4AE0F00C1EED4 /* NewsTitleTableViewCell.xib in Resources */,
+				A3206F6924C6CECE00D45001 /* ApartmentUnitContentTableViewCell.xib in Resources */,
 				A36579B824C56D8600C1EED4 /* HomeApartmentCollectionViewCell.xib in Resources */,
 				A36579C024C56D9900C1EED4 /* HomeWarehouseCollectionViewCell.xib in Resources */,
 				A36579C924C59B1900C1EED4 /* LandedLocationDetailTableViewCell.xib in Resources */,
@@ -680,6 +701,7 @@
 				A3E9B54824C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.xib in Resources */,
 				A36579AB24C56A7800C1EED4 /* HomeWarehouseHeaderTableViewCell.xib in Resources */,
 				A365794424C442AE00C1EED4 /* HomeViewController.xib in Resources */,
+				A3206F6524C6CEC400D45001 /* ApartmentUnitHeaderTableViewCell.xib in Resources */,
 				A365797324C44DB600C1EED4 /* HomeContentCollectionViewCell.xib in Resources */,
 				A3E9B55824C5EF630052B894 /* ApartmentDetailVideoTableViewCell.xib in Resources */,
 			);
@@ -752,6 +774,7 @@
 				A3E9B55724C5EF630052B894 /* ApartmentDetailVideoTableViewCell.swift in Sources */,
 				A365794324C442AE00C1EED4 /* HomeViewController.swift in Sources */,
 				A365799A24C56A4D00C1EED4 /* HomeApartmentHeaderTableViewCell.swift in Sources */,
+				A3206F6424C6CEC400D45001 /* ApartmentUnitHeaderTableViewCell.swift in Sources */,
 				A365794B24C442CB00C1EED4 /* ContactsViewController.swift in Sources */,
 				A365797224C44DB600C1EED4 /* HomeContentCollectionViewCell.swift in Sources */,
 				A365793724C42AC400C1EED4 /* LoginViewController.swift in Sources */,
@@ -777,6 +800,7 @@
 				A365797724C4AD1D00C1EED4 /* NewsViewController.swift in Sources */,
 				A36579C824C59B1900C1EED4 /* LandedLocationDetailTableViewCell.swift in Sources */,
 				A36579B724C56D8600C1EED4 /* HomeApartmentCollectionViewCell.swift in Sources */,
+				A3206F6824C6CECE00D45001 /* ApartmentUnitContentTableViewCell.swift in Sources */,
 				0AF89CB824C2E88E00AFCE2D /* SceneDelegate.swift in Sources */,
 				0AB5259D24C6CF9400B32537 /* ACUrl.swift in Sources */,
 				A36579BF24C56D9900C1EED4 /* HomeWarehouseCollectionViewCell.swift in Sources */,

@@ -35,17 +35,17 @@ class HomeDataModel:NSObject{
             d.objectMapping(json: data)
             cities.append(d)
         }
-        for data in json["apartment"].arrayValue{
+        for data in json["apartment"]["projects"].arrayValue{
             let d = HomeData()
             d.objectMapping(json: data)
             apartment.append(d)
         }
-        for data in json["landed_property"].arrayValue{
+        for data in json["landed_property"]["projects"].arrayValue{
             let d = HomeData()
             d.objectMapping(json: data)
             landedProperty.append(d)
         }
-        for data in json["warehouse"].arrayValue{
+        for data in json["warehouse"]["projects"].arrayValue{
             let d = HomeData()
             d.objectMapping(json: data)
             wareHouse.append(d)

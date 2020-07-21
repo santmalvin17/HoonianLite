@@ -91,6 +91,8 @@
 		A38C85E424C6DF980086FA7B /* ApartmentUnitHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38C85E024C6DF980086FA7B /* ApartmentUnitHeaderTableViewCell.swift */; };
 		A38C85E524C6DF980086FA7B /* ApartmentUnitContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38C85E124C6DF980086FA7B /* ApartmentUnitContentTableViewCell.xib */; };
 		A38C85E624C6DF980086FA7B /* ApartmentUnitHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38C85E224C6DF980086FA7B /* ApartmentUnitHeaderTableViewCell.xib */; };
+		A38C85EA24C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38C85E824C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.swift */; };
+		A38C85EB24C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A38C85E924C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.xib */; };
 		A3E9B54724C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9B54524C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.swift */; };
 		A3E9B54824C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3E9B54624C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.xib */; };
 		A3E9B54B24C5EF1C0052B894 /* ApartmentDetailDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E9B54924C5EF1C0052B894 /* ApartmentDetailDescriptionTableViewCell.swift */; };
@@ -196,6 +198,8 @@
 		A38C85E024C6DF980086FA7B /* ApartmentUnitHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApartmentUnitHeaderTableViewCell.swift; path = HoonianLite/Apartment/ApartmentDetail/ApartmentUnitCell/ApartmentUnitHeaderTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		A38C85E124C6DF980086FA7B /* ApartmentUnitContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ApartmentUnitContentTableViewCell.xib; path = HoonianLite/Apartment/ApartmentDetail/ApartmentUnitCell/ApartmentUnitContentTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		A38C85E224C6DF980086FA7B /* ApartmentUnitHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ApartmentUnitHeaderTableViewCell.xib; path = HoonianLite/Apartment/ApartmentDetail/ApartmentUnitCell/ApartmentUnitHeaderTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		A38C85E824C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUpcomingContentCollectionViewCell.swift; sourceTree = "<group>"; };
+		A38C85E924C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeUpcomingContentCollectionViewCell.xib; sourceTree = "<group>"; };
 		A3E9B54524C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailCellLocationTableViewCell.swift; sourceTree = "<group>"; };
 		A3E9B54624C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentDetailCellLocationTableViewCell.xib; sourceTree = "<group>"; };
 		A3E9B54924C5EF1C0052B894 /* ApartmentDetailDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailDescriptionTableViewCell.swift; sourceTree = "<group>"; };
@@ -416,6 +420,7 @@
 		A365795224C4495A00C1EED4 /* HomeCell */ = {
 			isa = PBXGroup;
 			children = (
+				A38C85E724C6E9D70086FA7B /* HomeUpcomingCell */,
 				A36579B024C56D5800C1EED4 /* HomeCollectionCell */,
 				A365796F24C44D9B00C1EED4 /* HomeContentCell */,
 				A365795F24C44A2000C1EED4 /* HomeUpcomingProjectHeaderTableViewCell.swift */,
@@ -582,6 +587,15 @@
 			path = ApartmentDetailCell;
 			sourceTree = "<group>";
 		};
+		A38C85E724C6E9D70086FA7B /* HomeUpcomingCell */ = {
+			isa = PBXGroup;
+			children = (
+				A38C85E824C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.swift */,
+				A38C85E924C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.xib */,
+			);
+			path = HomeUpcomingCell;
+			sourceTree = "<group>";
+		};
 		A3E9B55D24C603450052B894 /* PurchaseCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -689,6 +703,7 @@
 				A36579D224C5B59900C1EED4 /* LocationListViewController.xib in Resources */,
 				A365798224C4AE0F00C1EED4 /* NewsTitleTableViewCell.xib in Resources */,
 				A36579B824C56D8600C1EED4 /* HomeApartmentCollectionViewCell.xib in Resources */,
+				A38C85EB24C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.xib in Resources */,
 				A36579C024C56D9900C1EED4 /* HomeWarehouseCollectionViewCell.xib in Resources */,
 				A38C85E624C6DF980086FA7B /* ApartmentUnitHeaderTableViewCell.xib in Resources */,
 				A38C85E524C6DF980086FA7B /* ApartmentUnitContentTableViewCell.xib in Resources */,
@@ -760,6 +775,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3E9B54B24C5EF1C0052B894 /* ApartmentDetailDescriptionTableViewCell.swift in Sources */,
+				A38C85EA24C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.swift in Sources */,
 				A3E9B56024C603710052B894 /* PurchaseNoticeTableViewCell.swift in Sources */,
 				A365796D24C44A4B00C1EED4 /* HomeContentTableViewCell.swift in Sources */,
 				A36579CC24C59B2200C1EED4 /* WarehouseLocationDetailTableViewCell.swift in Sources */,

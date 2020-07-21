@@ -11,10 +11,17 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
+    var navController: UINavigationController?
+    var loginViewController: LoginViewController?
+    var navArrayMenu = [UINavigationController]()
+    var tabBarController = UITabBarController()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window?.backgroundColor = .white
+        window?.makeKeyAndVisible()
         return true
     }
 
@@ -32,6 +39,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    func goToHome() {
+        guard let window = UIApplication.shared.keyWindow else{
+            return
+            
+        }
+        window.frame = UIScreen.main.bounds
+        window.backgroundColor = .white
+        
+        let homeViewController = HomeViewController(nibName: "HomeViewController", bundle: nil)
+        let purchaseViewController = PurchaseViewController(nibName: "PurchaseViewController", bundle: nil)
+        let contactsViewController = ContactsViewController(nibName: "ContactsViewController", bundle: nil)
+        let scanARViewController = ScanARViewController(nibName: "ScanARViewController", bundle: nil)
+        
+        UITabBar.appearance().tintColor = #colorLiteral(red: 0.3933430612, green: 0.5921664834, blue: 0.6682108641, alpha: 1)
+        
+        let home = UINavigationController(rootViewController: homeViewController)
+        let purchase = UINavigationController(rootViewController: purchaseViewController)
+        let contacts = UINavigationController(rootViewController: contactsViewController)
+        let scanAR = UINavigationController(rootViewController: scanARViewController)
+        
+        navArrayMenu.append(home)
+        navArrayMenu.append(purchase)
+        navArrayMenu.append(contacts)
+        navArrayMenu.append(scanAR)
+        
+        let homeTab = UITabBarItem(title: "Home", image: .checkmark, selectedImage: .add)
+        homeViewController.tabBarItem = homeTab
+        
+        let purchaseTab = UITabBarItem(title: "Purchase", image: .checkmark, selectedImage: .add)
+        purchaseViewController.tabBarItem = purchaseTab
+        
+        let contactsTab = UITabBarItem(title: "Contacts", image: .checkmark, selectedImage: .add)
+        contactsViewController.tabBarItem = contactsTab
+        
+        let scanARTab = UITabBarItem(title: "Scan AR", image: .checkmark, selectedImage: .add)
+        scanARViewController.tabBarItem = scanARTab
+        
+        tabBarController.viewControllers = navArrayMenu
+        tabBarController.selectedIndex = 0
+        
+        window.rootViewController = tabBarController
+        window.makeKeyAndVisible()
+    }
+    
 }
 

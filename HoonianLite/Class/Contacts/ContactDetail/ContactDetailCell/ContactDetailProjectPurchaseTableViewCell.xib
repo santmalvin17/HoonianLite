@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ContactDetailProjectPurchaseTableViewCellID" id="J2f-Sa-xc9" customClass="ContactDetailProjectPurchaseTableViewCell" customModule="HoonianLite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J2f-Sa-xc9" id="vJz-3b-KN6">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-19 at 14.52.13" translatesAutoresizingMaskIntoConstraints="NO" id="kou-JC-uTq">
+                        <rect key="frame" x="20" y="11" width="144" height="108"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="144" id="5Et-Po-6Dx"/>
+                            <constraint firstAttribute="height" constant="108" id="uRM-fp-8pT"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grand Segara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpr-EM-iuQ">
+                        <rect key="frame" x="174" y="11" width="220" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <color key="textColor" red="0.2275145948" green="0.26601815220000002" blue="0.53378772740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8ye-df-B12">
+                        <rect key="frame" x="174" y="40.5" width="20" height="19"/>
+                        <color key="tintColor" red="0.41010284419999998" green="0.59954470400000004" blue="0.67523127790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="Zh5-s5-Mi8"/>
+                            <constraint firstAttribute="width" constant="20" id="yYJ-xg-Gay"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surabaya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Vf-Rk-Dcm">
+                        <rect key="frame" x="199" y="41" width="195" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vG5-u0-oq0">
+                        <rect key="frame" x="174" y="70" width="20" height="16.5"/>
+                        <color key="tintColor" red="0.41010284419999998" green="0.59954470400000004" blue="0.67523127790000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="7s5-aB-Wv4"/>
+                            <constraint firstAttribute="height" constant="20" id="IvG-SU-l0q"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: Down Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OtF-ed-HlG">
+                        <rect key="frame" x="199" y="69" width="195" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="kou-JC-uTq" firstAttribute="leading" secondItem="vJz-3b-KN6" secondAttribute="leading" constant="20" id="1sg-8R-1wx"/>
+                    <constraint firstItem="OtF-ed-HlG" firstAttribute="centerY" secondItem="vG5-u0-oq0" secondAttribute="centerY" id="3pj-oS-x1N"/>
+                    <constraint firstItem="vG5-u0-oq0" firstAttribute="leading" secondItem="kou-JC-uTq" secondAttribute="trailing" constant="10" id="4nv-df-y0k"/>
+                    <constraint firstItem="8ye-df-B12" firstAttribute="leading" secondItem="kou-JC-uTq" secondAttribute="trailing" constant="10" id="951-hw-aOA"/>
+                    <constraint firstAttribute="trailing" secondItem="cpr-EM-iuQ" secondAttribute="trailing" constant="20" id="EcD-5a-B4Y"/>
+                    <constraint firstAttribute="trailing" secondItem="5Vf-Rk-Dcm" secondAttribute="trailing" constant="20" id="Obn-Vw-slb"/>
+                    <constraint firstItem="5Vf-Rk-Dcm" firstAttribute="centerY" secondItem="8ye-df-B12" secondAttribute="centerY" id="Ria-iT-PC8"/>
+                    <constraint firstAttribute="trailing" secondItem="OtF-ed-HlG" secondAttribute="trailing" constant="20" id="S0v-4J-dh1"/>
+                    <constraint firstAttribute="bottom" secondItem="kou-JC-uTq" secondAttribute="bottom" constant="11" id="V3w-t5-3uh"/>
+                    <constraint firstItem="cpr-EM-iuQ" firstAttribute="top" secondItem="kou-JC-uTq" secondAttribute="top" id="Wgd-Ec-Ct4"/>
+                    <constraint firstItem="5Vf-Rk-Dcm" firstAttribute="leading" secondItem="8ye-df-B12" secondAttribute="trailing" constant="5" id="fbn-Z9-xbL"/>
+                    <constraint firstItem="vG5-u0-oq0" firstAttribute="top" secondItem="8ye-df-B12" secondAttribute="bottom" constant="8" id="kD3-SR-sfZ"/>
+                    <constraint firstItem="cpr-EM-iuQ" firstAttribute="leading" secondItem="kou-JC-uTq" secondAttribute="trailing" constant="10" id="las-TP-Jda"/>
+                    <constraint firstItem="kou-JC-uTq" firstAttribute="top" secondItem="vJz-3b-KN6" secondAttribute="top" constant="11" id="ld7-F1-WeH"/>
+                    <constraint firstItem="OtF-ed-HlG" firstAttribute="leading" secondItem="vG5-u0-oq0" secondAttribute="trailing" constant="5" id="s7K-uy-Ysg"/>
+                    <constraint firstItem="8ye-df-B12" firstAttribute="top" secondItem="cpr-EM-iuQ" secondAttribute="bottom" constant="8" id="svO-iw-OSY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="Nzw-v4-mJW"/>
+            <connections>
+                <outlet property="locationLabel" destination="5Vf-Rk-Dcm" id="3gN-sT-nM6"/>
+                <outlet property="nameLabel" destination="cpr-EM-iuQ" id="OJf-Vs-53M"/>
+                <outlet property="purchaseImageView" destination="kou-JC-uTq" id="Cdl-Pr-ABC"/>
+                <outlet property="statusLabel" destination="OtF-ed-HlG" id="QrK-9W-l33"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="110"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Screen Shot 2020-07-19 at 14.52.13" width="880" height="318"/>
+        <image name="book.fill" catalog="system" width="128" height="100"/>
+        <image name="mappin.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

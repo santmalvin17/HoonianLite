@@ -11,6 +11,7 @@
 		0AF89CB824C2E88E00AFCE2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */; };
 		0AF89CBF24C2E89100AFCE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CBE24C2E89100AFCE2D /* Assets.xcassets */; };
 		0AF89CC224C2E89100AFCE2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CC024C2E89100AFCE2D /* LaunchScreen.storyboard */; };
+		A0169D83AFEEBC514A31D356 /* Pods_HoonianLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C2576ABAC32EC8EF8AC4EE /* Pods_HoonianLite.framework */; };
 		A365793724C42AC400C1EED4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A365793524C42AC400C1EED4 /* LoginViewController.swift */; };
 		A365793824C42AC400C1EED4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A365793624C42AC400C1EED4 /* LoginViewController.xib */; };
 		A365793C24C42B4400C1EED4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A365793B24C42B4400C1EED4 /* Colors.swift */; };
@@ -103,6 +104,7 @@
 		0AF89CBE24C2E89100AFCE2D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AF89CC124C2E89100AFCE2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AF89CC324C2E89100AFCE2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8920766A90E9E795814136D9 /* Pods-HoonianLite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoonianLite.debug.xcconfig"; path = "Target Support Files/Pods-HoonianLite/Pods-HoonianLite.debug.xcconfig"; sourceTree = "<group>"; };
 		A365793524C42AC400C1EED4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A365793624C42AC400C1EED4 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		A365793B24C42B4400C1EED4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -186,6 +188,8 @@
 		A3E9B55F24C603710052B894 /* PurchaseNoticeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseNoticeTableViewCell.xib; sourceTree = "<group>"; };
 		A3E9B56224C603950052B894 /* PurchaseItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseItemTableViewCell.swift; sourceTree = "<group>"; };
 		A3E9B56324C603950052B894 /* PurchaseItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseItemTableViewCell.xib; sourceTree = "<group>"; };
+		E2C2576ABAC32EC8EF8AC4EE /* Pods_HoonianLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HoonianLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E671DB14D8D0901F2F1DF62D /* Pods-HoonianLite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoonianLite.release.xcconfig"; path = "Target Support Files/Pods-HoonianLite/Pods-HoonianLite.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0169D83AFEEBC514A31D356 /* Pods_HoonianLite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +209,8 @@
 			children = (
 				0AF89CB424C2E88E00AFCE2D /* HoonianLite */,
 				0AF89CB324C2E88E00AFCE2D /* Products */,
+				EB687DD08209958F4D2DC361 /* Pods */,
+				136348A33DA06200936ACD08 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,6 +241,14 @@
 				0AF89CC324C2E89100AFCE2D /* Info.plist */,
 			);
 			path = HoonianLite;
+			sourceTree = "<group>";
+		};
+		136348A33DA06200936ACD08 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E2C2576ABAC32EC8EF8AC4EE /* Pods_HoonianLite.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A365793424C42A7800C1EED4 /* Login */ = {
@@ -478,6 +493,16 @@
 			path = PurchaseCell;
 			sourceTree = "<group>";
 		};
+		EB687DD08209958F4D2DC361 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8920766A90E9E795814136D9 /* Pods-HoonianLite.debug.xcconfig */,
+				E671DB14D8D0901F2F1DF62D /* Pods-HoonianLite.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -485,9 +510,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0AF89CC624C2E89100AFCE2D /* Build configuration list for PBXNativeTarget "HoonianLite" */;
 			buildPhases = (
+				1B110EFA5E54FA5A79A54DE6 /* [CP] Check Pods Manifest.lock */,
 				0AF89CAE24C2E88E00AFCE2D /* Sources */,
 				0AF89CAF24C2E88E00AFCE2D /* Frameworks */,
 				0AF89CB024C2E88E00AFCE2D /* Resources */,
+				0A2DE670086C01E1939B939C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -583,6 +610,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A2DE670086C01E1939B939C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HoonianLite/Pods-HoonianLite-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HoonianLite/Pods-HoonianLite-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HoonianLite/Pods-HoonianLite-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1B110EFA5E54FA5A79A54DE6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HoonianLite-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0AF89CAE24C2E88E00AFCE2D /* Sources */ = {
@@ -766,6 +835,7 @@
 		};
 		0AF89CC724C2E89100AFCE2D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8920766A90E9E795814136D9 /* Pods-HoonianLite.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -784,6 +854,7 @@
 		};
 		0AF89CC824C2E89100AFCE2D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E671DB14D8D0901F2F1DF62D /* Pods-HoonianLite.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

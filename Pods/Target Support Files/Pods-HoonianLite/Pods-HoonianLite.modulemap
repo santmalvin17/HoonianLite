@@ -1,0 +1,6 @@
+framework module Pods_HoonianLite {
+  umbrella header "Pods-HoonianLite-umbrella.h"
+
+  export *
+  module * { export * }
+}

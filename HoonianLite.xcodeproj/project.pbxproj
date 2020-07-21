@@ -18,6 +18,9 @@
 		0AB525A524C6FDFD00B32537 /* NewsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525A424C6FDFD00B32537 /* NewsDataModel.swift */; };
 		0AB525A824C70B8200B32537 /* NewsLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525A624C70B8200B32537 /* NewsLabelTableViewCell.swift */; };
 		0AB525A924C70B8200B32537 /* NewsLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB525A724C70B8200B32537 /* NewsLabelTableViewCell.xib */; };
+		0AB525AD24C7122E00B32537 /* ContactListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525AB24C7122E00B32537 /* ContactListTableViewCell.swift */; };
+		0AB525AE24C7122E00B32537 /* ContactListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AB525AC24C7122E00B32537 /* ContactListTableViewCell.xib */; };
+		0AB525B024C71A7700B32537 /* ContactListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525AF24C71A7700B32537 /* ContactListModel.swift */; };
 		0AF89CB624C2E88E00AFCE2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB524C2E88E00AFCE2D /* AppDelegate.swift */; };
 		0AF89CB824C2E88E00AFCE2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */; };
 		0AF89CBF24C2E89100AFCE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CBE24C2E89100AFCE2D /* Assets.xcassets */; };
@@ -126,6 +129,9 @@
 		0AB525A424C6FDFD00B32537 /* NewsDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataModel.swift; sourceTree = "<group>"; };
 		0AB525A624C70B8200B32537 /* NewsLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLabelTableViewCell.swift; sourceTree = "<group>"; };
 		0AB525A724C70B8200B32537 /* NewsLabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsLabelTableViewCell.xib; sourceTree = "<group>"; };
+		0AB525AB24C7122E00B32537 /* ContactListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListTableViewCell.swift; sourceTree = "<group>"; };
+		0AB525AC24C7122E00B32537 /* ContactListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactListTableViewCell.xib; sourceTree = "<group>"; };
+		0AB525AF24C71A7700B32537 /* ContactListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListModel.swift; sourceTree = "<group>"; };
 		0AF89CB224C2E88E00AFCE2D /* HoonianLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoonianLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF89CB524C2E88E00AFCE2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -273,6 +279,7 @@
 				0AB5259E24C6D02F00B32537 /* LoginModel.swift */,
 				0AB525A224C6EE4200B32537 /* PurchaseListModel.swift */,
 				0AB525A424C6FDFD00B32537 /* NewsDataModel.swift */,
+				0AB525AF24C71A7700B32537 /* ContactListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,6 +315,15 @@
 				0AB5259C24C6CF9400B32537 /* ACUrl.swift */,
 			);
 			path = Url;
+			sourceTree = "<group>";
+		};
+		0AB525AA24C7121300B32537 /* ContactListCell */ = {
+			isa = PBXGroup;
+			children = (
+				0AB525AB24C7122E00B32537 /* ContactListTableViewCell.swift */,
+				0AB525AC24C7122E00B32537 /* ContactListTableViewCell.xib */,
+			);
+			path = ContactListCell;
 			sourceTree = "<group>";
 		};
 		0AF89CA924C2E88E00AFCE2D = {
@@ -409,6 +425,7 @@
 		A365793F24C441B600C1EED4 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				0AB525AA24C7121300B32537 /* ContactListCell */,
 				A365794924C442CB00C1EED4 /* ContactsViewController.swift */,
 				A365794A24C442CB00C1EED4 /* ContactsViewController.xib */,
 			);
@@ -709,6 +726,7 @@
 				A3E9B55424C5EF4E0052B894 /* ApartmentDetailGalleryTableViewCell.xib in Resources */,
 				A365794824C442C200C1EED4 /* PurchaseViewController.xib in Resources */,
 				A36579A324C56A6200C1EED4 /* HomeLandedPropertyHeaderTableViewCell.xib in Resources */,
+				0AB525AE24C7122E00B32537 /* ContactListTableViewCell.xib in Resources */,
 				A36579D224C5B59900C1EED4 /* LocationListViewController.xib in Resources */,
 				A365798224C4AE0F00C1EED4 /* NewsTitleTableViewCell.xib in Resources */,
 				A36579B824C56D8600C1EED4 /* HomeApartmentCollectionViewCell.xib in Resources */,
@@ -785,7 +803,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3E9B54B24C5EF1C0052B894 /* ApartmentDetailDescriptionTableViewCell.swift in Sources */,
+				0AB525B024C71A7700B32537 /* ContactListModel.swift in Sources */,
 				A38C85EA24C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.swift in Sources */,
+				0AB525AD24C7122E00B32537 /* ContactListTableViewCell.swift in Sources */,
 				A3E9B56024C603710052B894 /* PurchaseNoticeTableViewCell.swift in Sources */,
 				A365796D24C44A4B00C1EED4 /* HomeContentTableViewCell.swift in Sources */,
 				A36579CC24C59B2200C1EED4 /* WarehouseLocationDetailTableViewCell.swift in Sources */,

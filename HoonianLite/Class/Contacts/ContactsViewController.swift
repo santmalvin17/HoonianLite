@@ -9,22 +9,35 @@
 import UIKit
 
 class ContactsViewController: UIViewController {
-
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        configTable()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configTable(){
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "ContactListTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactListTableViewCellID")
     }
-    */
+    
+    
+    
+}
 
+extension ContactsViewController:UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ACData.CONTACTLISTMODEL.contacts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = (tableView.dequeueReusableCell(withIdentifier: "ContactListTableViewCellID", for: indexPath) as? ContactListTableViewCell)!
+        cell.position = 0
+        cell.detailObj = ACData.CONTACTLISTMODEL
+        return cell
+    }
+    
+    
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol HomeUpcomingProjectContentTableViewCellDelegate {
     func imageViewPressed()
@@ -38,6 +39,20 @@ class HomeUpcomingProjectContentTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    var detailObj: HomeDataModel? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        self.imageView!.sd_setImage(
+            with: URL(string: (obj.news[0].image)),
+                   placeholderImage: UIImage(named: "News Logo"),
+                   options: .refreshCached
+               )
     }
     
 }

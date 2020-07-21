@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -19,7 +20,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         config()
     }
     
@@ -43,10 +44,21 @@ class LoginViewController: UIViewController {
         forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonAction), for: .touchUpInside)
         createAccountButton.addTarget(self, action: #selector(createAccountButtonAction), for: .touchUpInside)
     }
-
+    
     @objc func loginButtonAction() {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.goToHome()
+        ACRequest.POST_LOGIN(phoneNumber: phoneNumberTextField.text!, password: passwordTextField.text!,successCompletion: { (loginData) in
+            ACData.LOGINDATA = loginData
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.goToHome()
+        }) { (message) in
+            SVProgressHUD.dismiss()
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        
+        
     }
     
     @objc func forgotPasswordButtonAction() {
@@ -56,15 +68,7 @@ class LoginViewController: UIViewController {
     @objc func createAccountButtonAction() {
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    
 }

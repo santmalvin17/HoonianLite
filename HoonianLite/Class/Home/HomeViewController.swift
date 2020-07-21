@@ -112,8 +112,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .upcomingProjectContent:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "homeUpcomingProjectContentTableViewCell", for: indexPath) as? HomeUpcomingProjectContentTableViewCell)!
+            cell.detailObj = ACData.LOGINDATA.homeData
             cell.delegate = self
-            
+
             return cell
         case .locationHeader:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "homeLocationHeaderTableViewCell", for: indexPath) as? HomeLocationHeaderTableViewCell)!

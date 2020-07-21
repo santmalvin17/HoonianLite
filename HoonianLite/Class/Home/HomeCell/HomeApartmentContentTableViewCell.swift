@@ -39,12 +39,13 @@ class HomeApartmentContentTableViewCell: UITableViewCell {
 
 extension HomeApartmentContentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return ACData.LOGINDATA.homeData.apartment.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "homeApartmentCollectionViewCell", for: indexPath) as? HomeApartmentCollectionViewCell)!
-        
+               cell.position = indexPath.row
+        cell.detailObj = ACData.LOGINDATA.homeData
         return cell
     }
     

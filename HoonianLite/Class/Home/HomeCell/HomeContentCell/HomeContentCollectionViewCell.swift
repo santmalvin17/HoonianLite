@@ -23,5 +23,13 @@ class HomeContentCollectionViewCell: UICollectionViewCell {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = 5
     }
+    var detailObj: HomeDataModel? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+    }
     
 }

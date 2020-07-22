@@ -295,6 +295,9 @@ extension HomeViewController: HomeLocationHeaderTableViewCellDelegate, HomeApart
     
     func moreApartmentPressed() {
         print("more apartment pressed")
+        
+        let vc = ApartmentMoreViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func moreLandedPropertyPressed() {

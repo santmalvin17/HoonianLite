@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ApartmentMoreSearchTableViewCellID" rowHeight="168" id="KGk-i7-Jjw" customClass="ApartmentMoreSearchTableViewCell" customModule="HoonianLite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="181"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="181"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K5U-n7-oMI">
+                        <rect key="frame" x="20" y="10" width="374" height="161"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdE-Zd-CuY">
+                                <rect key="frame" x="20" y="10" width="334" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" red="0.2275145948" green="0.26601815220000002" blue="0.53378772740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Locations" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="27Z-1h-7yO">
+                                <rect key="frame" x="20" y="39" width="334" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hGl-Ed-XzO" customClass="CheckBox" customModule="HoonianLite" customModuleProvider="target">
+                                <rect key="frame" x="20" y="81" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="Kyy-Kh-uDe"/>
+                                    <constraint firstAttribute="height" constant="20" id="jLN-Hg-DOL"/>
+                                </constraints>
+                                <color key="tintColor" red="0.2275145948" green="0.26601815220000002" blue="0.53378772740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wrM-iV-Rre">
+                                <rect key="frame" x="48" y="82" width="55" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0R-eI-ESF" customClass="CheckBox" customModule="HoonianLite" customModuleProvider="target">
+                                <rect key="frame" x="153" y="81" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="aaN-E2-Yie"/>
+                                    <constraint firstAttribute="height" constant="20" id="auQ-Sd-B0L"/>
+                                </constraints>
+                                <color key="tintColor" red="0.2275145948" green="0.26601815220000002" blue="0.53378772740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1C-CB-3FN">
+                                <rect key="frame" x="181" y="82" width="103.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="je2-hA-h4b">
+                                <rect key="frame" x="20" y="111" width="334" height="40"/>
+                                <color key="backgroundColor" red="0.2275145948" green="0.26601815220000002" blue="0.53378772740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="M5n-Xa-HE2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                <state key="normal" title="SEARCH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.54743319749999997" green="0.79596155879999997" blue="0.76108807329999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hGl-Ed-XzO" firstAttribute="top" secondItem="27Z-1h-7yO" secondAttribute="bottom" constant="8" id="0RO-YD-aM1"/>
+                            <constraint firstItem="wrM-iV-Rre" firstAttribute="leading" secondItem="hGl-Ed-XzO" secondAttribute="trailing" constant="8" id="0fX-uI-cqT"/>
+                            <constraint firstAttribute="bottom" secondItem="je2-hA-h4b" secondAttribute="bottom" constant="10" id="3lc-ym-jHC"/>
+                            <constraint firstItem="27Z-1h-7yO" firstAttribute="top" secondItem="VdE-Zd-CuY" secondAttribute="bottom" constant="8" id="5Qu-dy-REx"/>
+                            <constraint firstItem="27Z-1h-7yO" firstAttribute="leading" secondItem="K5U-n7-oMI" secondAttribute="leading" constant="20" id="CXb-qB-V1s"/>
+                            <constraint firstItem="VdE-Zd-CuY" firstAttribute="leading" secondItem="K5U-n7-oMI" secondAttribute="leading" constant="20" id="JJ0-R5-4yz"/>
+                            <constraint firstItem="g0R-eI-ESF" firstAttribute="centerY" secondItem="hGl-Ed-XzO" secondAttribute="centerY" id="MkZ-vu-XLe"/>
+                            <constraint firstItem="j1C-CB-3FN" firstAttribute="centerY" secondItem="g0R-eI-ESF" secondAttribute="centerY" id="O3M-oJ-Wni"/>
+                            <constraint firstItem="wrM-iV-Rre" firstAttribute="centerY" secondItem="hGl-Ed-XzO" secondAttribute="centerY" id="Oyk-8B-Kfk"/>
+                            <constraint firstItem="hGl-Ed-XzO" firstAttribute="leading" secondItem="K5U-n7-oMI" secondAttribute="leading" constant="20" id="V4A-ex-91z"/>
+                            <constraint firstAttribute="trailing" secondItem="VdE-Zd-CuY" secondAttribute="trailing" constant="20" id="WKx-HH-cBe"/>
+                            <constraint firstItem="j1C-CB-3FN" firstAttribute="leading" secondItem="g0R-eI-ESF" secondAttribute="trailing" constant="8" id="ZSn-ZV-3F9"/>
+                            <constraint firstItem="je2-hA-h4b" firstAttribute="centerX" secondItem="K5U-n7-oMI" secondAttribute="centerX" id="ch0-UG-ME7"/>
+                            <constraint firstAttribute="height" constant="161" id="lIT-IQ-2ax"/>
+                            <constraint firstAttribute="trailing" secondItem="27Z-1h-7yO" secondAttribute="trailing" constant="20" id="mzr-O4-FUp"/>
+                            <constraint firstItem="g0R-eI-ESF" firstAttribute="leading" secondItem="wrM-iV-Rre" secondAttribute="trailing" constant="50" id="nh7-Kd-FkK"/>
+                            <constraint firstItem="je2-hA-h4b" firstAttribute="leading" secondItem="K5U-n7-oMI" secondAttribute="leading" constant="20" id="qNU-Rk-epu"/>
+                            <constraint firstItem="VdE-Zd-CuY" firstAttribute="top" secondItem="K5U-n7-oMI" secondAttribute="top" constant="10" id="qXK-mH-85P"/>
+                            <constraint firstAttribute="trailing" secondItem="je2-hA-h4b" secondAttribute="trailing" constant="20" id="rZl-VA-PS1"/>
+                            <constraint firstItem="je2-hA-h4b" firstAttribute="top" secondItem="g0R-eI-ESF" secondAttribute="bottom" constant="10" id="wNx-wI-Re3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="K5U-n7-oMI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="0PR-S6-3NO"/>
+                    <constraint firstAttribute="trailing" secondItem="K5U-n7-oMI" secondAttribute="trailing" constant="20" id="2uG-yn-OHN"/>
+                    <constraint firstAttribute="bottom" secondItem="K5U-n7-oMI" secondAttribute="bottom" constant="10" id="3UC-yx-RfN"/>
+                    <constraint firstItem="K5U-n7-oMI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="S64-hv-NKa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="favoriteCheckBox" destination="hGl-Ed-XzO" id="adz-B8-1HO"/>
+                <outlet property="favoriteLabel" destination="wrM-iV-Rre" id="5Dq-uR-fpW"/>
+                <outlet property="recommendedCheckBox" destination="g0R-eI-ESF" id="pC8-9p-UhY"/>
+                <outlet property="recommendedLabel" destination="j1C-CB-3FN" id="bX0-q0-gf7"/>
+                <outlet property="searchButton" destination="je2-hA-h4b" id="dZN-Mu-wGP"/>
+                <outlet property="searchLabel" destination="VdE-Zd-CuY" id="bgu-VA-4CH"/>
+                <outlet property="searchTextField" destination="27Z-1h-7yO" id="pvR-8c-cEy"/>
+                <outlet property="searchView" destination="K5U-n7-oMI" id="V7F-w7-Bp4"/>
+            </connections>
+            <point key="canvasLocation" x="39.130434782608695" y="39.508928571428569"/>
+        </tableViewCell>
+    </objects>
+</document>

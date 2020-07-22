@@ -66,7 +66,8 @@ class LoginViewController: UIViewController {
     }
     
     @objc func createAccountButtonAction() {
-        
+        let vc = RegisterViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

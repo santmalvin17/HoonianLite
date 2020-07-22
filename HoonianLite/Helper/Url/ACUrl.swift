@@ -13,6 +13,7 @@ class ACUrl:NSObject{
     static let MAIN = "https://dev.api.hoonian.com"
     
     static let AGENT_LOGIN = MAIN + "/api/agent/login"
+    static let REGISTER = MAIN + "/api/agent/register"
     static let CITY_LIST = MAIN + "/api/city"
     static let NEWS_DETAIL = MAIN + "/api/news/detail?id"
     static let PURCHASE_LIST = MAIN + "/api/agent/purchase?agent_id"

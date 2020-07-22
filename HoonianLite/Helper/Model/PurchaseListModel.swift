@@ -81,6 +81,8 @@ class ClientData:NSObject{
     var id = ""
     var name = ""
     var phoneNumber = ""
+    var idCardNumber = ""
+    var city = ""
     var occupation = ""
     var relation = ""
     var referred = 0
@@ -91,6 +93,8 @@ class ClientData:NSObject{
         id = json["id"].stringValue
         name = json["name"].stringValue
         phoneNumber = json["phone_number"].stringValue
+        idCardNumber = json["id_card_number"].stringValue
+        city = json["city"].stringValue
         occupation = json["occupation"].stringValue
         relation = json["relation"].stringValue
         referred = json["referred"].intValue

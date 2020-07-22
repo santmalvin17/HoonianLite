@@ -27,14 +27,27 @@
                     <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qcH-if-PVQ">
+                    <rect key="frame" x="314" y="750.5" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="qcH-if-PVQ" secondAttribute="height" multiplier="80:81" id="IhJ-3W-T0X"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
+                    <connections>
+                        <action selector="addContactClicked:" destination="-1" eventType="touchUpInside" id="e6N-2Y-Ael"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="Hmx-Am-Wck" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2q5-ec-C6r"/>
                 <constraint firstItem="Hmx-Am-Wck" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="FRa-4B-JRK"/>
+                <constraint firstItem="qcH-if-PVQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="314" id="YMn-WO-QN0"/>
                 <constraint firstItem="S8u-46-0lj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="azd-0B-E8F"/>
                 <constraint firstItem="S8u-46-0lj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="c7p-X7-s17"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qcH-if-PVQ" secondAttribute="trailing" constant="20" id="dR4-Bc-1FY"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="S8u-46-0lj" secondAttribute="trailing" constant="20" id="iNm-ve-tIq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qcH-if-PVQ" secondAttribute="bottom" constant="31" id="lXw-K5-eeg"/>
                 <constraint firstItem="Hmx-Am-Wck" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="nxd-RT-KJ2"/>
                 <constraint firstItem="Hmx-Am-Wck" firstAttribute="top" secondItem="S8u-46-0lj" secondAttribute="bottom" id="vFW-PP-jQg"/>
             </constraints>
@@ -42,4 +55,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </view>
     </objects>
+    <resources>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

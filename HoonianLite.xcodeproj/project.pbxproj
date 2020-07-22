@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A799C6F24C8567200DD83D5 /* EditContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C6E24C8567200DD83D5 /* EditContactModel.swift */; };
 		0AB5258F24C6CD0400B32537 /* HomeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5258E24C6CD0400B32537 /* HomeDataModel.swift */; };
 		0AB5259524C6CDA000B32537 /* ACAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5259424C6CDA000B32537 /* ACAPI.swift */; };
 		0AB5259724C6CDD100B32537 /* ACAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5259624C6CDD100B32537 /* ACAlert.swift */; };
@@ -147,6 +148,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A799C6E24C8567200DD83D5 /* EditContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditContactModel.swift; sourceTree = "<group>"; };
 		0AB5258E24C6CD0400B32537 /* HomeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataModel.swift; sourceTree = "<group>"; };
 		0AB5259424C6CDA000B32537 /* ACAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACAPI.swift; sourceTree = "<group>"; };
 		0AB5259624C6CDD100B32537 /* ACAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACAlert.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				0AB525B524C7F50200B32537 /* ContactDetailModel.swift */,
 				0AB525B724C8098E00B32537 /* UnitPriceModel.swift */,
 				0AB525B924C821C400B32537 /* UnitTypeDetailModel.swift */,
+				0A799C6E24C8567200DD83D5 /* EditContactModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -387,6 +390,13 @@
 				0AB525AC24C7122E00B32537 /* ContactListTableViewCell.xib */,
 			);
 			path = ContactListCell;
+			sourceTree = "<group>";
+		};
+		0AB525BB24C8317000B32537 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		0AF89CA924C2E88E00AFCE2D = {
@@ -557,6 +567,7 @@
 		A365793F24C441B600C1EED4 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				0AB525BB24C8317000B32537 /* New Group */,
 				A319D7E724C742480082A08F /* EditContact */,
 				A319D7D024C737190082A08F /* ContactDetail */,
 				0AB525AA24C7121300B32537 /* ContactListCell */,
@@ -969,6 +980,7 @@
 				A365798524C4AE2400C1EED4 /* NewsContentTableViewCell.swift in Sources */,
 				A3E9B54F24C5EF2D0052B894 /* ApartmentDetailFacilityTableViewCell.swift in Sources */,
 				A365796924C44A3E00C1EED4 /* HomeHeaderTableViewCell.swift in Sources */,
+				0A799C6F24C8567200DD83D5 /* EditContactModel.swift in Sources */,
 				A365798D24C4B97400C1EED4 /* LocationDetailViewController.swift in Sources */,
 				A319D7C524C71CB50082A08F /* ApartmentUnitDetailVirtualTourTableViewCell.swift in Sources */,
 				0AB5258F24C6CD0400B32537 /* HomeDataModel.swift in Sources */,

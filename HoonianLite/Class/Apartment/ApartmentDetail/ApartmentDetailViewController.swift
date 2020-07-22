@@ -25,6 +25,11 @@ class ApartmentDetailViewController: UIViewController {
         case content
     }
     
+    enum ApartmentReferredCellList {
+        case search
+        case content
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedView: UIView!
     @IBOutlet weak var detailButton: UIButton!
@@ -36,6 +41,7 @@ class ApartmentDetailViewController: UIViewController {
     
     var sectionsDetail = [ApartmentDetailCellList]()
     var sectionsUnit = [ApartmentUnitCellList]()
+    var sectionsReferred = [ApartmentReferredCellList]()
     var passedType: String = "Detail"
     
     override func viewDidLoad() {
@@ -70,6 +76,10 @@ class ApartmentDetailViewController: UIViewController {
         //UNIT & PRICE
         tableView.register(UINib(nibName: "ApartmentUnitHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentUnitHeaderTableViewCell")
         tableView.register(UINib(nibName: "ApartmentUnitContentTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentUnitContentTableViewCell")
+        
+        //REFERRED
+        tableView.register(UINib(nibName: "ApartmentReferredSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "ApartmentReferredSearchTableViewCellID")
+        tableView.register(UINib(nibName: "ApartmentReferredContentTableViewCell", bundle: nil), forCellReuseIdentifier: "ApartmentReferredContentTableViewCellID")
     }
     
     func configSections() {
@@ -80,6 +90,8 @@ class ApartmentDetailViewController: UIViewController {
         sectionsDetail.append(.facilityContent)
         sectionsDetail.append(.gallery)
         sectionsDetail.append(.video)
+        sectionsReferred.append(.search)
+        sectionsReferred.append(.content)
         
         if passedType == "Unit"{
             print(ACData.UNITLISTMODEL.projectClusterData.count)
@@ -157,7 +169,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
         return ACData.UNITLISTMODEL.projectClusterData.count*2
         }
         else {
-            return 0
+            return sectionsReferred.count
         }
     }
     
@@ -189,7 +201,12 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             }
         }
         else {
-            return 0
+            switch sectionsReferred[section] {
+            case .search:
+                return 1
+            case .content:
+                return 3
+            }
         }
     }
     
@@ -242,7 +259,16 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             }
         }
         else {
-            return UITableViewCell()
+            switch sectionsReferred[indexPath.section]{
+            case .search:
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentReferredSearchTableViewCellID", for: indexPath) as? ApartmentReferredSearchTableViewCell)!
+                
+                return cell
+            case .content:
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentReferredContentTableViewCellID", for: indexPath) as? ApartmentReferredContentTableViewCell)!
+                
+                return cell
+            }
         }
     }
     

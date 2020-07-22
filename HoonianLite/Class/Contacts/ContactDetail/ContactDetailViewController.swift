@@ -70,11 +70,11 @@ extension ContactDetailViewController: UITableViewDelegate, UITableViewDataSourc
         case .recommendedHeader:
             return 1
         case .recommendedContent:
-            return 2
+            return ACData.CONTACTDETAILMODEL.clientData.project.count
         case .purchaseHeader:
             return 1
         case .purchaseContent:
-            return 2
+            return ACData.CONTACTDETAILMODEL.clientData.purchasedProect.count
         }
     }
     
@@ -83,25 +83,25 @@ extension ContactDetailViewController: UITableViewDelegate, UITableViewDataSourc
         case .header:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ContactDetailHeaderTableViewCellID", for: indexPath) as? ContactDetailHeaderTableViewCell)!
             cell.delegate = self
-            
+            cell.detailObj = ACData.CONTACTDETAILMODEL
             return cell
         case .recommendedHeader:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ContactDetailContentHeaderTableViewCellID", for: indexPath) as? ContactDetailContentHeaderTableViewCell)!
             cell.configRecommended()
-            
             return cell
         case .recommendedContent:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ContactDetailRecommendedProjectTableViewCellID", for: indexPath) as? ContactDetailRecommendedProjectTableViewCell)!
-            
+            cell.position = 0
+                        cell.detailObj = ACData.CONTACTDETAILMODEL
             return cell
         case .purchaseHeader:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ContactDetailContentHeaderTableViewCellID", for: indexPath) as? ContactDetailContentHeaderTableViewCell)!
             cell.configPurchase()
-            
             return cell
         case .purchaseContent:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ContactDetailProjectPurchaseTableViewCellID", for: indexPath) as? ContactDetailProjectPurchaseTableViewCell)!
-            
+            cell.position = 0
+                        cell.detailObj = ACData.CONTACTDETAILMODEL
             return cell
         }
     }

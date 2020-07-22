@@ -19,5 +19,6 @@ class ACUrl:NSObject{
     static let CONTACT_LIST = MAIN + "/api/agent/contact/?agent_id"
     static let PROJECT_LIST = MAIN + "/api/project?"
     static let PROJECT_DETAIL = MAIN + "/api/project/detail?id"
+    static let CONTACT_DETAIL = MAIN + "/api/agent/contact/detail?contact_id"
     
 }

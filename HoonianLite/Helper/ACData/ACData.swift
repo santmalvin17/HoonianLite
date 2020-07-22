@@ -17,4 +17,5 @@ struct ACData{
     static var CONTACTLISTMODEL:ContactListModel!
     static var PROJECTLISTMODEL:ProjectListModel!
     static var PROJECTDETAILMODEL:GetProjectDetailModel!
+    static var CONTACTDETAILMODEL:ContactDetailModel!
 }

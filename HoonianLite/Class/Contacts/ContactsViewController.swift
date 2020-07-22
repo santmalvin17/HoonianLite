@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ContactsViewController: UIViewController {
     
@@ -40,8 +41,17 @@ extension ContactsViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = ContactDetailViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        ACRequest.GET_CONTACT_DETAIL(id: ACData.CONTACTLISTMODEL.contacts[indexPath.row].id,successCompletion: { (getContactDetail) in
+            ACData.CONTACTDETAILMODEL = getContactDetail
+            SVProgressHUD.dismiss()
+            let vc = ContactDetailViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+                       let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
     }
     
 }

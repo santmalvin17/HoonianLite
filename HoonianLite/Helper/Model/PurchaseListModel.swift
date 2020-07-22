@@ -80,12 +80,30 @@ class ProjectUnitTypesData:NSObject{
 class ClientData:NSObject{
     var id = ""
     var name = ""
+    var phoneNumber = ""
+    var occupation = ""
+    var relation = ""
     var referred = 0
     var purchased = 0
+    var project = [ProjectListData]()
+    var purchasedProect = [PurchasedProjectClientData]()
     func objectMapping(json:JSON){
         id = json["id"].stringValue
         name = json["name"].stringValue
+        phoneNumber = json["phone_number"].stringValue
+        occupation = json["occupation"].stringValue
+        relation = json["relation"].stringValue
         referred = json["referred"].intValue
         purchased = json["purchase"].intValue
+        for data in json["referred_project"].arrayValue{
+            let d = ProjectListData()
+            d.objectMapping(json: data)
+            project.append(d)
+        }
+        for data in json["purchased_project"].arrayValue{
+            let d = PurchasedProjectClientData()
+            d.objectMapping(json: data)
+            purchasedProect.append(d)
+        }
     }
 }

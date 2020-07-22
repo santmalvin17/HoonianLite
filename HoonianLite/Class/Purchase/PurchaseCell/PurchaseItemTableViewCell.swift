@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import Hex
+
+protocol PurchaseItemTableViewCellDelegate{
+    func detailPurchase(indexKe:Int)
+}
 
 class PurchaseItemTableViewCell: UITableViewCell {
 
+    var delegate:PurchaseItemTableViewCellDelegate?
     @IBOutlet weak var purchaseImageView: UIImageView!
     @IBOutlet weak var viewDetailButton: UIButton!
     @IBOutlet weak var purchaseName: UILabel!
@@ -25,7 +31,13 @@ class PurchaseItemTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         config()
+        
+        viewDetailButton.addTarget(self, action: #selector(detailButtonClicked), for: .touchUpInside)
     }
+    
+    @objc func detailButtonClicked(){
+        delegate?.detailPurchase(indexKe: position)
+       }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -57,9 +69,12 @@ class PurchaseItemTableViewCell: UITableViewCell {
         priceLabel.text = ": \(obj.projectPurchaseList[position].price)"
         buyerLabel.text = ": \(obj.projectPurchaseList[position].client.name)"
         agentLabel.text = ": \(obj.projectPurchaseList[position].agent.name)"
-        statusLabel.text = ": \(obj.projectPurchaseList[position].status)"
+        statusLabel.textColor = UIColor(hex: "\(obj.projectPurchaseList[position].status.colorCode)")
+        statusLabel.text = ": \(obj.projectPurchaseList[position].status.name)"
         comission = 750000000 * obj.projectPurchaseList[position].project.commisionRate
         comissionLabel.text = ": Rp. \(Int(comission))"
     }
     
 }
+
+

@@ -68,19 +68,21 @@ extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSour
         switch sections[indexPath.section] {
         case .unitImage:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "PurchaseDetailUnitImageTableViewCellID", for: indexPath) as? PurchaseDetailUnitImageTableViewCell)!
-            
+            cell.detailObj = ACData.PURCHASEDETAILMODEL.purchaseDetailData
             return cell
         case .selectedUnit:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "PurchaseDetailSelectedUnitTableViewCellID", for: indexPath) as? PurchaseDetailSelectedUnitTableViewCell)!
             
+            cell.detailObj = ACData.PURCHASEDETAILMODEL.purchaseDetailData
             return cell
         case .augmentedReality:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "PurchaseDetailARTableViewCellID", for: indexPath) as? PurchaseDetailARTableViewCell)!
             
+            cell.detailObj = ACData.PURCHASEDETAILMODEL.purchaseDetailData
             return cell
         case .virtualTour:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "PurchaseDetailVirtualTourTableViewCellID", for: indexPath) as? PurchaseDetailVirtualTourTableViewCell)!
-            
+            cell.detailObj = ACData.PURCHASEDETAILMODEL.purchaseDetailData
             return cell
         }
     }

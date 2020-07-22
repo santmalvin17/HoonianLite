@@ -25,4 +25,20 @@ class PurchaseDetailSelectedUnitTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var detailObj: ProjectPurchasedData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        unitTypeLabel.text = "Unit \(obj.projectData.name)"
+        self.unitTypeImageView.sd_setImage(
+            with: URL(string: (obj.projectData.projectBlock.imageFloorPlan)),
+            placeholderImage: UIImage(named: "School Logo"),
+            options: .refreshCached
+        )
+
+    }
+    
 }

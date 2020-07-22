@@ -22,4 +22,5 @@ struct ACData{
     static var UNITDETAILMODEL: UnitTypeDetailModel!
     static var EDITCONTACTDETAIL:EditContactModel!
     static var PURCHASEDETAILMODEL:PurchaseDetailModel!
+    static var REFERREDLISTMODEL:ReferredListModel!
 }

@@ -288,4 +288,25 @@ class ACRequest:NSObject{
             }
         }
     }
+    
+    static func GET_REFERRED_LIST(
+         agentId:String,
+         projectId:String,
+         successCompletion:@escaping (ReferredListModel) -> Void,
+         failCompletion:@escaping (String) -> Void) {
+         let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.REFERRED_LIST)=\(agentId)&project_id=\(projectId)", header: headers, showHUD: true, completion: { (jsonData) in
+             let json = JSON(jsonData)
+             print("get referred list: \(json)")
+             if(json["status_desc"] == "Success") {
+                 let referModel = ReferredListModel()
+                 referModel.objectMapping(json: json)
+                 successCompletion(referModel)
+             } else {
+                 failCompletion(json["status"].stringValue)
+             }
+         })
+     }
+    
+    
 }

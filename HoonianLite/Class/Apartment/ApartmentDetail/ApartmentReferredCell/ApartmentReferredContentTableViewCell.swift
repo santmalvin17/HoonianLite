@@ -8,8 +8,14 @@
 
 import UIKit
 
-class ApartmentReferredContentTableViewCell: UITableViewCell {
+protocol ApartmentReferredContentTableViewCellDelegate{
+    func callPhone(indexKe:Int)
+}
 
+class ApartmentReferredContentTableViewCell: UITableViewCell {
+    
+    var delegate:ApartmentReferredContentTableViewCellDelegate?
+    
     @IBOutlet weak var referredView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var agentNameLabel: UILabel!
@@ -18,16 +24,22 @@ class ApartmentReferredContentTableViewCell: UITableViewCell {
     @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var commisionLabel: UILabel!
-    
+    var position = 0 
     override func awakeFromNib() {
         super.awakeFromNib()
         
         config()
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(phoneClicked))
+        callAgentView.addGestureRecognizer(gesture)
     }
-
+    
+    @objc func phoneClicked(){
+        delegate?.callPhone(indexKe: position)
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -52,6 +64,18 @@ class ApartmentReferredContentTableViewCell: UITableViewCell {
     
     @objc func callAgentAction() {
         print("call agent pressed")
+    }
+    
+    var detailObj: ReferredListData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+        guard let obj = detailObj else { return }
+        nameLabel.text = obj.contacts.name
+        agentNameLabel.text = obj.agent.name
+        statusLabel.text = obj.referStatus.name
     }
     
 }

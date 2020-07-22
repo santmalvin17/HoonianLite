@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import CallKit
 
 class ApartmentDetailViewController: UIViewController {
     enum ApartmentDetailCellList {
@@ -83,6 +84,7 @@ class ApartmentDetailViewController: UIViewController {
     }
     
     func configSections() {
+        if passedType == "Detail"{
         sectionsDetail.append(.header)
         sectionsDetail.append(.location)
         sectionsDetail.append(.description)
@@ -90,8 +92,11 @@ class ApartmentDetailViewController: UIViewController {
         sectionsDetail.append(.facilityContent)
         sectionsDetail.append(.gallery)
         sectionsDetail.append(.video)
+        }
+        if passedType == "Referred"{
         sectionsReferred.append(.search)
         sectionsReferred.append(.content)
+        }
         
         if passedType == "Unit"{
             print(ACData.UNITLISTMODEL.projectClusterData.count)
@@ -116,6 +121,7 @@ class ApartmentDetailViewController: UIViewController {
         ACRequest.GET_PROJECT_DETAIL(id: ACData.PROJECTDETAILMODEL.projectData.id,  successCompletion: { (projectDetail) in
             ACData.PROJECTDETAILMODEL = projectDetail
             SVProgressHUD.dismiss()
+            self.configSections()
             self.tableView.reloadData()
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         }) { (message) in
@@ -138,6 +144,7 @@ class ApartmentDetailViewController: UIViewController {
             ACData.UNITLISTMODEL = getUnitList
             SVProgressHUD.dismiss()
             self.configSections()
+            
             self.tableView.reloadData()
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         }) { (message) in
@@ -154,8 +161,18 @@ class ApartmentDetailViewController: UIViewController {
         detailView.backgroundColor = #colorLiteral(red: 0.2275145948, green: 0.2660181522, blue: 0.5337877274, alpha: 1)
         unitButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         unitView.backgroundColor = #colorLiteral(red: 0.2275145948, green: 0.2660181522, blue: 0.5337877274, alpha: 1)
-        passedType = "Referred"
-        tableView.reloadData()
+        self.passedType = "Referred"
+        ACRequest.GET_REFERRED_LIST(agentId: ACData.LOGINDATA.agent.id, projectId: ACData.PROJECTDETAILMODEL.projectData.id,successCompletion: { (getReferList) in
+            ACData.REFERREDLISTMODEL = getReferList
+            SVProgressHUD.dismiss()
+            self.configSections()
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
 }
@@ -163,13 +180,13 @@ class ApartmentDetailViewController: UIViewController {
 extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if passedType == "Detail" {
-            return sectionsDetail.count
+            return 7
         }
         else if passedType == "Unit" {
         return ACData.UNITLISTMODEL.projectClusterData.count*2
         }
         else {
-            return sectionsReferred.count
+            return 2
         }
     }
     
@@ -205,7 +222,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .search:
                 return 1
             case .content:
-                return 3
+                return ACData.REFERREDLISTMODEL.referProjectList.count
             }
         }
     }
@@ -266,7 +283,9 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
                 return cell
             case .content:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentReferredContentTableViewCellID", for: indexPath) as? ApartmentReferredContentTableViewCell)!
-                
+                cell.position = indexPath.row
+                cell.delegate = self
+                cell.detailObj = ACData.REFERREDLISTMODEL.referProjectList[indexPath.row]
                 return cell
             }
         }
@@ -292,6 +311,15 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
         else {
             
         }
+    }
+    
+    
+}
+
+extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDelegate{
+    func callPhone(indexKe: Int) {
+        guard let number = URL(string: "tel://" + ACData.REFERREDLISTMODEL.referProjectList[indexKe].contacts.phoneNumber) else { return }
+        UIApplication.shared.open(number, options: [:], completionHandler: nil)
     }
     
     

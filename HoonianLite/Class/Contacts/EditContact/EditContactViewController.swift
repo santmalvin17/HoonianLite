@@ -122,7 +122,7 @@ class EditContactViewController: UIViewController {
                 "relation":relationTextField.text!,
                 "note":"",
                 "agent_id":ACData.LOGINDATA.agent.id,
-                "contact_id":ACData.CONTACTDETAILMODEL.clientData.id,
+                "contact_id":ACData.CONTACTDETAILMODEL.clientData.id
             ]
             ACRequest.PUT_UPDATE_CONTACT(parameters: parameter, successCompletion: { (result) in
                 SVProgressHUD.dismiss()
@@ -141,7 +141,7 @@ class EditContactViewController: UIViewController {
             "occupation":workTextField.text!,
             "city_id":ACData.HOMEDATAMODEL.homeData.cities[getCityId-1].id,
             "relation":relationTextField.text!,
-            "note":"",
+            "note":""
         ]
         ACRequest.POST_ADD_NEW_CONTACT(parameters: parameter, successCompletion: { (result) in
             SVProgressHUD.dismiss()

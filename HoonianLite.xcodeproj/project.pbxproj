@@ -11,6 +11,8 @@
 		0A799C7124C8688000DD83D5 /* PurchaseDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C7024C8688000DD83D5 /* PurchaseDetailModel.swift */; };
 		0A799C7524C875CF00DD83D5 /* PurchaseDetailUnitCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C7324C875CF00DD83D5 /* PurchaseDetailUnitCollectionViewCell.swift */; };
 		0A799C7624C875CF00DD83D5 /* PurchaseDetailUnitCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A799C7424C875CF00DD83D5 /* PurchaseDetailUnitCollectionViewCell.xib */; };
+		0A799C7A24C881B000DD83D5 /* ACCustomNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C7924C881B000DD83D5 /* ACCustomNavigation.swift */; };
+		0A799C7C24C881CA00DD83D5 /* ACColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C7B24C881CA00DD83D5 /* ACColor.swift */; };
 		0AB5258F24C6CD0400B32537 /* HomeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5258E24C6CD0400B32537 /* HomeDataModel.swift */; };
 		0AB5259524C6CDA000B32537 /* ACAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5259424C6CDA000B32537 /* ACAPI.swift */; };
 		0AB5259724C6CDD100B32537 /* ACAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5259624C6CDD100B32537 /* ACAlert.swift */; };
@@ -176,6 +178,8 @@
 		0A799C7024C8688000DD83D5 /* PurchaseDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetailModel.swift; sourceTree = "<group>"; };
 		0A799C7324C875CF00DD83D5 /* PurchaseDetailUnitCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetailUnitCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A799C7424C875CF00DD83D5 /* PurchaseDetailUnitCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseDetailUnitCollectionViewCell.xib; sourceTree = "<group>"; };
+		0A799C7924C881B000DD83D5 /* ACCustomNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACCustomNavigation.swift; sourceTree = "<group>"; };
+		0A799C7B24C881CA00DD83D5 /* ACColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACColor.swift; sourceTree = "<group>"; };
 		0AB5258E24C6CD0400B32537 /* HomeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataModel.swift; sourceTree = "<group>"; };
 		0AB5259424C6CDA000B32537 /* ACAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACAPI.swift; sourceTree = "<group>"; };
 		0AB5259624C6CDD100B32537 /* ACAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACAlert.swift; sourceTree = "<group>"; };
@@ -420,6 +424,8 @@
 			isa = PBXGroup;
 			children = (
 				0AB5259624C6CDD100B32537 /* ACAlert.swift */,
+				0A799C7924C881B000DD83D5 /* ACCustomNavigation.swift */,
+				0A799C7B24C881CA00DD83D5 /* ACColor.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1163,6 +1169,7 @@
 				A365793C24C42B4400C1EED4 /* Colors.swift in Sources */,
 				0A799C7124C8688000DD83D5 /* PurchaseDetailModel.swift in Sources */,
 				0A799C7524C875CF00DD83D5 /* PurchaseDetailUnitCollectionViewCell.swift in Sources */,
+				0A799C7A24C881B000DD83D5 /* ACCustomNavigation.swift in Sources */,
 				A365798124C4AE0F00C1EED4 /* NewsTitleTableViewCell.swift in Sources */,
 				A319D7F824C840660082A08F /* PurchaseDetailSelectedUnitTableViewCell.swift in Sources */,
 				A319D7F424C8403D0082A08F /* PurchaseDetailUnitImageTableViewCell.swift in Sources */,
@@ -1187,6 +1194,7 @@
 				A38C85E424C6DF980086FA7B /* ApartmentUnitHeaderTableViewCell.swift in Sources */,
 				A365794724C442C200C1EED4 /* PurchaseViewController.swift in Sources */,
 				A3E9B55B24C5FD9A0052B894 /* ApartmentDetailFacilityContentTableViewCell.swift in Sources */,
+				0A799C7C24C881CA00DD83D5 /* ACColor.swift in Sources */,
 				A365799E24C56A5800C1EED4 /* HomeApartmentContentTableViewCell.swift in Sources */,
 				A3E9B56424C603950052B894 /* PurchaseItemTableViewCell.swift in Sources */,
 			);

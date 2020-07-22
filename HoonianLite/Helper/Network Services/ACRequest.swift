@@ -271,4 +271,21 @@ class ACRequest:NSObject{
             }
         }
     }
+    
+    static func POST_FAVOURITE(
+        parameters: Parameters,
+        successCompletion: @escaping (String) -> Void,
+        failCompletion: @escaping (String) -> Void) {
+        let headers:HTTPHeaders = [
+                                   "Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.POST(url: "\(ACUrl.FAVOURITE_CLICKED)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
+            let jsonValue = JSON(jsonData)
+            print(jsonValue)
+            if(jsonValue["status_desc"] == "Created") {
+                successCompletion("Success add new contact.")
+            } else {
+                failCompletion(jsonValue["status"].stringValue)
+            }
+        }
+    }
 }

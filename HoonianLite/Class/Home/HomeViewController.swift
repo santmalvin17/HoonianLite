@@ -22,14 +22,14 @@ class HomeViewController: UIViewController {
         case warehouseHeader
         case warehouseContent
     }
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var sections = [HomeCellList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configTable()
         configSections()
     }
@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
         tableView.register(UINib(nibName: "HomeWarehouseHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "homeWarehouseHeaderTableViewCell")
         tableView.register(UINib(nibName: "HomeWarehouseContentTableViewCell", bundle: nil), forCellReuseIdentifier: "homeWarehouseContentTableViewCell")
     }
-
+    
     func configSections() {
         sections.append(.upcomingProjectHeader)
         sections.append(.upcomingProjectContent)
@@ -73,15 +73,15 @@ class HomeViewController: UIViewController {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -122,9 +122,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         case .upcomingProjectContent:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "homeUpcomingProjectContentTableViewCell", for: indexPath) as? HomeUpcomingProjectContentTableViewCell)!
-//            cell.detailObj = ACData.LOGINDATA.homeData
+            //            cell.detailObj = ACData.LOGINDATA.homeData
             cell.delegate = self
-
+            
             return cell
         case .locationHeader:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "homeLocationHeaderTableViewCell", for: indexPath) as? HomeLocationHeaderTableViewCell)!
@@ -221,7 +221,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension HomeViewController: HomeUpcomingProjectContentTableViewCellDelegate {
-
+    
     func imageViewPressed(indexKe:Int) {
         ACRequest.GET_NEWS_DETAIL(newsId: ACData.LOGINDATA.homeData.news[indexKe].id, successCompletion: { (getNewsDetail) in
             ACData.NEWSDETAILMODEL = getNewsDetail
@@ -233,13 +233,13 @@ extension HomeViewController: HomeUpcomingProjectContentTableViewCellDelegate {
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-
+        
     }
 }
 
 extension HomeViewController: HomeLocationContentTableViewCellDelegate, HomeApartmentContentTableViewCellDelegate, HomeLandedPropertyContentTableViewCellDelegate, HomeWarehouseContentTableViewCellDelegate {
     func homeLocationSelected(indexKe: Int) {
-
+        
         ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.LOGINDATA.homeData.cities[indexKe].id, selectCategoryId: ACData.LOGINDATA.homeData.apartment.categoryId,  successCompletion: { (projectList) in
             ACData.PROJECTLISTMODEL = projectList
             SVProgressHUD.dismiss()
@@ -250,8 +250,8 @@ extension HomeViewController: HomeLocationContentTableViewCellDelegate, HomeApar
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-
-
+        
+        
     }
     
     func homeApartmentSelected(indexKe:Int) {
@@ -265,17 +265,17 @@ extension HomeViewController: HomeLocationContentTableViewCellDelegate, HomeApar
             self.present(alert, animated: true, completion: nil)
         }
         ACRequest.GET_PROJECT_DETAIL(id: ACData.LOGINDATA.homeData.apartment.projects[indexKe].id,  successCompletion: { (projectDetail) in
-                ACData.PROJECTDETAILMODEL = projectDetail
-                SVProgressHUD.dismiss()
-                let vc = ApartmentDetailViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
-            }) { (message) in
-                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-
+            ACData.PROJECTDETAILMODEL = projectDetail
+            SVProgressHUD.dismiss()
+            let vc = ApartmentDetailViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
+        
+    }
     
     func homeLandedPropertySelected() {
         print("Landed property selected")
@@ -299,14 +299,21 @@ extension HomeViewController: HomeLocationHeaderTableViewCellDelegate, HomeApart
             self.present(alert, animated: true, completion: nil)
         }
         
-
+        
     }
     
     func moreApartmentPressed() {
-        print("more apartment pressed")
-        
-        let vc = ApartmentMoreViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.LOGINDATA.homeData.apartment.categoryId, selectCategoryId: ACData.LOGINDATA.homeData.apartment.categoryId,  successCompletion: { (projectList) in
+            ACData.PROJECTLISTMODEL = projectList
+            SVProgressHUD.dismiss()
+                    let vc = ApartmentMoreViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
     }
     
     func moreLandedPropertyPressed() {

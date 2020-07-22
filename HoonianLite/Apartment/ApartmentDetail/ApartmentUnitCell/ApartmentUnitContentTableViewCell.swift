@@ -62,11 +62,11 @@ class ApartmentUnitContentTableViewCell: UITableViewCell {
     }
     func cellConfig() {
     guard let obj = detailObj else { return }
-//        self.unitImageView.sd_setImage(
-//            with: URL(string: (obj.)),
-//            placeholderImage: UIImage(named: "Cluster Image"),
-//            options: .refreshCached
-//        )
+        self.unitImageView.sd_setImage(
+            with: URL(string: (obj.image)),
+            placeholderImage: UIImage(named: "Cluster Image"),
+            options: .refreshCached
+        )
         titleLabel.text = obj.name
         availableLabel.text = "Available \(obj.availUnit)"
         priceLabel.text = "Price: Rp \(obj.startPrice)"

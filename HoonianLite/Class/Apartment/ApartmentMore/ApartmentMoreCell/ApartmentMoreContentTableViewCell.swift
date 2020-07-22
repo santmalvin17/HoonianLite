@@ -8,8 +8,16 @@
 
 import UIKit
 
+protocol ApartmentMoreContentTableViewCellDelegate{
+    func favoriteSelected(indexKe: Int)
+    func viewSelected(indexKe:Int)
+}
+
 class ApartmentMoreContentTableViewCell: UITableViewCell {
 
+    var delegate:ApartmentMoreContentTableViewCellDelegate?
+    
+    @IBOutlet weak var viewList: UIView!
     @IBOutlet weak var apartmentView: UIView!
     @IBOutlet weak var apartmentImageView: UIImageView!
     @IBOutlet weak var apartmentLabel: UILabel!
@@ -21,12 +29,23 @@ class ApartmentMoreContentTableViewCell: UITableViewCell {
     @IBOutlet weak var startFromLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
-    
+    var position = 0
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         config()
+                favoriteButton.addTarget(self, action: #selector(favouriteClicked), for: .touchUpInside)
+
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewClicked))
+        viewList.addGestureRecognizer(gesture)
+
     }
+    @objc func viewClicked(){
+        delegate?.viewSelected(indexKe: position)
+        
+    }
+    @objc func favouriteClicked(){
+        delegate?.favoriteSelected(indexKe: position)
+       }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -52,5 +71,24 @@ class ApartmentMoreContentTableViewCell: UITableViewCell {
     @objc func favoriteButtonAction() {
         print("favorite pressed")
     }
+    var detailObj: ProjectListData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        self.apartmentImageView.sd_setImage(
+            with: URL(string: (obj.image)),
+            placeholderImage: UIImage(named: "Apartment Image"),
+            options: .refreshCached
+        )
+        apartmentLabel.text = obj.name
+        locationLabel.text = obj.city
+        availableLabel.text = "Available : \(obj.availUnit)"
+        let price = obj.startPrice/1000000
+        priceLabel.text = "\(price) JT"
+    }
+
     
 }

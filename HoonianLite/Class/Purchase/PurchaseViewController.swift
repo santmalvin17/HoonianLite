@@ -68,4 +68,14 @@ extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch sections[indexPath.section] {
+        case .notice:
+            print("notice pressed")
+        case .content:
+            let vc = PurchaseDetailViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
 }

@@ -20,6 +20,7 @@ class ApartmentDetailVideoTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -34,12 +35,15 @@ class ApartmentDetailVideoTableViewCell: UITableViewCell {
     }
     func cellConfig() {
     guard let obj = detailObj else { return }
-      let videoURL = URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
-       let player = AVPlayer(url: videoURL!)
-       let playerLayer = AVPlayerLayer(player: player)
-       playerLayer.frame = self.videoView.bounds
-       self.videoView.layer.addSublayer(playerLayer)
-       player.play()
+        let url = URL(string:"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
+        player = AVPlayer(url: url!)
+        avpController.player = player
+        avpController.view.frame.size.height = videoView.frame.size.height
+        avpController.view.frame.size.width = videoView.frame.size.width
+        self.videoView.addSubview(avpController.view)
+        avpController.player = player
+        avpController.player!.play()
     }
+
     
 }

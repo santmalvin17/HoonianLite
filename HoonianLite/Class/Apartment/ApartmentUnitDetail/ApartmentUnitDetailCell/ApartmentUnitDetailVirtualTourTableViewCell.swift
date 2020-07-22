@@ -29,5 +29,17 @@ class ApartmentUnitDetailVirtualTourTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+         var detailObj: UnitTypeDetailModel? {
+         didSet {
+             cellConfig()
+         }
+     }
+     func cellConfig() {
+     guard let obj = detailObj else { return }
+        self.virtualTourImageView.sd_setImage(
+            with: URL(string: (obj.projectTypeDetail.virtualTour[0].link)),
+            placeholderImage: UIImage(named: "Virtual Tour Image"),
+            options: .refreshCached
+        )
+     }
 }

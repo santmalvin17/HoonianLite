@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ApartmentDetailViewController: UIViewController {
     enum ApartmentDetailCellList {
@@ -39,7 +40,7 @@ class ApartmentDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         config()
         configSections()
     }
@@ -80,8 +81,16 @@ class ApartmentDetailViewController: UIViewController {
         sectionsDetail.append(.gallery)
         sectionsDetail.append(.video)
         
+        if passedType == "Unit"{
+            print(ACData.UNITLISTMODEL.projectClusterData.count)
+        for i in 0..<ACData.UNITLISTMODEL.projectClusterData.count{
         sectionsUnit.append(.header)
         sectionsUnit.append(.content)
+            }
+        }
+
+
+        
     }
     
     @objc func detailButtonAction() {
@@ -92,9 +101,19 @@ class ApartmentDetailViewController: UIViewController {
         referredButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         referredView.backgroundColor = #colorLiteral(red: 0.2275145948, green: 0.2660181522, blue: 0.5337877274, alpha: 1)
         passedType = "Detail"
-        tableView.reloadData()
+        ACRequest.GET_PROJECT_DETAIL(id: ACData.PROJECTDETAILMODEL.projectData.id,  successCompletion: { (projectDetail) in
+            ACData.PROJECTDETAILMODEL = projectDetail
+            SVProgressHUD.dismiss()
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
-
+    
     @objc func unitButtonAction() {
         unitButton.setTitleColor(#colorLiteral(red: 0.5550585389, green: 0.7993348241, blue: 0.764461875, alpha: 1), for: .normal)
         unitView.backgroundColor = #colorLiteral(red: 0.5550585389, green: 0.7993348241, blue: 0.764461875, alpha: 1)
@@ -103,7 +122,17 @@ class ApartmentDetailViewController: UIViewController {
         referredButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         referredView.backgroundColor = #colorLiteral(red: 0.2275145948, green: 0.2660181522, blue: 0.5337877274, alpha: 1)
         passedType = "Unit"
-        tableView.reloadData()
+        ACRequest.GET_UNITPRICE_LIST(projectId: ACData.PROJECTDETAILMODEL.projectData.id, successCompletion: { (getUnitList) in
+            ACData.UNITLISTMODEL = getUnitList
+            SVProgressHUD.dismiss()
+            self.configSections()
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @objc func referredButtonAction() {
@@ -116,7 +145,7 @@ class ApartmentDetailViewController: UIViewController {
         passedType = "Referred"
         tableView.reloadData()
     }
-
+    
 }
 
 extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -125,7 +154,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             return sectionsDetail.count
         }
         else if passedType == "Unit" {
-            return sectionsUnit.count
+        return ACData.UNITLISTMODEL.projectClusterData.count*2
         }
         else {
             return 0
@@ -156,7 +185,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .header:
                 return 1
             case .content:
-                return 3
+                return ACData.UNITLISTMODEL.projectClusterData[section/2].projectClusterType.count
             }
         }
         else {
@@ -195,6 +224,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .video:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailVideoTableViewCell", for: indexPath) as? ApartmentDetailVideoTableViewCell)!
                 cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                
                 return cell
             }
         }
@@ -202,11 +232,12 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             switch sectionsUnit[indexPath.section] {
             case .header:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitHeaderTableViewCell", for: indexPath) as? ApartmentUnitHeaderTableViewCell)!
-                
+                cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2]
                 return cell
             case .content:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitContentTableViewCell", for: indexPath) as? ApartmentUnitContentTableViewCell)!
-                
+                cell.position = indexPath.row
+                cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2].projectClusterType[indexPath.row]
                 return cell
             }
         }
@@ -220,8 +251,17 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             
         }
         else if passedType == "Unit" {
-            let vc = ApartmentUnitDetailViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            ACRequest.GET_UNITPRICE_DETAIL(projectId: ACData.UNITLISTMODEL.projectClusterData[indexPath.row].projectId, unitTypeId: ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2].projectClusterType[indexPath.row].id,successCompletion: { (getUnitDetail) in
+                ACData.UNITDETAILMODEL = getUnitDetail
+                SVProgressHUD.dismiss()
+                let vc = ApartmentUnitDetailViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }) { (message) in
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+
         }
         else {
             

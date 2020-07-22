@@ -163,4 +163,41 @@ class ACRequest:NSObject{
             }
         })
     }
+    
+    static func GET_UNITPRICE_LIST(
+        projectId:String,
+        successCompletion:@escaping (UnitPriceModel) -> Void,
+        failCompletion:@escaping (String) -> Void) {
+        let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.UNIT_PRICE_LIST)=\(projectId)", header: headers, showHUD: true, completion: { (jsonData) in
+            let json = JSON(jsonData)
+            print("get unit price list: \(json)")
+            if(json["status_desc"] == "Success") {
+                let unitpricelist = UnitPriceModel()
+                unitpricelist.objectMapping(json: json)
+                successCompletion(unitpricelist)
+            } else {
+                failCompletion(json["status"].stringValue)
+            }
+        })
+    }
+    
+    static func GET_UNITPRICE_DETAIL(
+         projectId:String,
+         unitTypeId:String,
+         successCompletion:@escaping (UnitTypeDetailModel) -> Void,
+         failCompletion:@escaping (String) -> Void) {
+         let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+         ACAPI.GET(url: "\(ACUrl.UNIT_PRICE_TYPE_DETAIL)=\(projectId)&unit_type_id=\(unitTypeId)", header: headers, showHUD: true, completion: { (jsonData) in
+             let json = JSON(jsonData)
+             print("get unit price detail: \(json)")
+             if(json["status_desc"] == "Success") {
+                 let unitpricedetail = UnitTypeDetailModel()
+                 unitpricedetail.objectMapping(json: json)
+                 successCompletion(unitpricedetail)
+             } else {
+                 failCompletion(json["status"].stringValue)
+             }
+         })
+     }
 }

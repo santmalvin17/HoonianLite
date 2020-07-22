@@ -28,4 +28,24 @@ class ApartmentUnitDetailHeaderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var detailObj: UnitTypeDetailModel? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        unitNameLabel.text = obj.projectTypeDetail.name
+        
+        self.unitImageView.sd_setImage(
+            with: URL(string: (obj.projectTypeDetail.image)),
+            placeholderImage: UIImage(named: "Unit Image"),
+            options: .refreshCached
+        )
+        sizeLabel.text = ": \(obj.projectTypeDetail.size)"
+        priceLabel.text = "Rp \(obj.projectTypeDetail.startPrice)"
+        totalUnitLabel.text = ": \(obj.projectTypeDetail.projectUnit.totalUnit) Unit"
+        availableUnitLabel.text = ": \(obj.projectTypeDetail.projectUnit.availableUnit) Unit"
+    }
+    
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -22,32 +22,30 @@
                         <color key="textColor" red="0.2275145948" green="0.26601815220000002" blue="0.53378772740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-19 at 14.52.13" translatesAutoresizingMaskIntoConstraints="NO" id="FxB-Ib-6gw">
-                        <rect key="frame" x="20" y="41" width="280" height="149.5"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfU-0k-rFR">
+                        <rect key="frame" x="20" y="41" width="280" height="150"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="FxB-Ib-6gw" secondAttribute="height" multiplier="15:8" id="pKa-hv-Bp7"/>
+                            <constraint firstAttribute="width" secondItem="OfU-0k-rFR" secondAttribute="height" multiplier="28:15" id="0Z6-Fh-0cg"/>
                         </constraints>
-                    </imageView>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="OfU-0k-rFR" secondAttribute="bottom" constant="9" id="0qU-SJ-pz6"/>
                     <constraint firstItem="h52-95-xZv" firstAttribute="leading" secondItem="u4s-TB-lVD" secondAttribute="leading" constant="20" id="1AX-oP-9Mj"/>
-                    <constraint firstAttribute="bottom" secondItem="FxB-Ib-6gw" secondAttribute="bottom" constant="9.5" id="Dam-e5-Xgo"/>
-                    <constraint firstItem="FxB-Ib-6gw" firstAttribute="leading" secondItem="u4s-TB-lVD" secondAttribute="leading" constant="20" id="HB0-0W-AeF"/>
+                    <constraint firstAttribute="trailing" secondItem="OfU-0k-rFR" secondAttribute="trailing" constant="20" id="LnP-61-tel"/>
+                    <constraint firstItem="OfU-0k-rFR" firstAttribute="top" secondItem="h52-95-xZv" secondAttribute="bottom" constant="10" id="OQs-Nf-dAv"/>
                     <constraint firstAttribute="trailing" secondItem="h52-95-xZv" secondAttribute="trailing" constant="20" id="PkY-jN-812"/>
-                    <constraint firstAttribute="trailing" secondItem="FxB-Ib-6gw" secondAttribute="trailing" constant="20" id="gGV-qS-uFp"/>
+                    <constraint firstItem="OfU-0k-rFR" firstAttribute="leading" secondItem="u4s-TB-lVD" secondAttribute="leading" constant="20" id="dOp-68-rV1"/>
                     <constraint firstItem="h52-95-xZv" firstAttribute="top" secondItem="u4s-TB-lVD" secondAttribute="top" constant="10" id="hA9-ck-mdm"/>
-                    <constraint firstItem="FxB-Ib-6gw" firstAttribute="top" secondItem="h52-95-xZv" secondAttribute="bottom" constant="10" id="lKd-9b-Kx4"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="eNi-rX-YhP"/>
             <connections>
-                <outlet property="videoImageView" destination="FxB-Ib-6gw" id="G6D-eJ-8rD"/>
                 <outlet property="videoLabel" destination="h52-95-xZv" id="cA0-Dv-18H"/>
+                <outlet property="videoView" destination="OfU-0k-rFR" id="5f2-yS-0Sp"/>
             </connections>
-            <point key="canvasLocation" x="139" y="110"/>
+            <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="Screen Shot 2020-07-19 at 14.52.13" width="880" height="318"/>
-    </resources>
 </document>

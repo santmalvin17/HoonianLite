@@ -7,24 +7,25 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class PurchaseViewController: UIViewController {
     enum PurchaseCellList {
         case notice
         case content
     }
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var sections = [PurchaseCellList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configTable()
         configSections()
     }
-
+    
     func configTable() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -37,7 +38,7 @@ class PurchaseViewController: UIViewController {
         sections.append(.notice)
         sections.append(.content)
     }
-
+    
 }
 
 extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
@@ -63,19 +64,26 @@ extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
         case .content:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "purchaseItemTableViewCell", for: indexPath) as? PurchaseItemTableViewCell)!
             cell.position = indexPath.row
+            cell.delegate = self
             cell.detailObj = ACData.PURCHASELISTMODEL
             return cell
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch sections[indexPath.section] {
-        case .notice:
-            print("notice pressed")
-        case .content:
+}
+extension PurchaseViewController:PurchaseItemTableViewCellDelegate{
+    func detailPurchase(indexKe: Int) {
+        ACRequest.GET_PURCHASED_DETAIL(agentId: ACData.LOGINDATA.agent.id, purchaseId: ACData.PURCHASELISTMODEL.projectPurchaseList[indexKe].id,  successCompletion: { (purchaseDetail) in
+            ACData.PURCHASEDETAILMODEL = purchaseDetail
+            SVProgressHUD.dismiss()
             let vc = PurchaseDetailViewController()
             self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
+    
     
 }

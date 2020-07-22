@@ -25,6 +25,7 @@ class ProjectClusterType:NSObject{
     var image = ""
     var projectUnit = TotalUnitModel()
     var gallery = [GalleryData]()
+    var augmentedReality = [GalleryData]()
     var videos = [GalleryData]()
     var virtualTour = [GalleryData]()
     var priceList = PriceListModel()
@@ -47,6 +48,12 @@ class ProjectClusterType:NSObject{
             let d = GalleryData()
             d.objectMapping(json: data)
             videos.append(d)
+        }
+        
+        for data in json["augmented_reality"].arrayValue{
+            let d = GalleryData()
+            d.objectMapping(json: data)
+            augmentedReality.append(d)
         }
         
         for data in json["virtual_tour"].arrayValue{

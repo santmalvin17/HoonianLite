@@ -24,4 +24,19 @@ class PurchaseDetailARTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var detailObj: ProjectPurchasedData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        self.augmentedRealityImageView.sd_setImage(
+            with: URL(string: (obj.projectData.projectUnitType.augmentedReality[0].link)),
+            placeholderImage: UIImage(named: "School Logo"),
+            options: .refreshCached
+        )
+
+    }
+    
 }

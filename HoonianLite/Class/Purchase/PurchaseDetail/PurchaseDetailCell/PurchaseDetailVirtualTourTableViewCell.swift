@@ -24,4 +24,19 @@ class PurchaseDetailVirtualTourTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var detailObj: ProjectPurchasedData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+                self.virtualTourImageView.sd_setImage(
+                    with: URL(string: (obj.projectData.projectUnitType.virtualTour[0].link)),
+            placeholderImage: UIImage(named: "Virtual Image Logo"),
+            options: .refreshCached
+        )
+
+    }
+    
 }

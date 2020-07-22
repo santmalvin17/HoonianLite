@@ -72,6 +72,25 @@ class ACRequest:NSObject{
         })
     }
     
+    static func GET_PURCHASED_DETAIL(
+         agentId:String,
+         purchaseId:String,
+         successCompletion:@escaping (PurchaseDetailModel) -> Void,
+         failCompletion:@escaping (String) -> Void) {
+         let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+         ACAPI.GET(url: "\(ACUrl.PURCHASE_DETAIL)=\(agentId)&purchase_id=\(purchaseId)", header: headers, showHUD: true, completion: { (jsonData) in
+             let json = JSON(jsonData)
+             print("get purchase detail: \(json)")
+             if(json["status_desc"] == "Success") {
+                 let purchase = PurchaseDetailModel()
+                 purchase.objectMapping(json: json)
+                 successCompletion(purchase)
+             } else {
+                 failCompletion(json["status"].stringValue)
+             }
+         })
+     }
+    
     static func GET_NEWS_DETAIL(
         newsId:String,
         successCompletion:@escaping (NewsDataModel) -> Void,

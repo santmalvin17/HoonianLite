@@ -25,7 +25,7 @@ class PurchaseListModel:NSObject{
 class PurchaseListData:NSObject{
     var id = ""
     var price = ""
-    var status = ""
+    var status = StatusDetailModel()
     var project = ProjectData()
     var projectUnit = ProjectUnitData()
     var client = ClientData()
@@ -33,7 +33,7 @@ class PurchaseListData:NSObject{
     func objectMapping(json:JSON){
         id = json["id"].stringValue
         price = json["price"].stringValue
-        status = json["status"].stringValue
+        status.objectMapping(json: json["purchase_status"])
         project.objectMapping(json: json["project"])
         projectUnit.objectMapping(json: json["project_unit"])
         client.objectMapping(json: json["client"])

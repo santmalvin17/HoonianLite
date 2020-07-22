@@ -17,7 +17,7 @@ class ApartmentUnitContentTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var floorPlanView: UIView!
     @IBOutlet weak var priceListView: UIView!
-    
+    var position = 0
     override func awakeFromNib() {
         super.awakeFromNib()
          config()
@@ -55,5 +55,20 @@ class ApartmentUnitContentTableViewCell: UITableViewCell {
     @objc func priceListViewAction() {
         print("Price list pressed")
     }
-    
+    var detailObj: ProjectClusterType? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+//        self.unitImageView.sd_setImage(
+//            with: URL(string: (obj.)),
+//            placeholderImage: UIImage(named: "Cluster Image"),
+//            options: .refreshCached
+//        )
+        titleLabel.text = obj.name
+        availableLabel.text = "Available \(obj.availUnit)"
+        priceLabel.text = "Price: Rp \(obj.startPrice)"
+    }
 }

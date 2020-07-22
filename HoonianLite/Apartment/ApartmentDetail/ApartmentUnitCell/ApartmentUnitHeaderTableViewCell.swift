@@ -30,5 +30,16 @@ class ApartmentUnitHeaderTableViewCell: UITableViewCell {
     func config() {
         
     }
+    var detailObj: ProjectClusterData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        towerLabel.text = obj.name
+        totalLabel.text = "Total \(obj.totalUnit) Unit"
+        soldLabel.text = "Sold \(obj.soldPercentage)"
+    }
     
 }

@@ -13,7 +13,7 @@ class ApartmentUnitDetailGalleryTableViewCell: UITableViewCell {
     @IBOutlet weak var galleryLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
+    var scrollWidth = UIScreen.main.bounds.width
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -38,17 +38,22 @@ class ApartmentUnitDetailGalleryTableViewCell: UITableViewCell {
         
         collectionView.register(UINib(nibName: "ApartmentUnitDetailGalleryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ApartmentUnitDetailGalleryCollectionViewCellID")
     }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let page = (collectionView?.contentOffset.x)!/scrollWidth
+        pageControl?.currentPage = Int(page)
+
+    }
     
 }
 
 extension ApartmentUnitDetailGalleryTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return ACData.UNITDETAILMODEL.projectTypeDetail.gallery.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "ApartmentUnitDetailGalleryCollectionViewCellID", for: indexPath) as? ApartmentUnitDetailGalleryCollectionViewCell)!
-        
+        cell.detailObj = ACData.UNITDETAILMODEL.projectTypeDetail.gallery[indexPath.row]
         return cell
     }
     

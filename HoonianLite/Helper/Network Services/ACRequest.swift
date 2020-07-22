@@ -200,4 +200,56 @@ class ACRequest:NSObject{
              }
          })
      }
+    
+    static func POST_ADD_NEW_CONTACT(
+        parameters: Parameters,
+        successCompletion: @escaping (String) -> Void,
+        failCompletion: @escaping (String) -> Void) {
+        let headers:HTTPHeaders = [
+                                   "Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.POST(url: "\(ACUrl.ADD_NEW_CONTACT)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
+            let jsonValue = JSON(jsonData)
+            print(jsonValue)
+            if(jsonValue["status_desc"] == "Created") {
+                successCompletion("Success add new contact.")
+            } else {
+                failCompletion(jsonValue["status"].stringValue)
+            }
+        }
+    }
+    static func GET_EDITCONTACT_DETAIL(
+         agentId:String,
+         contactId:String,
+         successCompletion:@escaping (EditContactModel) -> Void,
+         failCompletion:@escaping (String) -> Void) {
+         let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+         ACAPI.GET(url: "\(ACUrl.EDIT_CONTACT_DETAIL)=\(agentId)&contact_id=\(contactId)", header: headers, showHUD: true, completion: { (jsonData) in
+             let json = JSON(jsonData)
+             print("get unit price detail: \(json)")
+             if(json["status_desc"] == "Success") {
+                 let editContact = EditContactModel()
+                 editContact.objectMapping(json: json)
+                 successCompletion(editContact)
+             } else {
+                 failCompletion(json["status"].stringValue)
+             }
+         })
+     }
+    
+    static func PUT_UPDATE_CONTACT(
+        parameters: Parameters,
+        successCompletion: @escaping (String) -> Void,
+        failCompletion: @escaping (String) -> Void) {
+        let headers:HTTPHeaders = [
+                                   "Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.PUT(url: "\(ACUrl.UPDATE_EDITED_CONTACT)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
+            let jsonValue = JSON(jsonData)
+            print(jsonValue)
+            if(jsonValue["status_desc"] == "Success") {
+                successCompletion("Success edit contact.")
+            } else {
+                failCompletion(jsonValue["status"].stringValue)
+            }
+        }
+    }
 }

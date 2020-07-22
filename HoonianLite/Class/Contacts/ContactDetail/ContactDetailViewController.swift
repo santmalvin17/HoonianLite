@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ContactDetailViewController: UIViewController {
     enum ContactDetailCellList {
@@ -111,7 +112,18 @@ extension ContactDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
 extension ContactDetailViewController: ContactDetailHeaderTableViewCellDelegate {
     func editContactButtonPressed() {
-        let vc = EditContactViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        ACRequest.GET_EDITCONTACT_DETAIL(agentId:ACData.LOGINDATA.agent.id, contactId: ACData.CONTACTDETAILMODEL.clientData.id,successCompletion: { (getEditContact) in
+            ACData.EDITCONTACTDETAIL = getEditContact
+            SVProgressHUD.dismiss()
+            let vc = EditContactViewController()
+            vc.trigerNya = "Edit"
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+
     }
 }

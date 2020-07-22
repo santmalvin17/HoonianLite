@@ -8,24 +8,52 @@
 
 import UIKit
 import SVProgressHUD
+import ContactsUI
 
 class ContactsViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
-        super.viewDidLoad()
+
         
+        super.viewDidLoad()
         configTable()
-    }
+      }
+
+
     func configTable(){
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "ContactListTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactListTableViewCellID")
     }
     
+    @IBAction func addContactClicked(_ sender: Any) {
+        CNContactStore().requestAccess(for: .contacts) { (access, error) in
+          print("Access: \(access)")
+        }
+        let contacVC = CNContactPickerViewController()
+        contacVC.delegate = self
+        self.present(contacVC , animated: true, completion: nil)
+    }
     
     
+}
+
+extension ContactsViewController:CNContactPickerDelegate{
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        let name = CNContactFormatter.string(from: contact, style: .fullName)
+        let numbers = contact.phoneNumbers.first
+        let vc = EditContactViewController()
+        vc.nameText = name!
+        vc.phoneText = (numbers?.value)?.stringValue ?? ""
+        self.navigationController?.pushViewController(vc, animated: true)
+          
+    }
+
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension ContactsViewController:UITableViewDelegate,UITableViewDataSource{

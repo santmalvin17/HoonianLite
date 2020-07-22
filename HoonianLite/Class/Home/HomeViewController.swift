@@ -34,6 +34,15 @@ class HomeViewController: UIViewController {
         configSections()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        configNavigation()
+    }
+    
+    func configNavigation() {
+        detectAdaptiveClass()
+        backStyleNavigationController(pageTitle: "Home", isLeftLogoHide: "", isLeftSecondLogoHide: "")
+    }
+    
     func configTable() {
         tableView.delegate = self
         tableView.dataSource = self

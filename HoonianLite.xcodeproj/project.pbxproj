@@ -23,6 +23,7 @@
 		0AB525B024C71A7700B32537 /* ContactListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525AF24C71A7700B32537 /* ContactListModel.swift */; };
 		0AB525B224C72EE300B32537 /* ProjectListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525B124C72EE300B32537 /* ProjectListModel.swift */; };
 		0AB525B424C73F1D00B32537 /* ProjectDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525B324C73F1D00B32537 /* ProjectDetailModel.swift */; };
+		0AB525B624C7F50200B32537 /* ContactDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB525B524C7F50200B32537 /* ContactDetailModel.swift */; };
 		0AF89CB624C2E88E00AFCE2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB524C2E88E00AFCE2D /* AppDelegate.swift */; };
 		0AF89CB824C2E88E00AFCE2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */; };
 		0AF89CBF24C2E89100AFCE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CBE24C2E89100AFCE2D /* Assets.xcassets */; };
@@ -160,6 +161,7 @@
 		0AB525AF24C71A7700B32537 /* ContactListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListModel.swift; sourceTree = "<group>"; };
 		0AB525B124C72EE300B32537 /* ProjectListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListModel.swift; sourceTree = "<group>"; };
 		0AB525B324C73F1D00B32537 /* ProjectDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailModel.swift; sourceTree = "<group>"; };
+		0AB525B524C7F50200B32537 /* ContactDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailModel.swift; sourceTree = "<group>"; };
 		0AF89CB224C2E88E00AFCE2D /* HoonianLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoonianLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF89CB524C2E88E00AFCE2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 				0AB525AF24C71A7700B32537 /* ContactListModel.swift */,
 				0AB525B124C72EE300B32537 /* ProjectListModel.swift */,
 				0AB525B324C73F1D00B32537 /* ProjectDetailModel.swift */,
+				0AB525B524C7F50200B32537 /* ContactDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -965,6 +968,7 @@
 				A36579DC24C5D30300C1EED4 /* ApartmentDetailViewController.swift in Sources */,
 				0AB5259B24C6CE6000B32537 /* ACData.swift in Sources */,
 				A3E9B55724C5EF630052B894 /* ApartmentDetailVideoTableViewCell.swift in Sources */,
+				0AB525B624C7F50200B32537 /* ContactDetailModel.swift in Sources */,
 				A365794324C442AE00C1EED4 /* HomeViewController.swift in Sources */,
 				A365799A24C56A4D00C1EED4 /* HomeApartmentHeaderTableViewCell.swift in Sources */,
 				0AB525A324C6EE4200B32537 /* PurchaseListModel.swift in Sources */,

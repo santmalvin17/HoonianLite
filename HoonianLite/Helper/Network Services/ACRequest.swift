@@ -145,4 +145,22 @@ class ACRequest:NSObject{
             }
         })
     }
+    
+    static func GET_CONTACT_DETAIL(
+        id:String,
+        successCompletion:@escaping (ContactDetailModel) -> Void,
+        failCompletion:@escaping (String) -> Void) {
+        let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.CONTACT_DETAIL)=\(id)", header: headers, showHUD: true, completion: { (jsonData) in
+            let json = JSON(jsonData)
+            print("get contact detail: \(json)")
+            if(json["status_desc"] == "Success") {
+                let contactDetail = ContactDetailModel()
+                contactDetail.objectMapping(json: json)
+                successCompletion(contactDetail)
+            } else {
+                failCompletion(json["status"].stringValue)
+            }
+        })
+    }
 }

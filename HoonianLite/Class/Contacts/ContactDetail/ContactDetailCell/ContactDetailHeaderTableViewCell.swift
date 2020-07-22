@@ -48,4 +48,18 @@ class ContactDetailHeaderTableViewCell: UITableViewCell {
         delegate?.editContactButtonPressed()
     }
     
+    var detailObj: ContactDetailModel? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        nameLabel.text = obj.clientData.name
+        phoneLabel.text = obj.clientData.phoneNumber
+        idLabel.text = obj.clientData.id
+        workLabel.text = obj.clientData.occupation
+        relationLabel.text = obj.clientData.relation
+    }
+    
 }

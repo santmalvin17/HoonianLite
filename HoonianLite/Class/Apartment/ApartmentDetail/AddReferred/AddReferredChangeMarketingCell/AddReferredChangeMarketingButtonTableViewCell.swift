@@ -1,5 +1,5 @@
 //
-//  AddReferredMarketingTableViewCell.swift
+//  AddReferredChangeMarketingButtonTableViewCell.swift
 //  HoonianLite
 //
 //  Created by Gregory Kevin on 24/07/20.
@@ -8,18 +8,15 @@
 
 import UIKit
 
-protocol AddReferredMarketingTableViewCellDelegate {
+protocol AddReferredChangeMarketingButtonTableViewCellDelegate {
     func changeButtonPressed()
 }
 
-class AddReferredMarketingTableViewCell: UITableViewCell {
+class AddReferredChangeMarketingButtonTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var marketingLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var marketingImageView: UIImageView!
     @IBOutlet weak var changeButton: UIButton!
     
-    var delegate: AddReferredMarketingTableViewCellDelegate?
+    var delegate: AddReferredChangeMarketingButtonTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,16 +31,13 @@ class AddReferredMarketingTableViewCell: UITableViewCell {
     }
     
     func config() {
-        marketingImageView.layer.masksToBounds = true
-        marketingImageView.layer.cornerRadius = marketingImageView.frame.height / 2
         changeButton.layer.masksToBounds = true
         changeButton.layer.cornerRadius = 5
+        
         changeButton.addTarget(self, action: #selector(changeButtonAction), for: .touchUpInside)
     }
     
     @objc func changeButtonAction() {
-        print("change button pressed")
-        
         delegate?.changeButtonPressed()
     }
     

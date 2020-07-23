@@ -36,6 +36,13 @@ class ApartmentDetailViewController: UIViewController {
         case content
     }
     
+    enum AddReferredCellList {
+        case header
+        case content
+        case marketing
+        case button
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedView: UIView!
     @IBOutlet weak var detailButton: UIButton!
@@ -44,11 +51,14 @@ class ApartmentDetailViewController: UIViewController {
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var unitView: UIView!
     @IBOutlet weak var referredView: UIView!
+    @IBOutlet weak var addButton: UIButton!
     
     var sectionsDetail = [ApartmentDetailCellList]()
     var sectionsUnit = [ApartmentUnitCellList]()
     var sectionsReferred = [ApartmentReferredCellList]()
+    var sectionsAdd = [AddReferredCellList]()
     var passedType: String = "Detail"
+    var isAdd: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +76,7 @@ class ApartmentDetailViewController: UIViewController {
     }
     
     func config() {
+        isAdd = false
         detailButtonAction()
         detailButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3).isActive = true
         unitButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 3).isActive = true
@@ -74,6 +85,7 @@ class ApartmentDetailViewController: UIViewController {
         detailButton.addTarget(self, action: #selector(detailButtonAction), for: .touchUpInside)
         unitButton.addTarget(self, action: #selector(unitButtonAction), for: .touchUpInside)
         referredButton.addTarget(self, action: #selector(referredButtonAction), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(addButtonAction), for: .touchUpInside)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -98,6 +110,12 @@ class ApartmentDetailViewController: UIViewController {
         //FLOORPLAN
         tableView.register(UINib(nibName: "FloorPlanHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "FloorPlanHeaderTableViewCellID")
         tableView.register(UINib(nibName: "FloorPlanContentTableViewCell", bundle: nil), forCellReuseIdentifier: "FloorPlanContentTableViewCellID")
+        
+        //ADD REFERRED
+        tableView.register(UINib(nibName: "AddReferredHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "AddReferredHeaderTableViewCellID")
+        tableView.register(UINib(nibName: "AddReferredContentTableViewCell", bundle: nil), forCellReuseIdentifier: "AddReferredContentTableViewCellID")
+        tableView.register(UINib(nibName: "AddReferredMarketingTableViewCell", bundle: nil), forCellReuseIdentifier: "AddReferredMarketingTableViewCellID")
+        tableView.register(UINib(nibName: "AddReferredButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "AddReferredButtonTableViewCellID")
     }
     
     func configSections() {
@@ -122,6 +140,12 @@ class ApartmentDetailViewController: UIViewController {
                 sectionsUnit.append(.content)
             }
         }
+        
+        sectionsAdd.append(.header)
+        sectionsAdd.append(.content)
+        sectionsAdd.append(.marketing)
+        sectionsAdd.append(.button)
+        
     }
     
     @objc func detailButtonAction() {
@@ -132,6 +156,9 @@ class ApartmentDetailViewController: UIViewController {
         referredButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         referredView.backgroundColor = #colorLiteral(red: 0.2275145948, green: 0.2660181522, blue: 0.5337877274, alpha: 1)
         passedType = "Detail"
+        isAdd = false
+        addButton.isHidden = true
+        addButton.isEnabled = false
         ACRequest.GET_PROJECT_DETAIL(id: ACData.PROJECTDETAILMODEL.projectData.id,  successCompletion: { (projectDetail) in
             ACData.PROJECTDETAILMODEL = projectDetail
             SVProgressHUD.dismiss()
@@ -154,6 +181,9 @@ class ApartmentDetailViewController: UIViewController {
         referredButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         referredView.backgroundColor = #colorLiteral(red: 0.2275145948, green: 0.2660181522, blue: 0.5337877274, alpha: 1)
         passedType = "Unit"
+        isAdd = false
+        addButton.isHidden = true
+        addButton.isEnabled = false
         ACRequest.GET_UNITPRICE_LIST(projectId: ACData.PROJECTDETAILMODEL.projectData.id, successCompletion: { (getUnitList) in
             ACData.UNITLISTMODEL = getUnitList
             SVProgressHUD.dismiss()
@@ -175,6 +205,9 @@ class ApartmentDetailViewController: UIViewController {
         unitButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         unitView.backgroundColor = #colorLiteral(red: 0.2275145948, green: 0.2660181522, blue: 0.5337877274, alpha: 1)
         self.passedType = "Referred"
+        isAdd = false
+        addButton.isHidden = false
+        addButton.isEnabled = true
         ACRequest.GET_REFERRED_LIST(agentId: ACData.LOGINDATA.agent.id, projectId: ACData.PROJECTDETAILMODEL.projectData.id,successCompletion: { (getReferList) in
             ACData.REFERREDLISTMODEL = getReferList
             SVProgressHUD.dismiss()
@@ -188,128 +221,178 @@ class ApartmentDetailViewController: UIViewController {
         }
     }
     
+    @objc func addButtonAction() {
+        isAdd = true
+        addButton.isHidden = true
+        addButton.isEnabled = false
+        tableView.reloadData()
+    }
+    
 }
 
 extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if passedType == "Detail" {
-            return 7
+        if !isAdd {
+            if passedType == "Detail" {
+                return 7
+            }
+            else if passedType == "Unit" {
+                return ACData.UNITLISTMODEL.projectClusterData.count*2
+            }else if passedType == "Referred"{
+                return 2
+            }else {
+                return 1
+            }
         }
-        else if passedType == "Unit" {
-            return ACData.UNITLISTMODEL.projectClusterData.count*2
-        }else if passedType == "Referred"{
-            return 2
-        }else {
-            return 1
+        else {
+            return 4
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if passedType == "Detail" {
-            switch sectionsDetail[section] {
-            case .header:
-                return 1
-            case .location:
-                return 1
-            case .description:
-                return 1
-            case .facility:
-                return 1
-            case .facilityContent:
-                return ACData.PROJECTDETAILMODEL.projectData.facilities.count
-            case .gallery:
-                return 1
-            case .video:
+        if !isAdd {
+            if passedType == "Detail" {
+                switch sectionsDetail[section] {
+                case .header:
+                    return 1
+                case .location:
+                    return 1
+                case .description:
+                    return 1
+                case .facility:
+                    return 1
+                case .facilityContent:
+                    return ACData.PROJECTDETAILMODEL.projectData.facilities.count
+                case .gallery:
+                    return 1
+                case .video:
+                    return 1
+                }
+            }
+            else if passedType == "Unit" {
+                switch sectionsUnit[section] {
+                case .header:
+                    return 1
+                case .content:
+                    return ACData.UNITLISTMODEL.projectClusterData[section/2].projectClusterType.count
+                }
+            }else if passedType == "FloorPlan"{
                 return 1
             }
-        }
-        else if passedType == "Unit" {
-            switch sectionsUnit[section] {
-            case .header:
-                return 1
-            case .content:
-                return ACData.UNITLISTMODEL.projectClusterData[section/2].projectClusterType.count
+            else {
+                switch sectionsReferred[section] {
+                case .search:
+                    return 1
+                case .content:
+                    return ACData.REFERREDLISTMODEL.referProjectList.count
+                }
             }
-        }else if passedType == "FloorPlan"{
-            return 1
         }
         else {
-            switch sectionsReferred[section] {
-            case .search:
+            switch sectionsAdd[section] {
+            case .header:
                 return 1
             case .content:
-                return ACData.REFERREDLISTMODEL.referProjectList.count
+                return 4
+            case .marketing:
+                return 1
+            case .button:
+                return 1
             }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if passedType == "Detail" {
-            switch sectionsDetail[indexPath.section] {
-            case .header:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentLocationDetailTableViewCell", for: indexPath) as? ApartmentLocationDetailTableViewCell)!
-                cell.detailObj = ACData.PROJECTLISTMODEL.projects[indexPath.row]
+        if !isAdd {
+            if passedType == "Detail" {
+                switch sectionsDetail[indexPath.section] {
+                case .header:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentLocationDetailTableViewCell", for: indexPath) as? ApartmentLocationDetailTableViewCell)!
+                    cell.detailObj = ACData.PROJECTLISTMODEL.projects[indexPath.row]
+                    return cell
+                case .location:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailCellLocationTableViewCell", for: indexPath) as? ApartmentDetailCellLocationTableViewCell)!
+                    cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                    return cell
+                case .description:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailDescriptionTableViewCell", for: indexPath) as? ApartmentDetailDescriptionTableViewCell)!
+                    cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                    return cell
+                case .facility:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityTableViewCell", for: indexPath) as? ApartmentDetailFacilityTableViewCell)!
+                    return cell
+                case .facilityContent:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityContentTableViewCell", for: indexPath) as? ApartmentDetailFacilityContentTableViewCell)!
+                    cell.position = indexPath.row
+                    cell.numberLabel.text = "\(indexPath.row + 1)"
+                    cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.facilities[indexPath.row]
+                    return cell
+                case .gallery:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailGalleryTableViewCell", for: indexPath) as? ApartmentDetailGalleryTableViewCell)!
+                    cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.gallery[indexPath.row]
+                    return cell
+                case .video:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailVideoTableViewCell", for: indexPath) as? ApartmentDetailVideoTableViewCell)!
+                    cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.videos[indexPath.row]
+                    
+                    return cell
+                }
+            }
+            else if passedType == "Unit" {
+                switch sectionsUnit[indexPath.section] {
+                case .header:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitHeaderTableViewCell", for: indexPath) as? ApartmentUnitHeaderTableViewCell)!
+                    cell.delegate = self
+                    cell.position = indexPath.row
+                    cell.section = indexPath.section/2
+                    cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2]
+                    return cell
+                case .content:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitContentTableViewCell", for: indexPath) as? ApartmentUnitContentTableViewCell)!
+                    cell.position = indexPath.row
+                    cell.section = indexPath.section/2
+                    cell.delegate = self
+                    cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2].projectClusterType[indexPath.row]
+                    return cell
+                    
+                }
+            }else if passedType == "FloorPlan"{
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "FloorPlanContentTableViewCellID", for: indexPath) as? FloorPlanContentTableViewCell)!
                 return cell
-            case .location:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailCellLocationTableViewCell", for: indexPath) as? ApartmentDetailCellLocationTableViewCell)!
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
-                return cell
-            case .description:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailDescriptionTableViewCell", for: indexPath) as? ApartmentDetailDescriptionTableViewCell)!
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
-                return cell
-            case .facility:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityTableViewCell", for: indexPath) as? ApartmentDetailFacilityTableViewCell)!
-                return cell
-            case .facilityContent:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityContentTableViewCell", for: indexPath) as? ApartmentDetailFacilityContentTableViewCell)!
-                cell.position = indexPath.row
-                cell.numberLabel.text = "\(indexPath.row + 1)"
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.facilities[indexPath.row]
-                return cell
-            case .gallery:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailGalleryTableViewCell", for: indexPath) as? ApartmentDetailGalleryTableViewCell)!
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.gallery[indexPath.row]
-                return cell
-            case .video:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailVideoTableViewCell", for: indexPath) as? ApartmentDetailVideoTableViewCell)!
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.videos[indexPath.row]
-                
-                return cell
+            }else {
+                switch sectionsReferred[indexPath.section]{
+                case .search:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentReferredSearchTableViewCellID", for: indexPath) as? ApartmentReferredSearchTableViewCell)!
+                    
+                    return cell
+                case .content:
+                    let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentReferredContentTableViewCellID", for: indexPath) as? ApartmentReferredContentTableViewCell)!
+                    cell.position = indexPath.row
+                    cell.delegate = self
+                    cell.detailObj = ACData.REFERREDLISTMODEL.referProjectList[indexPath.row]
+                    return cell
+                }
             }
         }
-        else if passedType == "Unit" {
-            switch sectionsUnit[indexPath.section] {
+        else {
+            switch sectionsAdd[indexPath.section] {
             case .header:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitHeaderTableViewCell", for: indexPath) as? ApartmentUnitHeaderTableViewCell)!
-                cell.delegate = self
-                cell.position = indexPath.row
-                cell.section = indexPath.section/2
-                cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2]
-                return cell
-            case .content:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitContentTableViewCell", for: indexPath) as? ApartmentUnitContentTableViewCell)!
-                cell.position = indexPath.row
-                cell.section = indexPath.section/2
-                cell.delegate = self
-                cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2].projectClusterType[indexPath.row]
-                return cell
-                
-            }
-        }else if passedType == "FloorPlan"{
-            let cell = (tableView.dequeueReusableCell(withIdentifier: "FloorPlanContentTableViewCellID", for: indexPath) as? FloorPlanContentTableViewCell)!
-            return cell
-        }else {
-            switch sectionsReferred[indexPath.section]{
-            case .search:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentReferredSearchTableViewCellID", for: indexPath) as? ApartmentReferredSearchTableViewCell)!
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "AddReferredHeaderTableViewCellID", for: indexPath) as? AddReferredHeaderTableViewCell)!
                 
                 return cell
             case .content:
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentReferredContentTableViewCellID", for: indexPath) as? ApartmentReferredContentTableViewCell)!
-                cell.position = indexPath.row
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "AddReferredContentTableViewCellID", for: indexPath) as? AddReferredContentTableViewCell)!
                 cell.delegate = self
-                cell.detailObj = ACData.REFERREDLISTMODEL.referProjectList[indexPath.row]
+                
+                return cell
+            case .marketing:
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "AddReferredMarketingTableViewCellID", for: indexPath) as? AddReferredMarketingTableViewCell)!
+                
+                return cell
+            case .button:
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "AddReferredButtonTableViewCellID", for: indexPath) as? AddReferredButtonTableViewCell)!
+                cell.delegate = self
+                
                 return cell
             }
         }
@@ -380,4 +463,17 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
     }
     
     
+}
+
+extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate, AddReferredContentTableViewCellDelegate {
+    func cancelButtonPressed() {
+        self.isAdd = false
+        self.tableView.reloadData()
+        self.addButton.isHidden = false
+        self.addButton.isEnabled = true
+    }
+    
+    func notesButtonPressed() {
+        
+    }
 }

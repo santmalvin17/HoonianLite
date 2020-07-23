@@ -307,6 +307,25 @@ class ACRequest:NSObject{
              }
          })
      }
+    static func GET_FLOORPLAN(
+         projectId:String,
+         clusterId:String,
+         page:Int,
+         successCompletion:@escaping (FloorPlanModel) -> Void,
+         failCompletion:@escaping (String) -> Void) {
+         let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.FLOORPLAN)=\(projectId)&cluster_id=\(clusterId)&page=\(page)", header: headers, showHUD: true, completion: { (jsonData) in
+             let json = JSON(jsonData)
+             print("get floorplan data: \(json)")
+             if(json["status_desc"] == "Success") {
+                 let floorplan = FloorPlanModel()
+                 floorplan.objectMapping(json: json)
+                 successCompletion(floorplan)
+             } else {
+                 failCompletion(json["status"].stringValue)
+             }
+         })
+     }
     
     
 }

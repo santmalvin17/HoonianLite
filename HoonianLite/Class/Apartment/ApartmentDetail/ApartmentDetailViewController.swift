@@ -31,6 +31,14 @@ class ApartmentDetailViewController: UIViewController {
         case content
     }
     
+    enum ApartmentFloorPlanCellList{
+        case header
+        case content
+    }
+    
+    
+    
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedView: UIView!
     @IBOutlet weak var detailButton: UIButton!
@@ -89,32 +97,39 @@ class ApartmentDetailViewController: UIViewController {
         //REFERRED
         tableView.register(UINib(nibName: "ApartmentReferredSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "ApartmentReferredSearchTableViewCellID")
         tableView.register(UINib(nibName: "ApartmentReferredContentTableViewCell", bundle: nil), forCellReuseIdentifier: "ApartmentReferredContentTableViewCellID")
+        
+        //FLOORPLAN
+        tableView.register(UINib(nibName: "FloorPlanHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "FloorPlanHeaderTableViewCellID")
+        tableView.register(UINib(nibName: "FloorPlanContentTableViewCell", bundle: nil), forCellReuseIdentifier: "FloorPlanContentTableViewCellID")
     }
     
     func configSections() {
         if passedType == "Detail"{
-        sectionsDetail.append(.header)
-        sectionsDetail.append(.location)
-        sectionsDetail.append(.description)
-        sectionsDetail.append(.facility)
-        sectionsDetail.append(.facilityContent)
-        sectionsDetail.append(.gallery)
-        sectionsDetail.append(.video)
+            sectionsDetail.append(.header)
+            sectionsDetail.append(.location)
+            sectionsDetail.append(.description)
+            sectionsDetail.append(.facility)
+            sectionsDetail.append(.facilityContent)
+            sectionsDetail.append(.gallery)
+            sectionsDetail.append(.video)
         }
         if passedType == "Referred"{
-        sectionsReferred.append(.search)
-        sectionsReferred.append(.content)
+            sectionsReferred.append(.search)
+            sectionsReferred.append(.content)
         }
         
         if passedType == "Unit"{
             print(ACData.UNITLISTMODEL.projectClusterData.count)
-        for i in 0..<ACData.UNITLISTMODEL.projectClusterData.count{
-        sectionsUnit.append(.header)
-        sectionsUnit.append(.content)
+            for i in 0..<ACData.UNITLISTMODEL.projectClusterData.count{
+                sectionsUnit.append(.header)
+                sectionsUnit.append(.content)
             }
         }
+        
 
-
+        
+        
+        
         
     }
     
@@ -152,7 +167,6 @@ class ApartmentDetailViewController: UIViewController {
             ACData.UNITLISTMODEL = getUnitList
             SVProgressHUD.dismiss()
             self.configSections()
-            
             self.tableView.reloadData()
             self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
         }) { (message) in
@@ -191,10 +205,9 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             return 7
         }
         else if passedType == "Unit" {
-        return ACData.UNITLISTMODEL.projectClusterData.count*2
-        }
-        else {
-            return 2
+            return ACData.UNITLISTMODEL.projectClusterData.count*2
+        }else {
+            return 1
         }
     }
     
@@ -224,6 +237,8 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .content:
                 return ACData.UNITLISTMODEL.projectClusterData[section/2].projectClusterType.count
             }
+        }else if passedType == "FloorPlan"{
+            return 1
         }
         else {
             switch sectionsReferred[section] {
@@ -279,11 +294,14 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .content:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitContentTableViewCell", for: indexPath) as? ApartmentUnitContentTableViewCell)!
                 cell.position = indexPath.row
+                cell.delegate = self
                 cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2].projectClusterType[indexPath.row]
                 return cell
             }
-        }
-        else {
+        }else if passedType == "FloorPlan"{
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "FloorPlanContentTableViewCellID", for: indexPath) as? FloorPlanContentTableViewCell)!
+                return cell
+        }else {
             switch sectionsReferred[indexPath.section]{
             case .search:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentReferredSearchTableViewCellID", for: indexPath) as? ApartmentReferredSearchTableViewCell)!
@@ -314,7 +332,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-
+            
         }
         else {
             
@@ -324,7 +342,23 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
     
 }
 
-extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDelegate{
+extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDelegate,ApartmentUnitContentTableViewCellDelegate{
+    func floorPlanClicked(indexKe: Int) {
+        ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, clusterId: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, page: 1, successCompletion: { (getFloorPlan) in
+            ACData.FLOORPLANMODEL = getFloorPlan
+            SVProgressHUD.dismiss()
+            self.passedType = "FloorPlan"
+            self.configSections()
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
     func callPhone(indexKe: Int) {
         guard let number = URL(string: "tel://" + ACData.REFERREDLISTMODEL.referProjectList[indexKe].contacts.phoneNumber) else { return }
         UIApplication.shared.open(number, options: [:], completionHandler: nil)

@@ -51,6 +51,14 @@ class ApartmentDetailViewController: UIViewController {
         config()
         configSections()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        configNavigation()
+    }
+    
+    func configNavigation() {
+        detectAdaptiveClass()
+        backStyleNavigationController(pageTitle: "Apartment", isLeftLogoHide: "", isLeftSecondLogoHide: "")
+    }
     
     func config() {
         detailButtonAction()

@@ -16,6 +16,14 @@ class LocationListViewController: UIViewController {
 
         configCollection()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        configNavigation()
+    }
+    
+    func configNavigation() {
+        detectAdaptiveClass()
+        backStyleNavigationController(pageTitle: "City List", isLeftLogoHide: "", isLeftSecondLogoHide: "")
+    }
 
 
     func configCollection() {

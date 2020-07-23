@@ -21,6 +21,14 @@ class LocationDetailViewController: UIViewController {
         super.viewDidLoad()
         config()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        configNavigation()
+    }
+    
+    func configNavigation() {
+        detectAdaptiveClass()
+        backStyleNavigationController(pageTitle: "CITY NAME", isLeftLogoHide: "", isLeftSecondLogoHide: "")
+    }
 
     func config() {
         apartmentImageView.layer.masksToBounds = true

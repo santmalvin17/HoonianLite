@@ -28,6 +28,16 @@ class ContactDetailViewController: UIViewController {
         configTable()
         configSections()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        configNavigation()
+    }
+    
+    func configNavigation() {
+        detectAdaptiveClass()
+        backStyleNavigationController(pageTitle: "Contacts", isLeftLogoHide: "", isLeftSecondLogoHide: "")
+    }
+
 
     func configTable() {
         tableView.delegate = self

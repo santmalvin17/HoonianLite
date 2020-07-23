@@ -27,6 +27,15 @@ class ApartmentMoreViewController: UIViewController {
         configSections()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        configNavigation()
+    }
+    
+    func configNavigation() {
+        detectAdaptiveClass()
+        backStyleNavigationController(pageTitle: "Apartment", isLeftLogoHide: "", isLeftSecondLogoHide: "")
+    }
+    
     func configTable() {
         tableView.delegate = self
         tableView.dataSource = self

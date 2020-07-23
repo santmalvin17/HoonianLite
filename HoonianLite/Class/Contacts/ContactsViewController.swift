@@ -20,6 +20,15 @@ class ContactsViewController: UIViewController {
         super.viewDidLoad()
         configTable()
       }
+    override func viewDidAppear(_ animated: Bool) {
+        configNavigation()
+    }
+    
+    func configNavigation() {
+        detectAdaptiveClass()
+        backStyleNavigationController(pageTitle: "Contacts", isLeftLogoHide: "", isLeftSecondLogoHide: "")
+    }
+
 
 
     func configTable(){

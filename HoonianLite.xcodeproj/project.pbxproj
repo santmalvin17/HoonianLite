@@ -130,6 +130,14 @@
 		A358B9C824CA0AC0009373A9 /* AddReferredButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A358B9C624CA0AC0009373A9 /* AddReferredButtonTableViewCell.xib */; };
 		A358B9CB24CA172F009373A9 /* AddReferredAddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A358B9C924CA172F009373A9 /* AddReferredAddNoteViewController.swift */; };
 		A358B9CC24CA172F009373A9 /* AddReferredAddNoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A358B9CA24CA172F009373A9 /* AddReferredAddNoteViewController.xib */; };
+		A358B9CF24CA2082009373A9 /* AddReferredChangeMarketingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A358B9CD24CA2082009373A9 /* AddReferredChangeMarketingViewController.swift */; };
+		A358B9D024CA2082009373A9 /* AddReferredChangeMarketingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A358B9CE24CA2082009373A9 /* AddReferredChangeMarketingViewController.xib */; };
+		A358B9D424CA217A009373A9 /* AddReferredChangeMarketinHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A358B9D224CA217A009373A9 /* AddReferredChangeMarketinHeaderTableViewCell.swift */; };
+		A358B9D524CA217A009373A9 /* AddReferredChangeMarketinHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A358B9D324CA217A009373A9 /* AddReferredChangeMarketinHeaderTableViewCell.xib */; };
+		A358B9D824CA2191009373A9 /* AddReferredChangeMarketingContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A358B9D624CA2191009373A9 /* AddReferredChangeMarketingContentTableViewCell.swift */; };
+		A358B9D924CA2191009373A9 /* AddReferredChangeMarketingContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A358B9D724CA2191009373A9 /* AddReferredChangeMarketingContentTableViewCell.xib */; };
+		A358B9DC24CA219E009373A9 /* AddReferredChangeMarketingButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A358B9DA24CA219E009373A9 /* AddReferredChangeMarketingButtonTableViewCell.swift */; };
+		A358B9DD24CA219E009373A9 /* AddReferredChangeMarketingButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A358B9DB24CA219E009373A9 /* AddReferredChangeMarketingButtonTableViewCell.xib */; };
 		A365793724C42AC400C1EED4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A365793524C42AC400C1EED4 /* LoginViewController.swift */; };
 		A365793824C42AC400C1EED4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A365793624C42AC400C1EED4 /* LoginViewController.xib */; };
 		A365793C24C42B4400C1EED4 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A365793B24C42B4400C1EED4 /* Colors.swift */; };
@@ -355,6 +363,14 @@
 		A358B9C624CA0AC0009373A9 /* AddReferredButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddReferredButtonTableViewCell.xib; sourceTree = "<group>"; };
 		A358B9C924CA172F009373A9 /* AddReferredAddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReferredAddNoteViewController.swift; sourceTree = "<group>"; };
 		A358B9CA24CA172F009373A9 /* AddReferredAddNoteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddReferredAddNoteViewController.xib; sourceTree = "<group>"; };
+		A358B9CD24CA2082009373A9 /* AddReferredChangeMarketingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReferredChangeMarketingViewController.swift; sourceTree = "<group>"; };
+		A358B9CE24CA2082009373A9 /* AddReferredChangeMarketingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddReferredChangeMarketingViewController.xib; sourceTree = "<group>"; };
+		A358B9D224CA217A009373A9 /* AddReferredChangeMarketinHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReferredChangeMarketinHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		A358B9D324CA217A009373A9 /* AddReferredChangeMarketinHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddReferredChangeMarketinHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		A358B9D624CA2191009373A9 /* AddReferredChangeMarketingContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReferredChangeMarketingContentTableViewCell.swift; sourceTree = "<group>"; };
+		A358B9D724CA2191009373A9 /* AddReferredChangeMarketingContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddReferredChangeMarketingContentTableViewCell.xib; sourceTree = "<group>"; };
+		A358B9DA24CA219E009373A9 /* AddReferredChangeMarketingButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReferredChangeMarketingButtonTableViewCell.swift; sourceTree = "<group>"; };
+		A358B9DB24CA219E009373A9 /* AddReferredChangeMarketingButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddReferredChangeMarketingButtonTableViewCell.xib; sourceTree = "<group>"; };
 		A365793524C42AC400C1EED4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A365793624C42AC400C1EED4 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		A365793B24C42B4400C1EED4 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -873,6 +889,7 @@
 		A358B9B424CA0A1C009373A9 /* AddReferred */ = {
 			isa = PBXGroup;
 			children = (
+				A358B9D124CA215B009373A9 /* AddReferredChangeMarketingCell */,
 				A358B9B924CA0A99009373A9 /* AddReferredHeaderTableViewCell.swift */,
 				A358B9BA24CA0A99009373A9 /* AddReferredHeaderTableViewCell.xib */,
 				A358B9BD24CA0AA7009373A9 /* AddReferredContentTableViewCell.swift */,
@@ -883,8 +900,23 @@
 				A358B9C624CA0AC0009373A9 /* AddReferredButtonTableViewCell.xib */,
 				A358B9C924CA172F009373A9 /* AddReferredAddNoteViewController.swift */,
 				A358B9CA24CA172F009373A9 /* AddReferredAddNoteViewController.xib */,
+				A358B9CD24CA2082009373A9 /* AddReferredChangeMarketingViewController.swift */,
+				A358B9CE24CA2082009373A9 /* AddReferredChangeMarketingViewController.xib */,
 			);
 			path = AddReferred;
+			sourceTree = "<group>";
+		};
+		A358B9D124CA215B009373A9 /* AddReferredChangeMarketingCell */ = {
+			isa = PBXGroup;
+			children = (
+				A358B9D224CA217A009373A9 /* AddReferredChangeMarketinHeaderTableViewCell.swift */,
+				A358B9D324CA217A009373A9 /* AddReferredChangeMarketinHeaderTableViewCell.xib */,
+				A358B9D624CA2191009373A9 /* AddReferredChangeMarketingContentTableViewCell.swift */,
+				A358B9D724CA2191009373A9 /* AddReferredChangeMarketingContentTableViewCell.xib */,
+				A358B9DA24CA219E009373A9 /* AddReferredChangeMarketingButtonTableViewCell.swift */,
+				A358B9DB24CA219E009373A9 /* AddReferredChangeMarketingButtonTableViewCell.xib */,
+			);
+			path = AddReferredChangeMarketingCell;
 			sourceTree = "<group>";
 		};
 		A365793424C42A7800C1EED4 /* Login */ = {
@@ -1304,6 +1336,7 @@
 				A319D7F524C8403D0082A08F /* PurchaseDetailUnitImageTableViewCell.xib in Resources */,
 				A36579A724C56A6C00C1EED4 /* HomeLandedPropertyContentTableViewCell.xib in Resources */,
 				A365799724C56A3400C1EED4 /* HomeLocationContentTableViewCell.xib in Resources */,
+				A358B9D024CA2082009373A9 /* AddReferredChangeMarketingViewController.xib in Resources */,
 				A365794C24C442CB00C1EED4 /* ContactsViewController.xib in Resources */,
 				0AF89CBF24C2E89100AFCE2D /* Assets.xcassets in Resources */,
 				A305E24F24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.xib in Resources */,
@@ -1329,6 +1362,7 @@
 				0AB525AE24C7122E00B32537 /* ContactListTableViewCell.xib in Resources */,
 				A358B9C424CA0AB4009373A9 /* AddReferredMarketingTableViewCell.xib in Resources */,
 				A319D80C24C871160082A08F /* ApartmentMoreSearchTableViewCell.xib in Resources */,
+				A358B9D524CA217A009373A9 /* AddReferredChangeMarketinHeaderTableViewCell.xib in Resources */,
 				A36579D224C5B59900C1EED4 /* LocationListViewController.xib in Resources */,
 				A365798224C4AE0F00C1EED4 /* NewsTitleTableViewCell.xib in Resources */,
 				A386172424C9731000F3B76F /* WarehouseDetailViewController.xib in Resources */,
@@ -1359,6 +1393,7 @@
 				A305E24624C9D84900F33B24 /* ProfileViewController.xib in Resources */,
 				0ABE104224CA018D0011C11F /* EditProfileViewController.xib in Resources */,
 				A305E26524C9E5C200F33B24 /* ChangePasswordViewController.xib in Resources */,
+				A358B9DD24CA219E009373A9 /* AddReferredChangeMarketingButtonTableViewCell.xib in Resources */,
 				A319D81E24C883640082A08F /* ApartmentReferredSearchTableViewCell.xib in Resources */,
 				A319D7F924C840660082A08F /* PurchaseDetailSelectedUnitTableViewCell.xib in Resources */,
 				A3E9B56124C603710052B894 /* PurchaseNoticeTableViewCell.xib in Resources */,
@@ -1373,6 +1408,7 @@
 				A365795124C442DD00C1EED4 /* ScanARViewController.xib in Resources */,
 				A305E25C24C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.xib in Resources */,
 				0A799C7624C875CF00DD83D5 /* PurchaseDetailUnitCollectionViewCell.xib in Resources */,
+				A358B9D924CA2191009373A9 /* AddReferredChangeMarketingContentTableViewCell.xib in Resources */,
 				A3E9B54824C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.xib in Resources */,
 				A319D7CA24C71CC30082A08F /* ApartmentUnitDetailVideoTableViewCell.xib in Resources */,
 				A319D80624C86FEB0082A08F /* ApartmentMoreViewController.xib in Resources */,
@@ -1453,6 +1489,7 @@
 				A36579D624C5C52200C1EED4 /* LocationListCollectionViewCell.swift in Sources */,
 				0A799C8B24C9408600DD83D5 /* ForgotPassswordViewController.swift in Sources */,
 				0AB525A524C6FDFD00B32537 /* NewsDataModel.swift in Sources */,
+				A358B9D424CA217A009373A9 /* AddReferredChangeMarketinHeaderTableViewCell.swift in Sources */,
 				A365796524C44A3500C1EED4 /* HomeUpcomingProjectContentTableViewCell.swift in Sources */,
 				0ABE100C24C95D060011C11F /* FloorListCollectionViewCell.swift in Sources */,
 				A319D81424C874E00082A08F /* CheckBox.swift in Sources */,
@@ -1485,7 +1522,9 @@
 				A365799A24C56A4D00C1EED4 /* HomeApartmentHeaderTableViewCell.swift in Sources */,
 				0AB525A324C6EE4200B32537 /* PurchaseListModel.swift in Sources */,
 				A358B9C724CA0AC0009373A9 /* AddReferredButtonTableViewCell.swift in Sources */,
+				A358B9DC24CA219E009373A9 /* AddReferredChangeMarketingButtonTableViewCell.swift in Sources */,
 				A365794B24C442CB00C1EED4 /* ContactsViewController.swift in Sources */,
+				A358B9CF24CA2082009373A9 /* AddReferredChangeMarketingViewController.swift in Sources */,
 				A365797224C44DB600C1EED4 /* HomeContentCollectionViewCell.swift in Sources */,
 				A365793724C42AC400C1EED4 /* LoginViewController.swift in Sources */,
 				A36579D124C5B59900C1EED4 /* LocationListViewController.swift in Sources */,
@@ -1502,6 +1541,7 @@
 				A3E9B54724C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.swift in Sources */,
 				0AB525B424C73F1D00B32537 /* ProjectDetailModel.swift in Sources */,
 				A365799224C56A2700C1EED4 /* HomeLocationHeaderTableViewCell.swift in Sources */,
+				A358B9D824CA2191009373A9 /* AddReferredChangeMarketingContentTableViewCell.swift in Sources */,
 				0ABE103C24C9F7C90011C11F /* ProfileData.swift in Sources */,
 				A386173824C98DF800F3B76F /* LandedPropertyMoreViewController.swift in Sources */,
 				A36579AE24C56A8800C1EED4 /* HomeWarehouseContentTableViewCell.swift in Sources */,

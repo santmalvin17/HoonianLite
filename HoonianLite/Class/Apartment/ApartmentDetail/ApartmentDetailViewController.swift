@@ -387,6 +387,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
                 return cell
             case .marketing:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "AddReferredMarketingTableViewCellID", for: indexPath) as? AddReferredMarketingTableViewCell)!
+                cell.delegate = self
                 
                 return cell
             case .button:
@@ -465,7 +466,7 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
     
 }
 
-extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate, AddReferredContentTableViewCellDelegate {
+extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate, AddReferredContentTableViewCellDelegate, AddReferredMarketingTableViewCellDelegate {
     func cancelButtonPressed() {
         self.isAdd = false
         self.tableView.reloadData()
@@ -474,6 +475,16 @@ extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate,
     }
     
     func notesButtonPressed() {
-        
+        let vc = AddReferredAddNoteViewController()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func changeButtonPressed() {
+        let vc = AddReferredChangeMarketingViewController()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true, completion: nil)
     }
 }

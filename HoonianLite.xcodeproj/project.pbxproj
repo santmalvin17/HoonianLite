@@ -54,6 +54,22 @@
 		0AF89CBF24C2E89100AFCE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CBE24C2E89100AFCE2D /* Assets.xcassets */; };
 		0AF89CC224C2E89100AFCE2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CC024C2E89100AFCE2D /* LaunchScreen.storyboard */; };
 		A0169D83AFEEBC514A31D356 /* Pods_HoonianLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2C2576ABAC32EC8EF8AC4EE /* Pods_HoonianLite.framework */; };
+		A305E24524C9D84900F33B24 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305E24324C9D84900F33B24 /* ProfileViewController.swift */; };
+		A305E24624C9D84900F33B24 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A305E24424C9D84900F33B24 /* ProfileViewController.xib */; };
+		A305E24A24C9D89800F33B24 /* ProfilePictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305E24824C9D89800F33B24 /* ProfilePictureTableViewCell.swift */; };
+		A305E24B24C9D89800F33B24 /* ProfilePictureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A305E24924C9D89800F33B24 /* ProfilePictureTableViewCell.xib */; };
+		A305E24E24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305E24C24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.swift */; };
+		A305E24F24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A305E24D24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.xib */; };
+		A305E25324C9D8E400F33B24 /* ProfileContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305E25124C9D8E400F33B24 /* ProfileContentTableViewCell.swift */; };
+		A305E25424C9D8E400F33B24 /* ProfileContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A305E25224C9D8E400F33B24 /* ProfileContentTableViewCell.xib */; };
+		A305E25724C9D8FD00F33B24 /* ProfileButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305E25524C9D8FD00F33B24 /* ProfileButtonTableViewCell.swift */; };
+		A305E25824C9D8FD00F33B24 /* ProfileButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A305E25624C9D8FD00F33B24 /* ProfileButtonTableViewCell.xib */; };
+		A305E25B24C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305E25924C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.swift */; };
+		A305E25C24C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A305E25A24C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.xib */; };
+		A305E25F24C9DFDF00F33B24 /* ProfileIDCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305E25D24C9DFDF00F33B24 /* ProfileIDCardTableViewCell.swift */; };
+		A305E26024C9DFDF00F33B24 /* ProfileIDCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A305E25E24C9DFDF00F33B24 /* ProfileIDCardTableViewCell.xib */; };
+		A305E26424C9E5C200F33B24 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A305E26224C9E5C200F33B24 /* ChangePasswordViewController.swift */; };
+		A305E26524C9E5C200F33B24 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A305E26324C9E5C200F33B24 /* ChangePasswordViewController.xib */; };
 		A319D7B824C71C210082A08F /* ApartmentUnitDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319D7B624C71C200082A08F /* ApartmentUnitDetailViewController.swift */; };
 		A319D7B924C71C210082A08F /* ApartmentUnitDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A319D7B724C71C210082A08F /* ApartmentUnitDetailViewController.xib */; };
 		A319D7BD24C71C8E0082A08F /* ApartmentUnitDetailHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A319D7BB24C71C8E0082A08F /* ApartmentUnitDetailHeaderTableViewCell.swift */; };
@@ -248,6 +264,22 @@
 		0AF89CC124C2E89100AFCE2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AF89CC324C2E89100AFCE2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8920766A90E9E795814136D9 /* Pods-HoonianLite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoonianLite.debug.xcconfig"; path = "Target Support Files/Pods-HoonianLite/Pods-HoonianLite.debug.xcconfig"; sourceTree = "<group>"; };
+		A305E24324C9D84900F33B24 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A305E24424C9D84900F33B24 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		A305E24824C9D89800F33B24 /* ProfilePictureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureTableViewCell.swift; sourceTree = "<group>"; };
+		A305E24924C9D89800F33B24 /* ProfilePictureTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePictureTableViewCell.xib; sourceTree = "<group>"; };
+		A305E24C24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileIncomeTableViewCell.swift; sourceTree = "<group>"; };
+		A305E24D24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileIncomeTableViewCell.xib; sourceTree = "<group>"; };
+		A305E25124C9D8E400F33B24 /* ProfileContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContentTableViewCell.swift; sourceTree = "<group>"; };
+		A305E25224C9D8E400F33B24 /* ProfileContentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileContentTableViewCell.xib; sourceTree = "<group>"; };
+		A305E25524C9D8FD00F33B24 /* ProfileButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButtonTableViewCell.swift; sourceTree = "<group>"; };
+		A305E25624C9D8FD00F33B24 /* ProfileButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileButtonTableViewCell.xib; sourceTree = "<group>"; };
+		A305E25924C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLogoutButtonTableViewCell.swift; sourceTree = "<group>"; };
+		A305E25A24C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileLogoutButtonTableViewCell.xib; sourceTree = "<group>"; };
+		A305E25D24C9DFDF00F33B24 /* ProfileIDCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileIDCardTableViewCell.swift; sourceTree = "<group>"; };
+		A305E25E24C9DFDF00F33B24 /* ProfileIDCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileIDCardTableViewCell.xib; sourceTree = "<group>"; };
+		A305E26224C9E5C200F33B24 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		A305E26324C9E5C200F33B24 /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
 		A319D7B624C71C200082A08F /* ApartmentUnitDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentUnitDetailViewController.swift; sourceTree = "<group>"; };
 		A319D7B724C71C210082A08F /* ApartmentUnitDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentUnitDetailViewController.xib; sourceTree = "<group>"; };
 		A319D7BB24C71C8E0082A08F /* ApartmentUnitDetailHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentUnitDetailHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -436,7 +468,7 @@
 		0AB5258B24C6CCB000B32537 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				0ABE101224C9C8190011C11F /* Tower Detail */,
+				A305E24224C9D7A500F33B24 /* Profile */,
 				A386173424C98DD600F3B76F /* LandedProperty */,
 				A386171F24C972B500F3B76F /* Warehouse */,
 				0A799C8824C93E6400DD83D5 /* Forgot Password */,
@@ -607,6 +639,45 @@
 				E2C2576ABAC32EC8EF8AC4EE /* Pods_HoonianLite.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A305E24224C9D7A500F33B24 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A305E26124C9E5AA00F33B24 /* ChangePassword */,
+				A305E24724C9D87200F33B24 /* ProfileCell */,
+				A305E24324C9D84900F33B24 /* ProfileViewController.swift */,
+				A305E24424C9D84900F33B24 /* ProfileViewController.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A305E24724C9D87200F33B24 /* ProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				A305E24824C9D89800F33B24 /* ProfilePictureTableViewCell.swift */,
+				A305E24924C9D89800F33B24 /* ProfilePictureTableViewCell.xib */,
+				A305E24C24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.swift */,
+				A305E24D24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.xib */,
+				A305E25124C9D8E400F33B24 /* ProfileContentTableViewCell.swift */,
+				A305E25224C9D8E400F33B24 /* ProfileContentTableViewCell.xib */,
+				A305E25D24C9DFDF00F33B24 /* ProfileIDCardTableViewCell.swift */,
+				A305E25E24C9DFDF00F33B24 /* ProfileIDCardTableViewCell.xib */,
+				A305E25524C9D8FD00F33B24 /* ProfileButtonTableViewCell.swift */,
+				A305E25624C9D8FD00F33B24 /* ProfileButtonTableViewCell.xib */,
+				A305E25924C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.swift */,
+				A305E25A24C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.xib */,
+			);
+			path = ProfileCell;
+			sourceTree = "<group>";
+		};
+		A305E26124C9E5AA00F33B24 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				A305E26224C9E5C200F33B24 /* ChangePasswordViewController.swift */,
+				A305E26324C9E5C200F33B24 /* ChangePasswordViewController.xib */,
+			);
+			path = ChangePassword;
 			sourceTree = "<group>";
 		};
 		A319D7B124C71BD20082A08F /* ApartmentUnitDetail */ = {
@@ -1154,6 +1225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A319D7DA24C7393D0082A08F /* ContactDetailHeaderTableViewCell.xib in Resources */,
+				A305E25424C9D8E400F33B24 /* ProfileContentTableViewCell.xib in Resources */,
 				A3E9B55024C5EF2D0052B894 /* ApartmentDetailFacilityTableViewCell.xib in Resources */,
 				0ABE101124C9C1BF0011C11F /* WareHouseOpearateTableViewCell.xib in Resources */,
 				A36579C524C59B0C00C1EED4 /* ApartmentLocationDetailTableViewCell.xib in Resources */,
@@ -1174,6 +1246,7 @@
 				A365799724C56A3400C1EED4 /* HomeLocationContentTableViewCell.xib in Resources */,
 				A365794C24C442CB00C1EED4 /* ContactsViewController.xib in Resources */,
 				0AF89CBF24C2E89100AFCE2D /* Assets.xcassets in Resources */,
+				A305E24F24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.xib in Resources */,
 				A3E9B56524C603950052B894 /* PurchaseItemTableViewCell.xib in Resources */,
 				A36579BC24C56D8F00C1EED4 /* HomeLandedPropertyCollectionViewCell.xib in Resources */,
 				A319D82224C8836F0082A08F /* ApartmentReferredContentTableViewCell.xib in Resources */,
@@ -1182,9 +1255,11 @@
 				A365798E24C4B97400C1EED4 /* LocationDetailViewController.xib in Resources */,
 				A3E9B54C24C5EF1C0052B894 /* ApartmentDetailDescriptionTableViewCell.xib in Resources */,
 				0A799C8324C8A96400DD83D5 /* RegisterViewController.xib in Resources */,
+				A305E26024C9DFDF00F33B24 /* ProfileIDCardTableViewCell.xib in Resources */,
 				A36579DD24C5D30300C1EED4 /* ApartmentDetailViewController.xib in Resources */,
 				A319D80124C840880082A08F /* PurchaseDetailVirtualTourTableViewCell.xib in Resources */,
 				A365796E24C44A4B00C1EED4 /* HomeContentTableViewCell.xib in Resources */,
+				A305E24B24C9D89800F33B24 /* ProfilePictureTableViewCell.xib in Resources */,
 				A319D7EB24C7425F0082A08F /* EditContactViewController.xib in Resources */,
 				A319D7B924C71C210082A08F /* ApartmentUnitDetailViewController.xib in Resources */,
 				A365798624C4AE2400C1EED4 /* NewsContentTableViewCell.xib in Resources */,
@@ -1208,12 +1283,15 @@
 				A38C85E524C6DF980086FA7B /* ApartmentUnitContentTableViewCell.xib in Resources */,
 				A319D7E224C73A2B0082A08F /* ContactDetailRecommendedProjectTableViewCell.xib in Resources */,
 				0A799C8C24C9408600DD83D5 /* ForgotPassswordViewController.xib in Resources */,
+				A305E25824C9D8FD00F33B24 /* ProfileButtonTableViewCell.xib in Resources */,
 				A36579C924C59B1900C1EED4 /* LandedLocationDetailTableViewCell.xib in Resources */,
 				A365799F24C56A5800C1EED4 /* HomeApartmentContentTableViewCell.xib in Resources */,
 				A365796A24C44A3E00C1EED4 /* HomeHeaderTableViewCell.xib in Resources */,
 				A36579D724C5C52200C1EED4 /* LocationListCollectionViewCell.xib in Resources */,
 				A365799B24C56A4D00C1EED4 /* HomeApartmentHeaderTableViewCell.xib in Resources */,
 				A319D7F024C83FE00082A08F /* PurchaseDetailViewController.xib in Resources */,
+				A305E24624C9D84900F33B24 /* ProfileViewController.xib in Resources */,
+				A305E26524C9E5C200F33B24 /* ChangePasswordViewController.xib in Resources */,
 				A319D81E24C883640082A08F /* ApartmentReferredSearchTableViewCell.xib in Resources */,
 				A319D7F924C840660082A08F /* PurchaseDetailSelectedUnitTableViewCell.xib in Resources */,
 				A3E9B56124C603710052B894 /* PurchaseNoticeTableViewCell.xib in Resources */,
@@ -1224,6 +1302,7 @@
 				A386173924C98DF800F3B76F /* LandedPropertyMoreViewController.xib in Resources */,
 				A319D7C624C71CB50082A08F /* ApartmentUnitDetailVirtualTourTableViewCell.xib in Resources */,
 				A365795124C442DD00C1EED4 /* ScanARViewController.xib in Resources */,
+				A305E25C24C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.xib in Resources */,
 				0A799C7624C875CF00DD83D5 /* PurchaseDetailUnitCollectionViewCell.xib in Resources */,
 				A3E9B54824C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.xib in Resources */,
 				A319D7CA24C71CC30082A08F /* ApartmentUnitDetailVideoTableViewCell.xib in Resources */,
@@ -1293,6 +1372,7 @@
 				A386172324C9731000F3B76F /* WarehouseDetailViewController.swift in Sources */,
 				A319D7E124C73A2B0082A08F /* ContactDetailRecommendedProjectTableViewCell.swift in Sources */,
 				A38C85EA24C6E9F40086FA7B /* HomeUpcomingContentCollectionViewCell.swift in Sources */,
+				A305E25F24C9DFDF00F33B24 /* ProfileIDCardTableViewCell.swift in Sources */,
 				0AB525AD24C7122E00B32537 /* ContactListTableViewCell.swift in Sources */,
 				A3E9B56024C603710052B894 /* PurchaseNoticeTableViewCell.swift in Sources */,
 				0A799C7E24C89A5400DD83D5 /* ReferredListModel.swift in Sources */,
@@ -1321,6 +1401,7 @@
 				0ABE101E24C9CBEB0011C11F /* HeaderTableViewCell.swift in Sources */,
 				0ABE100524C95CC60011C11F /* FloorPlanContentTableViewCell.swift in Sources */,
 				A365798D24C4B97400C1EED4 /* LocationDetailViewController.swift in Sources */,
+				A305E26424C9E5C200F33B24 /* ChangePasswordViewController.swift in Sources */,
 				A319D7C524C71CB50082A08F /* ApartmentUnitDetailVirtualTourTableViewCell.swift in Sources */,
 				0AB5258F24C6CD0400B32537 /* HomeDataModel.swift in Sources */,
 				0A799C8224C8A96400DD83D5 /* RegisterViewController.swift in Sources */,
@@ -1340,6 +1421,7 @@
 				A36579D124C5B59900C1EED4 /* LocationListViewController.swift in Sources */,
 				0AB525A824C70B8200B32537 /* NewsLabelTableViewCell.swift in Sources */,
 				A365796124C44A2000C1EED4 /* HomeUpcomingProjectHeaderTableViewCell.swift in Sources */,
+				A305E25724C9D8FD00F33B24 /* ProfileButtonTableViewCell.swift in Sources */,
 				0AB5259724C6CDD100B32537 /* ACAlert.swift in Sources */,
 				A36579AA24C56A7800C1EED4 /* HomeWarehouseHeaderTableViewCell.swift in Sources */,
 				0AB5259F24C6D02F00B32537 /* LoginModel.swift in Sources */,
@@ -1356,10 +1438,13 @@
 				A319D82124C8836F0082A08F /* ApartmentReferredContentTableViewCell.swift in Sources */,
 				A319D7DD24C73A180082A08F /* ContactDetailContentHeaderTableViewCell.swift in Sources */,
 				A319D7E524C73A3C0082A08F /* ContactDetailProjectPurchaseTableViewCell.swift in Sources */,
+				A305E25324C9D8E400F33B24 /* ProfileContentTableViewCell.swift in Sources */,
 				A36579B324C56D7C00C1EED4 /* HomeLocationCollectionViewCell.swift in Sources */,
 				A319D7CE24C725DF0082A08F /* ApartmentUnitDetailGalleryCollectionViewCell.swift in Sources */,
+				A305E25B24C9D91400F33B24 /* ProfileLogoutButtonTableViewCell.swift in Sources */,
 				A365793C24C42B4400C1EED4 /* Colors.swift in Sources */,
 				0A799C7124C8688000DD83D5 /* PurchaseDetailModel.swift in Sources */,
+				A305E24E24C9D8CA00F33B24 /* ProfileIncomeTableViewCell.swift in Sources */,
 				0A799C7524C875CF00DD83D5 /* PurchaseDetailUnitCollectionViewCell.swift in Sources */,
 				0A799C7A24C881B000DD83D5 /* ACCustomNavigation.swift in Sources */,
 				0ABE102324C9D6C00011C11F /* ProjectClusterDetailModel.swift in Sources */,
@@ -1371,6 +1456,7 @@
 				A319D81D24C883640082A08F /* ApartmentReferredSearchTableViewCell.swift in Sources */,
 				A365795024C442DD00C1EED4 /* ScanARViewController.swift in Sources */,
 				0AF89CB624C2E88E00AFCE2D /* AppDelegate.swift in Sources */,
+				A305E24524C9D84900F33B24 /* ProfileViewController.swift in Sources */,
 				A3E9B55324C5EF4E0052B894 /* ApartmentDetailGalleryTableViewCell.swift in Sources */,
 				A365797C24C4ADE200C1EED4 /* NewsImageTableViewCell.swift in Sources */,
 				A319D7B824C71C210082A08F /* ApartmentUnitDetailViewController.swift in Sources */,
@@ -1381,6 +1467,7 @@
 				A36579C824C59B1900C1EED4 /* LandedLocationDetailTableViewCell.swift in Sources */,
 				A36579B724C56D8600C1EED4 /* HomeApartmentCollectionViewCell.swift in Sources */,
 				0AF89CB824C2E88E00AFCE2D /* SceneDelegate.swift in Sources */,
+				A305E24A24C9D89800F33B24 /* ProfilePictureTableViewCell.swift in Sources */,
 				0AB5259D24C6CF9400B32537 /* ACUrl.swift in Sources */,
 				A36579BF24C56D9900C1EED4 /* HomeWarehouseCollectionViewCell.swift in Sources */,
 				0AB525B224C72EE300B32537 /* ProjectListModel.swift in Sources */,

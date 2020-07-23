@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfilePictureTableViewCellID" id="KGk-i7-Jjw" customClass="ProfilePictureTableViewCell" customModule="HoonianLite" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Screen Shot 2020-07-19 at 14.52.13" translatesAutoresizingMaskIntoConstraints="NO" id="oxW-9B-lM4">
+                        <rect key="frame" x="157" y="40" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="MmA-pJ-YXv"/>
+                            <constraint firstAttribute="height" constant="100" id="cLp-xC-Oc2"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tony Stark" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKg-ko-Pom">
+                        <rect key="frame" x="164.5" y="156" width="85.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <color key="textColor" red="0.2275145948" green="0.26601815220000002" blue="0.53378772740000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oxW-9B-lM4" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Nin-1A-YoK"/>
+                    <constraint firstItem="oxW-9B-lM4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="Rns-NC-X5r"/>
+                    <constraint firstItem="DKg-ko-Pom" firstAttribute="top" secondItem="oxW-9B-lM4" secondAttribute="bottom" constant="16" id="Xi7-ol-gzI"/>
+                    <constraint firstItem="oxW-9B-lM4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-20" id="aWX-X6-Wsg"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="DKg-ko-Pom" secondAttribute="bottom" constant="32" id="k9Z-QY-S2h"/>
+                    <constraint firstItem="DKg-ko-Pom" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="wdK-Ti-KyV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="nameLabel" destination="DKg-ko-Pom" id="Dvo-ym-Hij"/>
+                <outlet property="profileImageView" destination="oxW-9B-lM4" id="Cc7-SI-Qte"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="106.47321428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Screen Shot 2020-07-19 at 14.52.13" width="880" height="318"/>
+    </resources>
+</document>

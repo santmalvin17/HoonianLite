@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeViewController = HomeViewController(nibName: "HomeViewController", bundle: nil)
         let purchaseViewController = PurchaseViewController(nibName: "PurchaseViewController", bundle: nil)
         let contactsViewController = ContactsViewController(nibName: "ContactsViewController", bundle: nil)
-        let scanARViewController = ScanARViewController(nibName: "ScanARViewController", bundle: nil)
+        let scanARViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
         
         UITabBar.appearance().tintColor = #colorLiteral(red: 0.3933430612, green: 0.5921664834, blue: 0.6682108641, alpha: 1)
         

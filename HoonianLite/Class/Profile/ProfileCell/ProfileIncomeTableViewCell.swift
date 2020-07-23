@@ -31,5 +31,13 @@ class ProfileIncomeTableViewCell: UITableViewCell {
         incomeView.layer.borderWidth = 0.5
         incomeView.layer.borderColor = #colorLiteral(red: 0.5474331975, green: 0.7959615588, blue: 0.7610880733, alpha: 1)
     }
+    var detailObj: ProfileData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+    }
     
 }

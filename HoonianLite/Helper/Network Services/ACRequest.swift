@@ -288,33 +288,65 @@ class ACRequest:NSObject{
             }
         }
     }
+    
+    static func POST_REGISTER(
+        parameters: Parameters,
+        successCompletion: @escaping (String) -> Void,
+        failCompletion: @escaping (String) -> Void) {
+        let headers:HTTPHeaders = [:]
+        ACAPI.POST(url: "\(ACUrl.REGISTER)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
+            let jsonValue = JSON(jsonData)
+            print(jsonValue)
+            if(jsonValue["status_desc"] == "Created") {
+                successCompletion("Success add new contact.")
+            } else {
+                failCompletion(jsonValue["status"].stringValue)
+            }
+        }
+    }
+    
+    
     static func POST_FORGOT_PASSWORD_VERIFY(
         parameters: Parameters,
         successCompletion: @escaping (String) -> Void,
         failCompletion: @escaping (String) -> Void) {
-        let headers:HTTPHeaders = [
-                                   "Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        let headers:HTTPHeaders = [:]
         ACAPI.POST(url: "\(ACUrl.EMAIL_FORGOT_PASSWORD)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
             let jsonValue = JSON(jsonData)
             print(jsonValue)
-            if(jsonValue["status_desc"] == "Created") {
+            if(jsonValue["status_desc"] == "Success") {
                 successCompletion("Success verify password.")
             } else {
                 failCompletion(jsonValue["status"].stringValue)
             }
         }
     }
-    static func POST_UPDATE_FORGOT_PASSWORD(
+    static func PUT_UPDATE_FORGOT_PASSWORD(
         parameters: Parameters,
         successCompletion: @escaping (String) -> Void,
         failCompletion: @escaping (String) -> Void) {
-        let headers:HTTPHeaders = [
-                                   "Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        let headers:HTTPHeaders = [:]
         ACAPI.PUT(url: "\(ACUrl.PASSWORD_UPDATE)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
             let jsonValue = JSON(jsonData)
             print(jsonValue)
-            if(jsonValue["status_desc"] == "Created") {
+            if(jsonValue["status_desc"] == "Success") {
                 successCompletion("Success forgot password.")
+            } else {
+                failCompletion(jsonValue["status"].stringValue)
+            }
+        }
+    }
+    
+    static func PUT_UPDATE_PROFILE(
+        parameters: Parameters,
+        successCompletion: @escaping (String) -> Void,
+        failCompletion: @escaping (String) -> Void) {
+        let headers:HTTPHeaders = [:]
+        ACAPI.PUT(url: "\(ACUrl.PASSWORD_UPDATE)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
+            let jsonValue = JSON(jsonData)
+            print(jsonValue)
+            if(jsonValue["status_desc"] == "Success") {
+                successCompletion("Success update profile.")
             } else {
                 failCompletion(jsonValue["status"].stringValue)
             }
@@ -376,6 +408,22 @@ class ACRequest:NSObject{
              }
          })
      }
-    
+    static func GET_PROFILE(
+        agentId:String,
+         successCompletion:@escaping (ProfileData) -> Void,
+         failCompletion:@escaping (String) -> Void) {
+         let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "https://dev.api.hoonian.com/api/agent/profile?id=\(agentId)", header: headers, showHUD: true, completion: { (jsonData) in
+             let json = JSON(jsonData)
+             print("get profile list: \(json)")
+             if(json["status_desc"] == "Success") {
+                 let profile = ProfileData()
+                 profile.objectMapping(json: json)
+                 successCompletion(profile)
+             } else {
+                 failCompletion(json["status"].stringValue)
+             }
+         })
+     }
     
 }

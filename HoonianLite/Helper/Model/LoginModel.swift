@@ -38,13 +38,41 @@ class LoginModel:NSObject{
 class AgentData:NSObject{
     var id = ""
     var name = ""
+    var profileImage = ""
+    var email = ""
+    var idCardNo = ""
+    var idCardPhoto = ""
+    var accountBank = ""
+    var accountNumber = ""
+    var birthDate = ""
+    var birthPlace = ""
+    var address = ""
+    var position = ""
+    var totalComission = ""
+    var totalPaid = ""
+    var totalOnHold = ""
+    var totalPending = ""
     var phoneNumber = ""
     var userAgent = ""
     
     func objectMapping(json:JSON){
         id = json["id"].stringValue
         name = json["name"].stringValue
-        phoneNumber = json["phoneNumber"].stringValue
+        profileImage = json["profile_image"].stringValue
+        phoneNumber = json["phone_number"].stringValue
+        email = json["email"].stringValue
+        idCardNo = json["id_card_number"].stringValue
+        idCardPhoto = json["id_card_photo"].stringValue
+        accountBank = json["account_bank"].stringValue
+        accountNumber = json["account_number"].stringValue
+        birthDate = json["birth_date"].stringValue
+        birthPlace = json["birth_place"].stringValue
+        address = json["address"].stringValue
+        position = json["position"].stringValue
+        totalComission = json["total_commisions"].stringValue
+        totalPaid = json["total_paid"].stringValue
+        totalOnHold = json["total_on_hold"].stringValue
+        totalPending = json["total_pending"].stringValue
         userAgent = json["user_agent"].stringValue
     }
 }

@@ -73,6 +73,26 @@ class ACAPI: NSObject {
         }
     }
     
+    static func DELETE(url:String, parameter:Parameters, header:HTTPHeaders , showHUD:Bool, completion:@escaping (Any) -> Void) {
+        if(showHUD) {
+            SVProgressHUD.show(withStatus: "Please wait...")
+        }
+        Alamofire.request(
+            URL(string: url)!,
+            method: .delete,
+            parameters: parameter,
+            encoding: JSONEncoding.default,
+            headers: header).responseJSON { (response) in
+                if response.result.isSuccess {
+                    completion(response.result.value!)
+                    print(response)
+                } else {
+                    
+                }
+        }
+    }
+    
+    
     static func POST_WITH_IMAGE(
         url:String,
         parameter:Parameters,

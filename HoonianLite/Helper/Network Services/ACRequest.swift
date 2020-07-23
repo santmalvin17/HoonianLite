@@ -288,6 +288,38 @@ class ACRequest:NSObject{
             }
         }
     }
+    static func POST_FORGOT_PASSWORD_VERIFY(
+        parameters: Parameters,
+        successCompletion: @escaping (String) -> Void,
+        failCompletion: @escaping (String) -> Void) {
+        let headers:HTTPHeaders = [
+                                   "Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.POST(url: "\(ACUrl.EMAIL_FORGOT_PASSWORD)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
+            let jsonValue = JSON(jsonData)
+            print(jsonValue)
+            if(jsonValue["status_desc"] == "Created") {
+                successCompletion("Success verify password.")
+            } else {
+                failCompletion(jsonValue["status"].stringValue)
+            }
+        }
+    }
+    static func POST_UPDATE_FORGOT_PASSWORD(
+        parameters: Parameters,
+        successCompletion: @escaping (String) -> Void,
+        failCompletion: @escaping (String) -> Void) {
+        let headers:HTTPHeaders = [
+                                   "Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.PUT(url: "\(ACUrl.PASSWORD_UPDATE)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
+            let jsonValue = JSON(jsonData)
+            print(jsonValue)
+            if(jsonValue["status_desc"] == "Created") {
+                successCompletion("Success forgot password.")
+            } else {
+                failCompletion(jsonValue["status"].stringValue)
+            }
+        }
+    }
     
     static func GET_REFERRED_LIST(
          agentId:String,

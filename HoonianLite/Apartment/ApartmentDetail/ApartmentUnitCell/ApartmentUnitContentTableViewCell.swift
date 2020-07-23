@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol ApartmentUnitContentTableViewCellDelegate{
+    func floorPlanClicked(indexKe:Int)
+}
+
 class ApartmentUnitContentTableViewCell: UITableViewCell {
+    
+    var delegate:ApartmentUnitContentTableViewCellDelegate?
 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -49,7 +55,7 @@ class ApartmentUnitContentTableViewCell: UITableViewCell {
     }
     
     @objc func floorPlanViewAction() {
-        print("Floor plan pressed")
+        delegate?.floorPlanClicked(indexKe: position)
     }
     
     @objc func priceListViewAction() {

@@ -28,7 +28,7 @@ class ApartmentDetailVideoTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    var detailObj: ProjectDetailModel? {
+    var detailObj: GalleryData? {
         didSet {
             cellConfig()
         }

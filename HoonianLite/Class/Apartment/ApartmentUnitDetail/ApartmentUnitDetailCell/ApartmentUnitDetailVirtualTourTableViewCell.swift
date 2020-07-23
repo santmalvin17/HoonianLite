@@ -29,7 +29,7 @@ class ApartmentUnitDetailVirtualTourTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-         var detailObj: UnitTypeDetailModel? {
+         var detailObj: GalleryData? {
          didSet {
              cellConfig()
          }
@@ -37,7 +37,7 @@ class ApartmentUnitDetailVirtualTourTableViewCell: UITableViewCell {
      func cellConfig() {
      guard let obj = detailObj else { return }
         self.virtualTourImageView.sd_setImage(
-            with: URL(string: (obj.projectTypeDetail.virtualTour[0].link)),
+            with: URL(string: (obj.link)),
             placeholderImage: UIImage(named: "Virtual Tour Image"),
             options: .refreshCached
         )

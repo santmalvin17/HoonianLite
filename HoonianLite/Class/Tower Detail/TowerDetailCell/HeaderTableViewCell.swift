@@ -1,18 +1,16 @@
 //
-//  ApartmentDetailGalleryTableViewCell.swift
+//  HeaderTableViewCell.swift
 //  HoonianLite
 //
-//  Created by Gregory Kevin on 20/07/20.
+//  Created by Malvin Santoso on 23/07/20.
 //  Copyright © 2020 Malvin Santoso. All rights reserved.
 //
 
 import UIKit
 
-class ApartmentDetailGalleryTableViewCell: UITableViewCell {
+class HeaderTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var galleryLabel: UILabel!
-    @IBOutlet weak var galleryImageView: UIImageView!
-    
+    @IBOutlet weak var headerImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,16 +21,16 @@ class ApartmentDetailGalleryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    var detailObj: GalleryData? {
+    var detailObj: ProjectClusterData? {
         didSet {
             cellConfig()
         }
     }
     func cellConfig() {
     guard let obj = detailObj else { return }
-        self.galleryImageView.sd_setImage(
-            with: URL(string: (obj.link)),
-            placeholderImage: UIImage(named: "Gallery Logo"),
+        self.headerImage.sd_setImage(
+            with: URL(string: (obj.image)),
+            placeholderImage: UIImage(named: "Cluster Image"),
             options: .refreshCached
         )
     }

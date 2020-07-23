@@ -197,6 +197,8 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
         }
         else if passedType == "Unit" {
             return ACData.UNITLISTMODEL.projectClusterData.count*2
+        }else if passedType == "Referred"{
+            return 2
         }else {
             return 1
         }
@@ -263,15 +265,15 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityContentTableViewCell", for: indexPath) as? ApartmentDetailFacilityContentTableViewCell)!
                 cell.position = indexPath.row
                 cell.numberLabel.text = "\(indexPath.row + 1)"
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.facilities[indexPath.row]
                 return cell
             case .gallery:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailGalleryTableViewCell", for: indexPath) as? ApartmentDetailGalleryTableViewCell)!
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.gallery[indexPath.row]
                 return cell
             case .video:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailVideoTableViewCell", for: indexPath) as? ApartmentDetailVideoTableViewCell)!
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.videos[indexPath.row]
                 
                 return cell
             }
@@ -280,18 +282,23 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             switch sectionsUnit[indexPath.section] {
             case .header:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitHeaderTableViewCell", for: indexPath) as? ApartmentUnitHeaderTableViewCell)!
+                cell.delegate = self
+                cell.position = indexPath.row
+                cell.section = indexPath.section/2
                 cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2]
                 return cell
             case .content:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitContentTableViewCell", for: indexPath) as? ApartmentUnitContentTableViewCell)!
                 cell.position = indexPath.row
+                cell.section = indexPath.section/2
                 cell.delegate = self
                 cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2].projectClusterType[indexPath.row]
                 return cell
+                
             }
         }else if passedType == "FloorPlan"{
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "FloorPlanContentTableViewCellID", for: indexPath) as? FloorPlanContentTableViewCell)!
-                return cell
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "FloorPlanContentTableViewCellID", for: indexPath) as? FloorPlanContentTableViewCell)!
+            return cell
         }else {
             switch sectionsReferred[indexPath.section]{
             case .search:
@@ -308,34 +315,51 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if passedType == "Detail" {
-            
+
+    
+    
+}
+
+extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDelegate,ApartmentUnitContentTableViewCellDelegate,ApartmentUnitHeaderTableViewCellDelegate{
+    func unitClicked(indexKe: Int,sectionKe: Int) {
+        ACRequest.GET_UNITPRICE_DETAIL(projectId: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, unitTypeId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id,successCompletion: { (getUnitDetail) in
+            ACData.UNITDETAILMODEL = getUnitDetail
+            SVProgressHUD.dismiss()
+            let vc = ApartmentUnitDetailViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-        else if passedType == "Unit" {
-            ACRequest.GET_UNITPRICE_DETAIL(projectId: ACData.UNITLISTMODEL.projectClusterData[indexPath.row].projectId, unitTypeId: ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2].projectClusterType[indexPath.row].id,successCompletion: { (getUnitDetail) in
-                ACData.UNITDETAILMODEL = getUnitDetail
+        
+    }
+    
+    func towerClicked(indexKe: Int,sectionKe:Int) {
+        ACRequest.GET_CLUSTERDETAIL(id: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, successCompletion: { (getTower) in
+            ACData.TOWERMODEL = getTower
+            SVProgressHUD.dismiss()
+            ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, clusterId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, page: 1, successCompletion: { (getFloorPlan) in
+                ACData.FLOORPLANMODEL = getFloorPlan
                 SVProgressHUD.dismiss()
-                let vc = ApartmentUnitDetailViewController()
+                let vc = TowerViewController()
                 self.navigationController?.pushViewController(vc, animated: true)
             }) { (message) in
                 let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            
+
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
-        else {
-            
-        }
+
     }
     
-    
-}
-
-extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDelegate,ApartmentUnitContentTableViewCellDelegate{
-    func floorPlanClicked(indexKe: Int) {
-        ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, clusterId: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, page: 1, successCompletion: { (getFloorPlan) in
+    func floorPlanClicked(indexKe: Int,sectionKe:Int) {
+        ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, clusterId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, page: 1, successCompletion: { (getFloorPlan) in
             ACData.FLOORPLANMODEL = getFloorPlan
             SVProgressHUD.dismiss()
             self.passedType = "FloorPlan"

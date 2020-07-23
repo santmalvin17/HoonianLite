@@ -93,7 +93,7 @@ extension ApartmentUnitDetailViewController: UITableViewDelegate, UITableViewDat
             return cell
         case .virtualTour:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentUnitDetailVirtualTourTableViewCellID", for: indexPath) as? ApartmentUnitDetailVirtualTourTableViewCell)!
-             cell.detailObj = ACData.UNITDETAILMODEL
+            cell.detailObj = ACData.UNITDETAILMODEL.projectTypeDetail.virtualTour[indexPath.row]
             return cell
         case .video:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentUnitDetailVideoTableViewCellID", for: indexPath) as? ApartmentUnitDetailVideoTableViewCell)!

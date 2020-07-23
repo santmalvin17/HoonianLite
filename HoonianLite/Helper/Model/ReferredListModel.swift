@@ -29,9 +29,9 @@ class ReferredListData:NSObject{
     var referStatus = ReferredData()
     
     func objectMapping(json:JSON){
-        agent.objectMapping(json: json["agent"])
+        agent.objectMapping(json: json["agents"])
         contacts.objectMapping(json: json["contacts"])
-        project.objectMapping(json: json["project"])
+        project.objectMapping(json: json["projects"])
         note = json["note"].stringValue
         referStatus.objectMapping(json: json["referred_status"])
     }

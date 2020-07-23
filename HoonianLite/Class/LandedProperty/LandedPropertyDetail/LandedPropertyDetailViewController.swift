@@ -1,17 +1,15 @@
 //
-//  ApartmentDetailViewController.swift
+//  LandedPropertyDetailViewController.swift
 //  HoonianLite
 //
-//  Created by Gregory Kevin on 20/07/20.
+//  Created by Gregory Kevin on 23/07/20.
 //  Copyright © 2020 Malvin Santoso. All rights reserved.
 //
 
 import UIKit
-import SVProgressHUD
-import CallKit
 
-class ApartmentDetailViewController: UIViewController {
-    enum ApartmentDetailCellList {
+class LandedPropertyDetailViewController: UIViewController {
+    enum LandedPropertyDetailCellList {
         case header
         case location
         case description
@@ -21,48 +19,36 @@ class ApartmentDetailViewController: UIViewController {
         case video
     }
     
-    enum ApartmentUnitCellList {
+    enum LandedPropertyUnitCellList {
         case header
         case content
     }
     
-    enum ApartmentReferredCellList {
+    enum LandedPropertyReferredCellList {
         case search
         case content
     }
-    
-    enum ApartmentFloorPlanCellList{
-        case header
-        case content
-    }
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var segmentedView: UIView!
+
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var unitButton: UIButton!
     @IBOutlet weak var referredButton: UIButton!
     @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var unitView: UIView!
     @IBOutlet weak var referredView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     
-    var sectionsDetail = [ApartmentDetailCellList]()
-    var sectionsUnit = [ApartmentUnitCellList]()
-    var sectionsReferred = [ApartmentReferredCellList]()
+    var sectionsDetail = [LandedPropertyDetailCellList]()
+    var sectionsUnit = [LandedPropertyUnitCellList]()
+    var sectionsReferred = [LandedPropertyReferredCellList]()
+    
     var passedType: String = "Detail"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        config()
+
+        configTable()
         configSections()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        configNavigation()
-    }
-    
-    func configNavigation() {
-        detectAdaptiveClass()
-        backStyleNavigationController(pageTitle: "Apartment", isLeftLogoHide: "", isLeftSecondLogoHide: "")
+        config()
     }
     
     func config() {
@@ -74,7 +60,9 @@ class ApartmentDetailViewController: UIViewController {
         detailButton.addTarget(self, action: #selector(detailButtonAction), for: .touchUpInside)
         unitButton.addTarget(self, action: #selector(unitButtonAction), for: .touchUpInside)
         referredButton.addTarget(self, action: #selector(referredButtonAction), for: .touchUpInside)
-        
+    }
+    
+    func configTable() {
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -94,34 +82,25 @@ class ApartmentDetailViewController: UIViewController {
         //REFERRED
         tableView.register(UINib(nibName: "ApartmentReferredSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "ApartmentReferredSearchTableViewCellID")
         tableView.register(UINib(nibName: "ApartmentReferredContentTableViewCell", bundle: nil), forCellReuseIdentifier: "ApartmentReferredContentTableViewCellID")
-        
-        //FLOORPLAN
-        tableView.register(UINib(nibName: "FloorPlanHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "FloorPlanHeaderTableViewCellID")
-        tableView.register(UINib(nibName: "FloorPlanContentTableViewCell", bundle: nil), forCellReuseIdentifier: "FloorPlanContentTableViewCellID")
     }
     
     func configSections() {
-        if passedType == "Detail"{
-            sectionsDetail.append(.header)
-            sectionsDetail.append(.location)
-            sectionsDetail.append(.description)
-            sectionsDetail.append(.facility)
-            sectionsDetail.append(.facilityContent)
-            sectionsDetail.append(.gallery)
-            sectionsDetail.append(.video)
-        }
-        if passedType == "Referred"{
-            sectionsReferred.append(.search)
-            sectionsReferred.append(.content)
-        }
+        //DETAIL
+        sectionsDetail.append(.header)
+        sectionsDetail.append(.location)
+        sectionsDetail.append(.description)
+        sectionsDetail.append(.facility)
+        sectionsDetail.append(.facilityContent)
+        sectionsDetail.append(.gallery)
+        sectionsDetail.append(.video)
         
-        if passedType == "Unit"{
-            print(ACData.UNITLISTMODEL.projectClusterData.count)
-            for i in 0..<ACData.UNITLISTMODEL.projectClusterData.count{
-                sectionsUnit.append(.header)
-                sectionsUnit.append(.content)
-            }
-        }
+        //UNIT
+        sectionsReferred.append(.search)
+        sectionsReferred.append(.content)
+        
+        //REFERRED
+        sectionsUnit.append(.header)
+        sectionsUnit.append(.content)
     }
     
     @objc func detailButtonAction() {
@@ -132,18 +111,8 @@ class ApartmentDetailViewController: UIViewController {
         referredButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         referredView.backgroundColor = #colorLiteral(red: 0.2275145948, green: 0.2660181522, blue: 0.5337877274, alpha: 1)
         passedType = "Detail"
-        ACRequest.GET_PROJECT_DETAIL(id: ACData.PROJECTDETAILMODEL.projectData.id,  successCompletion: { (projectDetail) in
-            ACData.PROJECTDETAILMODEL = projectDetail
-            SVProgressHUD.dismiss()
-            self.configSections()
-            self.tableView.reloadData()
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-        }) { (message) in
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
+        tableView.reloadData()
+        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
     
     @objc func unitButtonAction() {
@@ -154,17 +123,8 @@ class ApartmentDetailViewController: UIViewController {
         referredButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         referredView.backgroundColor = #colorLiteral(red: 0.2275145948, green: 0.2660181522, blue: 0.5337877274, alpha: 1)
         passedType = "Unit"
-        ACRequest.GET_UNITPRICE_LIST(projectId: ACData.PROJECTDETAILMODEL.projectData.id, successCompletion: { (getUnitList) in
-            ACData.UNITLISTMODEL = getUnitList
-            SVProgressHUD.dismiss()
-            self.configSections()
-            self.tableView.reloadData()
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-        }) { (message) in
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+        tableView.reloadData()
+        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
     
     @objc func referredButtonAction() {
@@ -175,30 +135,22 @@ class ApartmentDetailViewController: UIViewController {
         unitButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         unitView.backgroundColor = #colorLiteral(red: 0.2275145948, green: 0.2660181522, blue: 0.5337877274, alpha: 1)
         self.passedType = "Referred"
-        ACRequest.GET_REFERRED_LIST(agentId: ACData.LOGINDATA.agent.id, projectId: ACData.PROJECTDETAILMODEL.projectData.id,successCompletion: { (getReferList) in
-            ACData.REFERREDLISTMODEL = getReferList
-            SVProgressHUD.dismiss()
-            self.configSections()
-            self.tableView.reloadData()
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-        }) { (message) in
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+        tableView.reloadData()
+        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
-    
+
 }
 
-extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension LandedPropertyDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if passedType == "Detail" {
-            return 7
+            return sectionsDetail.count
         }
         else if passedType == "Unit" {
-            return ACData.UNITLISTMODEL.projectClusterData.count*2
-        }else {
-            return 1
+            return sectionsUnit.count
+        }
+        else {
+            return sectionsReferred.count
         }
     }
     
@@ -214,7 +166,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .facility:
                 return 1
             case .facilityContent:
-                return ACData.PROJECTDETAILMODEL.projectData.facilities.count
+                return 10
             case .gallery:
                 return 1
             case .video:
@@ -226,17 +178,15 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .header:
                 return 1
             case .content:
-                return ACData.UNITLISTMODEL.projectClusterData[section/2].projectClusterType.count
+                return 1
             }
-        }else if passedType == "FloorPlan"{
-            return 1
         }
         else {
             switch sectionsReferred[section] {
             case .search:
                 return 1
             case .content:
-                return ACData.REFERREDLISTMODEL.referProjectList.count
+                return 10
             }
         }
     }
@@ -246,32 +196,31 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             switch sectionsDetail[indexPath.section] {
             case .header:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentLocationDetailTableViewCell", for: indexPath) as? ApartmentLocationDetailTableViewCell)!
-                cell.detailObj = ACData.PROJECTLISTMODEL.projects[indexPath.row]
+                
                 return cell
             case .location:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailCellLocationTableViewCell", for: indexPath) as? ApartmentDetailCellLocationTableViewCell)!
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                
                 return cell
             case .description:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailDescriptionTableViewCell", for: indexPath) as? ApartmentDetailDescriptionTableViewCell)!
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                
                 return cell
             case .facility:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityTableViewCell", for: indexPath) as? ApartmentDetailFacilityTableViewCell)!
+                
                 return cell
             case .facilityContent:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityContentTableViewCell", for: indexPath) as? ApartmentDetailFacilityContentTableViewCell)!
-                cell.position = indexPath.row
-                cell.numberLabel.text = "\(indexPath.row + 1)"
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                
                 return cell
             case .gallery:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailGalleryTableViewCell", for: indexPath) as? ApartmentDetailGalleryTableViewCell)!
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                
                 return cell
             case .video:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailVideoTableViewCell", for: indexPath) as? ApartmentDetailVideoTableViewCell)!
-                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
+                
                 
                 return cell
             }
@@ -280,17 +229,16 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             switch sectionsUnit[indexPath.section] {
             case .header:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitHeaderTableViewCell", for: indexPath) as? ApartmentUnitHeaderTableViewCell)!
-                cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2]
+                
                 return cell
             case .content:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentUnitContentTableViewCell", for: indexPath) as? ApartmentUnitContentTableViewCell)!
-                cell.position = indexPath.row
-                cell.delegate = self
-                cell.detailObj = ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2].projectClusterType[indexPath.row]
+                
                 return cell
             }
         }else if passedType == "FloorPlan"{
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "FloorPlanContentTableViewCellID", for: indexPath) as? FloorPlanContentTableViewCell)!
+            
                 return cell
         }else {
             switch sectionsReferred[indexPath.section]{
@@ -300,60 +248,9 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
                 return cell
             case .content:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentReferredContentTableViewCellID", for: indexPath) as? ApartmentReferredContentTableViewCell)!
-                cell.position = indexPath.row
-                cell.delegate = self
-                cell.detailObj = ACData.REFERREDLISTMODEL.referProjectList[indexPath.row]
+                
                 return cell
             }
         }
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if passedType == "Detail" {
-            
-        }
-        else if passedType == "Unit" {
-            ACRequest.GET_UNITPRICE_DETAIL(projectId: ACData.UNITLISTMODEL.projectClusterData[indexPath.row].projectId, unitTypeId: ACData.UNITLISTMODEL.projectClusterData[indexPath.section/2].projectClusterType[indexPath.row].id,successCompletion: { (getUnitDetail) in
-                ACData.UNITDETAILMODEL = getUnitDetail
-                SVProgressHUD.dismiss()
-                let vc = ApartmentUnitDetailViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
-            }) { (message) in
-                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-            
-        }
-        else {
-            
-        }
-    }
-    
-    
-}
-
-extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDelegate,ApartmentUnitContentTableViewCellDelegate{
-    func floorPlanClicked(indexKe: Int) {
-        ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, clusterId: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, page: 1, successCompletion: { (getFloorPlan) in
-            ACData.FLOORPLANMODEL = getFloorPlan
-            SVProgressHUD.dismiss()
-            self.passedType = "FloorPlan"
-            self.configSections()
-            self.tableView.reloadData()
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-        }) { (message) in
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-    }
-    
-    func callPhone(indexKe: Int) {
-        guard let number = URL(string: "tel://" + ACData.REFERREDLISTMODEL.referProjectList[indexKe].contacts.phoneNumber) else { return }
-        UIApplication.shared.open(number, options: [:], completionHandler: nil)
-    }
-    
-    
 }

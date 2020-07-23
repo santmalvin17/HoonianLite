@@ -279,10 +279,16 @@ extension HomeViewController: HomeLocationContentTableViewCellDelegate, HomeApar
     
     func homeLandedPropertySelected() {
         print("Landed property selected")
+        
+        let vc = LandedPropertyDetailViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func homeWarehouseSelected() {
         print("Warehouse selected")
+        
+        let vc = WarehouseDetailViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -318,10 +324,16 @@ extension HomeViewController: HomeLocationHeaderTableViewCellDelegate, HomeApart
     
     func moreLandedPropertyPressed() {
         print("more landed property pressed")
+        
+        let vc = LandedPropertyMoreViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func moreWarehousePressed() {
-        print("more warehouse pressed")
+        print("warehouse pressed")
+        
+        let vc = WarehouseMoreViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

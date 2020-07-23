@@ -20,7 +20,10 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private var sections = [ProfileCellList]()
-    
+    var comissionTitle = ["Total Comission","Pending","On Hold","Pending"]
+    var comissionIsi = [String]()
+    var dataIsi = [String]()
+    var dataTitle = ["Full Name","Phone No","Id No","Bank Name","Account Number","Email","Address","Company","Position","Birth Date","Birth Place"]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +42,22 @@ class ProfileViewController: UIViewController {
         tableView.register(UINib(nibName: "ProfileIDCardTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileIDCardTableViewCellID")
         tableView.register(UINib(nibName: "ProfileButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileButtonTableViewCellID")
         tableView.register(UINib(nibName: "ProfileLogoutButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ProfileLogoutButtonTableViewCellID")
+        dataIsi.append(ACData.PROFILEMODEL.agent.name)
+        dataIsi.append(ACData.PROFILEMODEL.agent.phoneNumber)
+        dataIsi.append(ACData.PROFILEMODEL.agent.idCardNo)
+        dataIsi.append(ACData.PROFILEMODEL.agent.accountBank)
+        dataIsi.append(ACData.PROFILEMODEL.agent.accountNumber)
+        dataIsi.append(ACData.PROFILEMODEL.agent.email)
+        dataIsi.append(ACData.PROFILEMODEL.agent.address)
+        dataIsi.append("WEKIDDO")
+        dataIsi.append(ACData.PROFILEMODEL.agent.position)
+        dataIsi.append(ACData.PROFILEMODEL.agent.birthDate)
+        dataIsi.append(ACData.PROFILEMODEL.agent.birthPlace)
+        comissionIsi.append(ACData.PROFILEMODEL.agent.totalComission)
+        comissionIsi.append(ACData.PROFILEMODEL.agent.totalPaid)
+        comissionIsi.append(ACData.PROFILEMODEL.agent.totalOnHold)
+        comissionIsi.append(ACData.PROFILEMODEL.agent.totalPending)
+        
     }
     
     func configSections() {
@@ -63,7 +82,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case .income:
             return 4
         case .content:
-            return 10
+            return 11
         case .idCard:
             return 1
         case .button:
@@ -77,19 +96,21 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         switch sections[indexPath.section] {
         case .picture:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ProfilePictureTableViewCellID", for: indexPath) as? ProfilePictureTableViewCell)!
-            
+            cell.detailObj = ACData.PROFILEMODEL
             return cell
         case .income:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ProfileIncomeTableViewCellID", for: indexPath) as? ProfileIncomeTableViewCell)!
-            
+            cell.titleLabel.text = comissionTitle[indexPath.row]
+            cell.incomeLabel.text = comissionIsi[indexPath.row]
             return cell
         case .content:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ProfileContentTableViewCellID", for: indexPath) as? ProfileContentTableViewCell)!
-            
+            cell.labelCui.text = dataIsi[indexPath.row]
+            cell.namanyaCui.text = dataTitle[indexPath.row]
             return cell
         case .idCard:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ProfileIDCardTableViewCellID", for: indexPath) as? ProfileIDCardTableViewCell)!
-            
+            cell.detailObj = ACData.PROFILEMODEL
             return cell
         case .button:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ProfileButtonTableViewCellID", for: indexPath) as? ProfileButtonTableViewCell)!
@@ -107,6 +128,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension ProfileViewController: ProfileButtonTableViewCellDelegate {
+    func editProfileClicked() {
+        
+        let vc = EditProfileViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func changePasswordButtonPressed() {
         let vc = ChangePasswordViewController()
         self.navigationController?.pushViewController(vc, animated: true)

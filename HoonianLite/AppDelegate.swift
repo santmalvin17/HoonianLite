@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ACData.PURCHASELISTMODEL = getPurchaseModel
             SVProgressHUD.dismiss()
         }) { (message) in
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+
         }
     
         
@@ -71,12 +71,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ACData.CONTACTLISTMODEL = getContactList
             SVProgressHUD.dismiss()
         }) { (message) in
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            
         }
+        
+
         
         
         let contacts = UINavigationController(rootViewController: contactsViewController)
         let scanAR = UINavigationController(rootViewController: scanARViewController)
+        ACRequest.GET_PROFILE( agentId: ACData.LOGINDATA.agent.id, successCompletion: { (profileData) in
+            ACData.PROFILEMODEL = profileData
+            SVProgressHUD.dismiss()
+        }) { (message) in
+        }
         
         let menuDictionary: [Int: UINavigationController] = [
             1: home,

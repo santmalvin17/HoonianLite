@@ -10,6 +10,7 @@ import UIKit
 
 protocol ProfileButtonTableViewCellDelegate {
     func changePasswordButtonPressed()
+    func editProfileClicked()
 }
 
 class ProfileButtonTableViewCell: UITableViewCell {
@@ -45,7 +46,7 @@ class ProfileButtonTableViewCell: UITableViewCell {
     }
     
     @objc func editProfileButtonAction() {
-        print("edit profile pressed")
+        delegate?.editProfileClicked()
     }
     
     @objc func changePasswordButtonAction() {

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
 
 class ForgotPassswordViewController: UIViewController {
     
@@ -14,6 +16,7 @@ class ForgotPassswordViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
     var validate = ""
+    var phoneNumber = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -69,14 +72,55 @@ class ForgotPassswordViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }else{
-        if validate == "verify"{
-        let vc = ForgotPassswordViewController()
-        vc.validate = ""
-        self.navigationController?.pushViewController(vc, animated: true)
-        }else{
-            let vc = LoginViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+            if validate == "verify"{
+                let parameter: Parameters = [
+                    "phone_number":self.confirmTextField.text!,
+                    "email":self.passwordTextField.text!
+                ]
+                print(parameter)
+                ACRequest.POST_FORGOT_PASSWORD_VERIFY(parameters: parameter, successCompletion: { (result) in
+                    SVProgressHUD.dismiss()
+                    let vc = ForgotPassswordViewController()
+                    vc.validate = ""
+                    vc.phoneNumber = self.passwordTextField.text!
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }) { (message) in
+                    SVProgressHUD.dismiss()
+                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+            }else{
+                if passwordTextField.text != confirmTextField.text{
+                    let alert = UIAlertController(title: "Error", message: "Password doesnt match", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }else{
+                let parameter: Parameters = [
+                    "new_password":self.passwordTextField.text!,
+                    "confirm_password":self.confirmTextField.text!,
+                    "phone_number":self.phoneNumber
+                ]
+                ACRequest.PUT_UPDATE_FORGOT_PASSWORD(parameters: parameter, successCompletion: { (result) in
+                    SVProgressHUD.dismiss()
+                    self.validate = ""
+                    let alert = UIAlertController(title: "Success", message: "Success Set New Password®", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                        let vc = LoginViewController()
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                }) { (message) in
+                    SVProgressHUD.dismiss()
+                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                }
+                
+            }
         }
     }
     

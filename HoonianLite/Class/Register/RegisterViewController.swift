@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
 
 class RegisterViewController: UIViewController {
 
@@ -80,6 +82,26 @@ class RegisterViewController: UIViewController {
          
      }
     @IBAction func registerAction(_ sender: Any) {
+        let parameter: Parameters = [
+            "name":nameTextField.text!,
+            "password":passwordTextField.text!,
+            "country_code":"+62",
+            "phone_number":phoneNumberTextField.text!,
+            "id_card_number":idNoTextField.text!,
+            "bank_id":"BCA",
+            "account_number":accountNoTextField.text!,
+        ]
+        print(parameter)
+        ACRequest.POST_REGISTER(parameters: parameter, successCompletion: { (result) in
+            SVProgressHUD.dismiss()
+            let vc = LoginViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            SVProgressHUD.dismiss()
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
      
@@ -89,7 +111,7 @@ class RegisterViewController: UIViewController {
 
 extension RegisterViewController:UIPickerViewDelegate,UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

@@ -24,5 +24,19 @@ class ProfileIDCardTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    var detailObj: ProfileData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        self.idCardImageView.sd_setImage(
+            with: URL(string: (obj.agent.idCardPhoto)),
+            placeholderImage: UIImage(named: "id card photo"),
+            options: .refreshCached
+        )
+
+    }
     
 }

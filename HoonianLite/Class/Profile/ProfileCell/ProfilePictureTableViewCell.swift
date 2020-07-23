@@ -30,4 +30,19 @@ class ProfilePictureTableViewCell: UITableViewCell {
         profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
     }
     
+    var detailObj: ProfileData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+    guard let obj = detailObj else { return }
+        self.profileImageView.sd_setImage(
+            with: URL(string: (obj.agent.profileImage)),
+            placeholderImage: UIImage(named: "Profile Image"),
+            options: .refreshCached
+        )
+
+    }
+    
 }

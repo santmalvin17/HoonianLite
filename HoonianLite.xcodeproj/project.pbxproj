@@ -45,6 +45,11 @@
 		0ABE101024C9C1BF0011C11F /* WareHouseOpearateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE100E24C9C1BF0011C11F /* WareHouseOpearateTableViewCell.swift */; };
 		0ABE101124C9C1BF0011C11F /* WareHouseOpearateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0ABE100F24C9C1BF0011C11F /* WareHouseOpearateTableViewCell.xib */; };
 		0ABE102324C9D6C00011C11F /* ProjectClusterDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE102224C9D6C00011C11F /* ProjectClusterDetailModel.swift */; };
+		0ABE103C24C9F7C90011C11F /* ProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE103B24C9F7C90011C11F /* ProfileData.swift */; };
+		0ABE104124CA018D0011C11F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE103F24CA018D0011C11F /* EditProfileViewController.swift */; };
+		0ABE104224CA018D0011C11F /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0ABE104024CA018D0011C11F /* EditProfileViewController.xib */; };
+		0ABE104524CA03AC0011C11F /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABE104324CA03AC0011C11F /* EditTableViewCell.swift */; };
+		0ABE104624CA03AC0011C11F /* EditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0ABE104424CA03AC0011C11F /* EditTableViewCell.xib */; };
 		0AF89CB624C2E88E00AFCE2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB524C2E88E00AFCE2D /* AppDelegate.swift */; };
 		0AF89CB824C2E88E00AFCE2D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */; };
 		0AF89CBF24C2E89100AFCE2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AF89CBE24C2E89100AFCE2D /* Assets.xcassets */; };
@@ -253,6 +258,11 @@
 		0ABE100E24C9C1BF0011C11F /* WareHouseOpearateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WareHouseOpearateTableViewCell.swift; sourceTree = "<group>"; };
 		0ABE100F24C9C1BF0011C11F /* WareHouseOpearateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WareHouseOpearateTableViewCell.xib; sourceTree = "<group>"; };
 		0ABE102224C9D6C00011C11F /* ProjectClusterDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectClusterDetailModel.swift; sourceTree = "<group>"; };
+		0ABE103B24C9F7C90011C11F /* ProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileData.swift; sourceTree = "<group>"; };
+		0ABE103F24CA018D0011C11F /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		0ABE104024CA018D0011C11F /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		0ABE104324CA03AC0011C11F /* EditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewCell.swift; sourceTree = "<group>"; };
+		0ABE104424CA03AC0011C11F /* EditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTableViewCell.xib; sourceTree = "<group>"; };
 		0AF89CB224C2E88E00AFCE2D /* HoonianLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HoonianLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF89CB524C2E88E00AFCE2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AF89CB724C2E88E00AFCE2D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -517,6 +527,7 @@
 				0A799C7D24C89A5400DD83D5 /* ReferredListModel.swift */,
 				0A799C9224C94DB200DD83D5 /* FloorPlanModel.swift */,
 				0ABE102224C9D6C00011C11F /* ProjectClusterDetailModel.swift */,
+				0ABE103B24C9F7C90011C11F /* ProfileData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -583,6 +594,17 @@
 			path = "Floor Plan";
 			sourceTree = "<group>";
 		};
+		0ABE103E24CA016B0011C11F /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				0ABE103F24CA018D0011C11F /* EditProfileViewController.swift */,
+				0ABE104024CA018D0011C11F /* EditProfileViewController.xib */,
+				0ABE104324CA03AC0011C11F /* EditTableViewCell.swift */,
+				0ABE104424CA03AC0011C11F /* EditTableViewCell.xib */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
 		0AF89CA924C2E88E00AFCE2D = {
 			isa = PBXGroup;
 			children = (
@@ -626,6 +648,7 @@
 		A305E24224C9D7A500F33B24 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				0ABE103E24CA016B0011C11F /* EditProfile */,
 				A305E26124C9E5AA00F33B24 /* ChangePassword */,
 				A305E24724C9D87200F33B24 /* ProfileCell */,
 				A305E24324C9D84900F33B24 /* ProfileViewController.swift */,
@@ -1284,6 +1307,7 @@
 				0A799C8C24C9408600DD83D5 /* ForgotPassswordViewController.xib in Resources */,
 				A305E25824C9D8FD00F33B24 /* ProfileButtonTableViewCell.xib in Resources */,
 				A36579C924C59B1900C1EED4 /* LandedLocationDetailTableViewCell.xib in Resources */,
+				0ABE104624CA03AC0011C11F /* EditTableViewCell.xib in Resources */,
 				A365799F24C56A5800C1EED4 /* HomeApartmentContentTableViewCell.xib in Resources */,
 				A365796A24C44A3E00C1EED4 /* HomeHeaderTableViewCell.xib in Resources */,
 				A305E27124C9EB8200F33B24 /* TowerViewController.xib in Resources */,
@@ -1291,6 +1315,7 @@
 				A365799B24C56A4D00C1EED4 /* HomeApartmentHeaderTableViewCell.xib in Resources */,
 				A319D7F024C83FE00082A08F /* PurchaseDetailViewController.xib in Resources */,
 				A305E24624C9D84900F33B24 /* ProfileViewController.xib in Resources */,
+				0ABE104224CA018D0011C11F /* EditProfileViewController.xib in Resources */,
 				A305E26524C9E5C200F33B24 /* ChangePasswordViewController.xib in Resources */,
 				A319D81E24C883640082A08F /* ApartmentReferredSearchTableViewCell.xib in Resources */,
 				A319D7F924C840660082A08F /* PurchaseDetailSelectedUnitTableViewCell.xib in Resources */,
@@ -1367,6 +1392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ABE104124CA018D0011C11F /* EditProfileViewController.swift in Sources */,
 				A3E9B54B24C5EF1C0052B894 /* ApartmentDetailDescriptionTableViewCell.swift in Sources */,
 				0AB525B024C71A7700B32537 /* ContactListModel.swift in Sources */,
 				A319D7FC24C8407C0082A08F /* PurchaseDetailARTableViewCell.swift in Sources */,
@@ -1430,6 +1456,7 @@
 				A3E9B54724C5EEFE0052B894 /* ApartmentDetailCellLocationTableViewCell.swift in Sources */,
 				0AB525B424C73F1D00B32537 /* ProjectDetailModel.swift in Sources */,
 				A365799224C56A2700C1EED4 /* HomeLocationHeaderTableViewCell.swift in Sources */,
+				0ABE103C24C9F7C90011C11F /* ProfileData.swift in Sources */,
 				A386173824C98DF800F3B76F /* LandedPropertyMoreViewController.swift in Sources */,
 				A36579AE24C56A8800C1EED4 /* HomeWarehouseContentTableViewCell.swift in Sources */,
 				0AB5259524C6CDA000B32537 /* ACAPI.swift in Sources */,
@@ -1470,6 +1497,7 @@
 				0AF89CB824C2E88E00AFCE2D /* SceneDelegate.swift in Sources */,
 				A305E24A24C9D89800F33B24 /* ProfilePictureTableViewCell.swift in Sources */,
 				0AB5259D24C6CF9400B32537 /* ACUrl.swift in Sources */,
+				0ABE104524CA03AC0011C11F /* EditTableViewCell.swift in Sources */,
 				A36579BF24C56D9900C1EED4 /* HomeWarehouseCollectionViewCell.swift in Sources */,
 				0AB525B224C72EE300B32537 /* ProjectListModel.swift in Sources */,
 				A36579C424C59B0C00C1EED4 /* ApartmentLocationDetailTableViewCell.swift in Sources */,

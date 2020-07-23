@@ -30,11 +30,19 @@ class RegisterViewController: UIViewController {
         doneButton()
      }
     
+    
+
+    
     func doneButton(){
         let datePickerToolbar = UIToolbar()
         datePickerToolbar.sizeToFit()
         let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissKeyboard))
         doneButton.tag = bankTextField.tag
+        doneButton.tag = nameTextField.tag
+        doneButton.tag = phoneNumberTextField.tag
+        doneButton.tag = passwordTextField.tag
+        doneButton.tag = idNoTextField.tag
+        doneButton.tag = accountNoTextField.tag
         datePickerToolbar.setItems([doneButton], animated: false)
         datePickerToolbar.isUserInteractionEnabled = true
         nameTextField.inputAccessoryView = datePickerToolbar

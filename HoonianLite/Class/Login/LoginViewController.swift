@@ -62,7 +62,9 @@ class LoginViewController: UIViewController {
     }
     
     @objc func forgotPasswordButtonAction() {
-        
+        let vc = ForgotPassswordViewController()
+        vc.validate = "verify"
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func createAccountButtonAction() {

@@ -16,6 +16,8 @@
 		0A799C7E24C89A5400DD83D5 /* ReferredListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C7D24C89A5400DD83D5 /* ReferredListModel.swift */; };
 		0A799C8224C8A96400DD83D5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C8024C8A96400DD83D5 /* RegisterViewController.swift */; };
 		0A799C8324C8A96400DD83D5 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A799C8124C8A96400DD83D5 /* RegisterViewController.xib */; };
+		0A799C8B24C9408600DD83D5 /* ForgotPassswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A799C8924C9408600DD83D5 /* ForgotPassswordViewController.swift */; };
+		0A799C8C24C9408600DD83D5 /* ForgotPassswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A799C8A24C9408600DD83D5 /* ForgotPassswordViewController.xib */; };
 		0AB5258F24C6CD0400B32537 /* HomeDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5258E24C6CD0400B32537 /* HomeDataModel.swift */; };
 		0AB5259524C6CDA000B32537 /* ACAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5259424C6CDA000B32537 /* ACAPI.swift */; };
 		0AB5259724C6CDD100B32537 /* ACAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5259624C6CDD100B32537 /* ACAlert.swift */; };
@@ -186,6 +188,8 @@
 		0A799C7D24C89A5400DD83D5 /* ReferredListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferredListModel.swift; sourceTree = "<group>"; };
 		0A799C8024C8A96400DD83D5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		0A799C8124C8A96400DD83D5 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		0A799C8924C9408600DD83D5 /* ForgotPassswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassswordViewController.swift; sourceTree = "<group>"; };
+		0A799C8A24C9408600DD83D5 /* ForgotPassswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotPassswordViewController.xib; sourceTree = "<group>"; };
 		0AB5258E24C6CD0400B32537 /* HomeDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataModel.swift; sourceTree = "<group>"; };
 		0AB5259424C6CDA000B32537 /* ACAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACAPI.swift; sourceTree = "<group>"; };
 		0AB5259624C6CDD100B32537 /* ACAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ACAlert.swift; sourceTree = "<group>"; };
@@ -380,9 +384,19 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		0A799C8824C93E6400DD83D5 /* Forgot Password */ = {
+			isa = PBXGroup;
+			children = (
+				0A799C8924C9408600DD83D5 /* ForgotPassswordViewController.swift */,
+				0A799C8A24C9408600DD83D5 /* ForgotPassswordViewController.xib */,
+			);
+			path = "Forgot Password";
+			sourceTree = "<group>";
+		};
 		0AB5258B24C6CCB000B32537 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				0A799C8824C93E6400DD83D5 /* Forgot Password */,
 				0A799C7F24C8A8AD00DD83D5 /* Register */,
 				A36579D824C5D1EE00C1EED4 /* Apartment */,
 				A365798924C4B94E00C1EED4 /* Location */,
@@ -1046,6 +1060,7 @@
 				A38C85E624C6DF980086FA7B /* ApartmentUnitHeaderTableViewCell.xib in Resources */,
 				A38C85E524C6DF980086FA7B /* ApartmentUnitContentTableViewCell.xib in Resources */,
 				A319D7E224C73A2B0082A08F /* ContactDetailRecommendedProjectTableViewCell.xib in Resources */,
+				0A799C8C24C9408600DD83D5 /* ForgotPassswordViewController.xib in Resources */,
 				A36579C924C59B1900C1EED4 /* LandedLocationDetailTableViewCell.xib in Resources */,
 				A365799F24C56A5800C1EED4 /* HomeApartmentContentTableViewCell.xib in Resources */,
 				A365796A24C44A3E00C1EED4 /* HomeHeaderTableViewCell.xib in Resources */,
@@ -1136,6 +1151,7 @@
 				A319D80B24C871160082A08F /* ApartmentMoreSearchTableViewCell.swift in Sources */,
 				A36579CC24C59B2200C1EED4 /* WarehouseLocationDetailTableViewCell.swift in Sources */,
 				A36579D624C5C52200C1EED4 /* LocationListCollectionViewCell.swift in Sources */,
+				0A799C8B24C9408600DD83D5 /* ForgotPassswordViewController.swift in Sources */,
 				0AB525A524C6FDFD00B32537 /* NewsDataModel.swift in Sources */,
 				A365796524C44A3500C1EED4 /* HomeUpcomingProjectContentTableViewCell.swift in Sources */,
 				A319D81424C874E00082A08F /* CheckBox.swift in Sources */,

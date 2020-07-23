@@ -8,17 +8,31 @@
 
 import UIKit
 
+protocol ApartmentUnitHeaderTableViewCellDelegate{
+    func towerClicked(indexKe:Int,sectionKe:Int)
+}
+
 class ApartmentUnitHeaderTableViewCell: UITableViewCell {
+    
+    var delegate:ApartmentUnitHeaderTableViewCellDelegate?
 
     @IBOutlet weak var towerLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var infoImageView: UIImageView!
     @IBOutlet weak var soldLabel: UILabel!
-    
+    var position = 0
+    var section = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         
         config()
+        towerLabel.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(towerAction))
+        towerLabel.addGestureRecognizer(gesture)
+    }
+    
+    @objc func towerAction(){
+        delegate?.towerClicked(indexKe:position, sectionKe: section)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

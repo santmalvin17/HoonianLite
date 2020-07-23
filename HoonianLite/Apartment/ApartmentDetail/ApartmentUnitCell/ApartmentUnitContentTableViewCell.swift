@@ -9,7 +9,8 @@
 import UIKit
 
 protocol ApartmentUnitContentTableViewCellDelegate{
-    func floorPlanClicked(indexKe:Int)
+    func floorPlanClicked(indexKe:Int,sectionKe:Int)
+    func unitClicked(indexKe:Int,sectionKe:Int)
 }
 
 class ApartmentUnitContentTableViewCell: UITableViewCell {
@@ -24,6 +25,7 @@ class ApartmentUnitContentTableViewCell: UITableViewCell {
     @IBOutlet weak var floorPlanView: UIView!
     @IBOutlet weak var priceListView: UIView!
     var position = 0
+    var section = 0
     override func awakeFromNib() {
         super.awakeFromNib()
          config()
@@ -38,6 +40,10 @@ class ApartmentUnitContentTableViewCell: UITableViewCell {
     func config() {
         let floorPlanGesture = UITapGestureRecognizer(target: self, action: #selector(floorPlanViewAction))
         floorPlanView.addGestureRecognizer(floorPlanGesture)
+        
+        unitImageView.isUserInteractionEnabled = true
+        let unitGesture = UITapGestureRecognizer(target: self, action: #selector(unitAction))
+        unitImageView.addGestureRecognizer(unitGesture)
         
         let priceListGesture = UITapGestureRecognizer(target: self, action: #selector(priceListViewAction))
         priceListView.addGestureRecognizer(priceListGesture)
@@ -55,7 +61,11 @@ class ApartmentUnitContentTableViewCell: UITableViewCell {
     }
     
     @objc func floorPlanViewAction() {
-        delegate?.floorPlanClicked(indexKe: position)
+        delegate?.floorPlanClicked(indexKe: position, sectionKe: section)
+    }
+    
+    @objc func unitAction(){
+        delegate?.unitClicked(indexKe: position, sectionKe: section)
     }
     
     @objc func priceListViewAction() {

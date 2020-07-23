@@ -29,14 +29,14 @@ class ApartmentDetailFacilityContentTableViewCell: UITableViewCell {
         numberLabel.layer.masksToBounds = true
         numberLabel.layer.cornerRadius = numberLabel.frame.width / 2
     }
-    var detailObj: ProjectDetailModel? {
+    var detailObj: FacilityData? {
         didSet {
             cellConfig()
         }
     }
     func cellConfig() {
     guard let obj = detailObj else { return }
-        facilityLabel.text = obj.facilities[position].name
+        facilityLabel.text = obj.name
     }
     
 }

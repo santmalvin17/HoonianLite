@@ -27,6 +27,11 @@ class ProjectClusterData:NSObject{
     var soldPercentage = ""
     var totalUnit = ""
     var image = ""
+    var gallery = [GalleryData]()
+    var facilities = [FacilityData]()
+    var augmentedReality = [GalleryData]()
+    var videos = [GalleryData]()
+    var virtualTour = [GalleryData]()
     var projectClusterType = [ProjectClusterType]()
     func objectMapping(json:JSON){
         projectId = json["project_id"].stringValue
@@ -38,6 +43,34 @@ class ProjectClusterData:NSObject{
             let d = ProjectClusterType()
             d.objectMapping(json: data)
             projectClusterType.append(d)
+        }
+        for data in json["facilities"].arrayValue{
+            let d = FacilityData()
+            d.objectMapping(json: data)
+            facilities.append(d)
+        }
+        for data in json["gallery"].arrayValue{
+            let d = GalleryData()
+            d.objectMapping(json: data)
+            gallery.append(d)
+        }
+        
+        for data in json["videos"].arrayValue{
+            let d = GalleryData()
+            d.objectMapping(json: data)
+            videos.append(d)
+        }
+        
+        for data in json["augmented_reality"].arrayValue{
+            let d = GalleryData()
+            d.objectMapping(json: data)
+            augmentedReality.append(d)
+        }
+        
+        for data in json["virtual_tour"].arrayValue{
+            let d = GalleryData()
+            d.objectMapping(json: data)
+            virtualTour.append(d)
         }
     }
 }

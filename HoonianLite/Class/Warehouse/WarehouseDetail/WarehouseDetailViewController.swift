@@ -13,6 +13,7 @@ class WarehouseDetailViewController: UIViewController {
         case header
         case location
         case description
+        case operate
         case facility
         case facilityContent
         case gallery
@@ -60,6 +61,7 @@ class WarehouseDetailViewController: UIViewController {
         tableView.register(UINib(nibName: "ApartmentDetailCellLocationTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailCellLocationTableViewCell")
         tableView.register(UINib(nibName: "ApartmentDetailDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailDescriptionTableViewCell")
         tableView.register(UINib(nibName: "ApartmentDetailFacilityTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailFacilityTableViewCell")
+        tableView.register(UINib(nibName: "WareHouseOpearateTableViewCell", bundle: nil), forCellReuseIdentifier: "WareHouseOperateTableViewCellID")
         tableView.register(UINib(nibName: "ApartmentDetailFacilityContentTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailFacilityContentTableViewCell")
         tableView.register(UINib(nibName: "ApartmentDetailGalleryTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailGalleryTableViewCell")
         tableView.register(UINib(nibName: "ApartmentDetailVideoTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentDetailVideoTableViewCell")
@@ -74,6 +76,7 @@ class WarehouseDetailViewController: UIViewController {
         sectionsDetail.append(.header)
         sectionsDetail.append(.location)
         sectionsDetail.append(.description)
+        sectionsDetail.append(.operate)
         sectionsDetail.append(.facility)
         sectionsDetail.append(.facilityContent)
         sectionsDetail.append(.gallery)
@@ -133,6 +136,8 @@ extension WarehouseDetailViewController: UITableViewDelegate, UITableViewDataSou
                 return 1
             case .video:
                 return 1
+            case .operate:
+                return 1
             }
         }
         else {
@@ -140,7 +145,7 @@ extension WarehouseDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .search:
                 return 1
             case .content:
-                return 8
+                return 9
             }
         }
     }
@@ -174,6 +179,10 @@ extension WarehouseDetailViewController: UITableViewDelegate, UITableViewDataSou
                 return cell
             case .video:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailVideoTableViewCell", for: indexPath) as? ApartmentDetailVideoTableViewCell)!
+                
+                return cell
+            case .operate:
+                let cell = (tableView.dequeueReusableCell(withIdentifier: "WareHouseOperateTableViewCellID", for: indexPath) as? WareHouseOpearateTableViewCell)!
                 
                 return cell
             }

@@ -32,12 +32,16 @@ class HomeViewController: UIViewController {
         
         configTable()
         configSections()
+
+    }
+    @objc func callMethod(){
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         configNavigation()
     }
-    
+
     func configNavigation() {
         detectAdaptiveClass()
         backStyleNavigationController(pageTitle: "Home", isLeftLogoHide: "", isLeftSecondLogoHide: "")

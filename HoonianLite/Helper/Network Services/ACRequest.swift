@@ -327,5 +327,23 @@ class ACRequest:NSObject{
          })
      }
     
+    static func GET_CLUSTERDETAIL(
+         id:String,
+         successCompletion:@escaping (ProjectClusterDetailModel) -> Void,
+         failCompletion:@escaping (String) -> Void) {
+         let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.TOWERDETAIL)=\(id)", header: headers, showHUD: true, completion: { (jsonData) in
+             let json = JSON(jsonData)
+             print("get cluster data: \(json)")
+             if(json["status_desc"] == "Success") {
+                 let cluster = ProjectClusterDetailModel()
+                 cluster.objectMapping(json: json)
+                 successCompletion(cluster)
+             } else {
+                 failCompletion(json["status"].stringValue)
+             }
+         })
+     }
+    
     
 }

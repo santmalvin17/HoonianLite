@@ -39,4 +39,14 @@ class AddReferredContentTableViewCell: UITableViewCell {
     @objc func notesButtonAction() {
         delegate?.notesButtonPressed()
     }
+    
+    var detailObj: ClientData? {
+        didSet {
+            cellConfig()
+        }
+    }
+    func cellConfig() {
+        guard let obj = detailObj else { return }
+        nameLabel.text = obj.name
+    }
 }

@@ -10,6 +10,7 @@ import UIKit
 import SVProgressHUD
 import CallKit
 import ContactsUI
+import Alamofire
 
 class ApartmentDetailViewController: UIViewController {
     enum ApartmentDetailCellList {
@@ -226,7 +227,16 @@ class ApartmentDetailViewController: UIViewController {
         isAdd = true
         addButton.isHidden = true
         addButton.isEnabled = false
-        tableView.reloadData()
+        ACRequest.GET_REFERRED_ADD_CONTACT(agentId: ACData.LOGINDATA.agent.id, projectId: ACData.PROJECTDETAILMODEL.projectData.id,successCompletion: { (getReferList) in
+            ACData.CONTACTLISTMODEL = getReferList
+            SVProgressHUD.dismiss()
+            self.configSections()
+            self.tableView.reloadData()
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
 }
@@ -294,7 +304,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .header:
                 return 1
             case .content:
-                return 4
+                return ACData.CONTACTLISTMODEL.contacts.count
             case .marketing:
                 return 1
             case .button:
@@ -384,7 +394,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .content:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "AddReferredContentTableViewCellID", for: indexPath) as? AddReferredContentTableViewCell)!
                 cell.delegate = self
-                
+                cell.detailObj = ACData.CONTACTLISTMODEL.contacts[indexPath.row]
                 return cell
             case .marketing:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "AddReferredMarketingTableViewCellID", for: indexPath) as? AddReferredMarketingTableViewCell)!
@@ -394,13 +404,12 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .button:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "AddReferredButtonTableViewCellID", for: indexPath) as? AddReferredButtonTableViewCell)!
                 cell.delegate = self
-                
                 return cell
             }
         }
     }
     
-
+    
     
     
 }
@@ -434,13 +443,13 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-
+            
         }) { (message) in
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
-
+        
     }
     
     func floorPlanClicked(indexKe: Int,sectionKe:Int) {
@@ -470,7 +479,7 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
 extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate, AddReferredContentTableViewCellDelegate, AddReferredMarketingTableViewCellDelegate {
     func addContactPressed() {
         CNContactStore().requestAccess(for: .contacts) { (access, error) in
-          print("Access: \(access)")
+            print("Access: \(access)")
         }
         let contacVC = CNContactPickerViewController()
         contacVC.delegate = self
@@ -478,10 +487,33 @@ extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate,
     }
     
     func cancelButtonPressed() {
-        self.isAdd = false
-        self.tableView.reloadData()
-        self.addButton.isHidden = false
-        self.addButton.isEnabled = true
+        let parameter: Parameters = [
+            "agent_id":ACData.LOGINDATA.agent.id,
+            "contact_id":"2c5ea4c0-1233-11e9-8bad-9b1deb4d3b7d",
+            "project_id":ACData.PROJECTDETAILMODEL.projectData.id
+        ]
+        print(parameter)
+        ACRequest.POST_REFERRED_PROJECT(parameters: parameter, successCompletion: { (result) in
+            SVProgressHUD.dismiss()
+            ACRequest.GET_REFERRED_LIST(agentId: ACData.LOGINDATA.agent.id, projectId: ACData.PROJECTDETAILMODEL.projectData.id,successCompletion: { (getReferList) in
+                ACData.REFERREDLISTMODEL = getReferList
+                SVProgressHUD.dismiss()
+                self.isAdd = false
+                self.tableView.reloadData()
+                self.addButton.isHidden = false
+                self.addButton.isEnabled = true
+            }) { (message) in
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }) { (message) in
+            SVProgressHUD.dismiss()
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     func notesButtonPressed() {
@@ -508,9 +540,9 @@ extension ApartmentDetailViewController:CNContactPickerDelegate{
         vc.phoneText = (numbers?.value)?.stringValue ?? ""
         vc.trigerNya = "Referred"
         self.navigationController?.pushViewController(vc, animated: true)
-          
+        
     }
-
+    
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
         self.dismiss(animated: true, completion: nil)
     }

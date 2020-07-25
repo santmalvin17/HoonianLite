@@ -85,6 +85,6 @@ class ApartmentUnitContentTableViewCell: UITableViewCell {
         )
         titleLabel.text = obj.name
         availableLabel.text = "Available \(obj.availUnit)"
-        priceLabel.text = "Price: Rp \(obj.startPrice)"
+        priceLabel.text = "Price: Rp \(obj.startPrice.formattedWithSeparator)"
     }
 }

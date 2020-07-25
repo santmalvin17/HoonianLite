@@ -66,7 +66,7 @@ class PurchaseItemTableViewCell: UITableViewCell {
         )
         purchaseName.text = obj.projectPurchaseList[position].project.name
         unitTypeLabel.text = ": \(obj.projectPurchaseList[position].projectUnit.name)"
-        priceLabel.text = ": \(obj.projectPurchaseList[position].price)"
+        priceLabel.text = ": Rp  \(obj.projectPurchaseList[position].price)"
         buyerLabel.text = ": \(obj.projectPurchaseList[position].client.name)"
         agentLabel.text = ": \(obj.projectPurchaseList[position].agent.name)"
         statusLabel.textColor = UIColor(hex: "\(obj.projectPurchaseList[position].status.colorCode)")
@@ -76,5 +76,8 @@ class PurchaseItemTableViewCell: UITableViewCell {
     }
     
 }
+
+
+
 
 

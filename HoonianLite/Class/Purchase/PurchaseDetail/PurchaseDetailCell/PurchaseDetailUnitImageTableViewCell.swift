@@ -59,7 +59,7 @@ class PurchaseDetailUnitImageTableViewCell: UITableViewCell {
     guard let obj = detailObj else { return }
         unitNameLabel.text = obj.projectData.projectUnitType.name
         sizeLabel.text = "Size: \(obj.projectData.projectUnitType.size)"
-        priceLabel.text = "Price: Rp \(obj.price)"
+        priceLabel.text = "Price: Rp \(obj.price.formattedWithSeparator)"
     }
     
         @objc func changeImage(){
@@ -115,4 +115,16 @@ extension PurchaseDetailUnitImageTableViewCell:UICollectionViewDelegate,UICollec
     }
     
     
+}
+
+extension Formatter {
+    static let withSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = "."
+        return formatter
+    }()
+}
+extension Numeric {
+    var formattedWithSeparator: String { Formatter.withSeparator.string(for: self) ?? "" }
 }

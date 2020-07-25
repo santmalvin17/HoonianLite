@@ -19,6 +19,7 @@ class FloorListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var floorLabel: UILabel!
     @IBOutlet weak var imageFloor: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -53,5 +54,26 @@ class FloorListCollectionViewCell: UICollectionViewCell {
         header2.layer.borderColor = UIColor.black.cgColor
         header3.layer.borderWidth = 0.5
         header3.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    let pointArrX = [0, 200, 200, 0, 214]
+    let pointArrY = [0, 0, 200, 200, 87]
+    
+    func drawPolygon() {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: pointArrX[0], y: pointArrY[0]))
+        
+        for index in 1 ..< pointArrX.count {
+            path.addLine(to: CGPoint(x: pointArrX[index], y: pointArrY[index]))
+        }
+        path.close()
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        shapeLayer.fillColor = UIColor.orange.cgColor
+        shapeLayer.lineWidth = 3
+        
+        imageFloor.layer.addSublayer(shapeLayer)
     }
 }

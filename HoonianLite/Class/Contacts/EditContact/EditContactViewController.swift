@@ -18,6 +18,9 @@ class EditContactViewController: UIViewController {
     @IBOutlet weak var workTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var relationTextField: UITextField!
+    @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var saveButton: UIButton!
     var trigerNya:String = ""
     var nameText:String = ""
     var phoneText:String = ""
@@ -27,9 +30,13 @@ class EditContactViewController: UIViewController {
     var getCityId = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        saveButton.layer.cornerRadius = 5
         if trigerNya == "Edit"{
             editContactView()
-        }else{
+        }else if trigerNya == "Referred"{
+            referredContactView()
+        }
+        else{
             addContactView()
         }
         doneButton()
@@ -56,6 +63,8 @@ class EditContactViewController: UIViewController {
         workTextField.text = ACData.EDITCONTACTDETAIL.contactData.occupation
         relationTextField.text = ACData.EDITCONTACTDETAIL.contactData.relation
         cityTextField.inputView = thePicker
+         notesTextView.isHidden = true
+        notesLabel.isHidden = true
     }
     
     func addContactView(){
@@ -77,7 +86,37 @@ class EditContactViewController: UIViewController {
         nameTextField.text = nameText
         phoneNumberTextField.text = phoneText
         cityTextField.inputView = thePicker
+         notesTextView.isHidden = true
         
+        notesLabel.isHidden = true
+        
+    }
+    
+    func referredContactView(){
+        ACRequest.GET_CITY_LIST(successCompletion: { (getHomeData) in
+            ACData.HOMEDATAMODEL = getHomeData
+            SVProgressHUD.dismiss()
+            self.myPickerData.append("Select City")
+            for data in 0..<ACData.HOMEDATAMODEL.homeData.cities.count{
+                self.myPickerData.append(ACData.HOMEDATAMODEL.homeData.cities[data].name)
+                self.thePicker.delegate = self
+                self.thePicker.dataSource = self
+            }
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        nameTextField.text = nameText
+        phoneNumberTextField.text = phoneText
+        cityTextField.inputView = thePicker
+        notesTextView!.layer.borderWidth = 0.5
+        notesTextView!.layer.borderColor = UIColor.gray.cgColor
+        notesTextView.layer.cornerRadius = 5
+        notesTextView.isHidden = false
+        
+        notesLabel.isHidden = false
     }
     
     func doneButton(){
@@ -93,6 +132,7 @@ class EditContactViewController: UIViewController {
         workTextField.inputAccessoryView = datePickerToolbar
         relationTextField.inputAccessoryView = datePickerToolbar
         cityTextField.inputAccessoryView = datePickerToolbar
+        notesTextView.inputAccessoryView = datePickerToolbar
     }
     @objc func dismissKeyboard(on: UIButton){
         view.endEditing(true)
@@ -132,6 +172,8 @@ class EditContactViewController: UIViewController {
                 SVProgressHUD.dismiss()
                 ACAlert.show(message: message)
             }
+        }else if trigerNya == "Referred"{
+            
         }else{
         let parameter: Parameters = [
             "agent_id":ACData.LOGINDATA.agent.id,

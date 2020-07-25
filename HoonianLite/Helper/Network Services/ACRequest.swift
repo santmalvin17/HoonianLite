@@ -353,6 +353,22 @@ class ACRequest:NSObject{
         }
     }
     
+    static func POST_REFERRED_PROJECT(
+        parameters: Parameters,
+        successCompletion: @escaping (String) -> Void,
+        failCompletion: @escaping (String) -> Void) {
+        let headers:HTTPHeaders = ["Content-Type":"application/json"]
+        ACAPI.POST(url: "\(ACUrl.REFERRED_PROJECT_TOCONNTACT)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
+            let jsonValue = JSON(jsonData)
+            print(jsonValue)
+            if(jsonValue["status_desc"] == "Created") {
+                successCompletion("Success update profile.")
+            } else {
+                failCompletion(jsonValue["status"].stringValue)
+            }
+        }
+    }
+    
     static func GET_REFERRED_LIST(
          agentId:String,
          projectId:String,
@@ -420,6 +436,25 @@ class ACRequest:NSObject{
                  let profile = ProfileData()
                  profile.objectMapping(json: json)
                  successCompletion(profile)
+             } else {
+                 failCompletion(json["status"].stringValue)
+             }
+         })
+     }
+    
+    static func GET_REFERRED_ADD_CONTACT(
+         agentId:String,
+         projectId:String,
+         successCompletion:@escaping (ContactListModel) -> Void,
+         failCompletion:@escaping (String) -> Void) {
+         let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.GET(url: "\(ACUrl.ADD_REFERRED_LIST)=\(agentId)&project_id=\(projectId)", header: headers, showHUD: true, completion: { (jsonData) in
+             let json = JSON(jsonData)
+             print("get referred contact data: \(json)")
+             if(json["status_desc"] == "Success") {
+                 let contactList = ContactListModel()
+                 contactList.objectMapping(json: json)
+                 successCompletion(contactList)
              } else {
                  failCompletion(json["status"].stringValue)
              }

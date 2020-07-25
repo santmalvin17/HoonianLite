@@ -36,4 +36,6 @@ class ACUrl:NSObject{
     static let PASSWORD_UPDATE = MAIN + "/api/agent/password/forgot"
     static let UPDATE_PROFILE = MAIN + "/api/agent/profile/update"
     static let PROFILE_DATA = MAIN + "api/agent/profile?id"
+    static let ADD_REFERRED_LIST = MAIN + "/api/agent/referred/create?agent_id"
+    static let REFERRED_PROJECT_TOCONNTACT = MAIN + "/api/agent/referred"
 }

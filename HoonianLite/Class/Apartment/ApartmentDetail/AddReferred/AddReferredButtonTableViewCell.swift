@@ -10,6 +10,7 @@ import UIKit
 
 protocol AddReferredButtonTableViewCellDelegate {
     func cancelButtonPressed()
+    func addContactPressed()
 }
 
 class AddReferredButtonTableViewCell: UITableViewCell {
@@ -46,6 +47,7 @@ class AddReferredButtonTableViewCell: UITableViewCell {
     
     @objc func addFromContactButtonAction() {
         print("add from contact button pressed")
+        delegate?.addContactPressed()
     }
     
     @objc func cancelButtonAction() {

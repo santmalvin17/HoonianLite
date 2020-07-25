@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import CallKit
+import ContactsUI
 
 class ApartmentDetailViewController: UIViewController {
     enum ApartmentDetailCellList {
@@ -467,6 +468,15 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
 }
 
 extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate, AddReferredContentTableViewCellDelegate, AddReferredMarketingTableViewCellDelegate {
+    func addContactPressed() {
+        CNContactStore().requestAccess(for: .contacts) { (access, error) in
+          print("Access: \(access)")
+        }
+        let contacVC = CNContactPickerViewController()
+        contacVC.delegate = self
+        self.present(contacVC , animated: true, completion: nil)
+    }
+    
     func cancelButtonPressed() {
         self.isAdd = false
         self.tableView.reloadData()
@@ -486,5 +496,22 @@ extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate,
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true, completion: nil)
+    }
+}
+
+extension ApartmentDetailViewController:CNContactPickerDelegate{
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        let name = CNContactFormatter.string(from: contact, style: .fullName)
+        let numbers = contact.phoneNumbers.first
+        let vc = EditContactViewController()
+        vc.nameText = name!
+        vc.phoneText = (numbers?.value)?.stringValue ?? ""
+        vc.trigerNya = "Referred"
+        self.navigationController?.pushViewController(vc, animated: true)
+          
+    }
+
+    func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

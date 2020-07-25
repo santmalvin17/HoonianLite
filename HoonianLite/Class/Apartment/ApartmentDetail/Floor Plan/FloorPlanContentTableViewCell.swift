@@ -34,6 +34,8 @@ extension FloorPlanContentTableViewCell:UICollectionViewDelegate,UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "FloorListCollectionViewCellID", for: indexPath) as? FloorListCollectionViewCell)!
         cell.detailObj = ACData.FLOORPLANMODEL.projectBlock
+        cell.drawPolygon()
+        
         return cell
     }
     

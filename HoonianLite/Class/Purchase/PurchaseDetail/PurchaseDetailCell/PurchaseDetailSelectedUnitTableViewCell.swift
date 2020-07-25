@@ -41,4 +41,24 @@ class PurchaseDetailSelectedUnitTableViewCell: UITableViewCell {
 
     }
     
+    let pointArrX = [0, 200, 200, 0]
+    let pointArrY = [0, 0, 200, 200]
+    
+    func drawPolygon() {
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: pointArrX[0], y: pointArrY[0]))
+        
+        for index in 1 ..< pointArrX.count {
+            path.addLine(to: CGPoint(x: pointArrX[index], y: pointArrY[index]))
+        }
+        path.close()
+        
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path.cgPath
+        shapeLayer.strokeColor = UIColor.black.cgColor
+        shapeLayer.fillColor = UIColor.orange.cgColor
+        shapeLayer.lineWidth = 3
+        
+        unitTypeView.layer.addSublayer(shapeLayer)
+    }
 }

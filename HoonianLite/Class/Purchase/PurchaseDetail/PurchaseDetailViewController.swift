@@ -74,6 +74,7 @@ extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSour
             let cell = (tableView.dequeueReusableCell(withIdentifier: "PurchaseDetailSelectedUnitTableViewCellID", for: indexPath) as? PurchaseDetailSelectedUnitTableViewCell)!
             
             cell.detailObj = ACData.PURCHASEDETAILMODEL.purchaseDetailData
+            cell.drawPolygon()
             return cell
         case .augmentedReality:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "PurchaseDetailARTableViewCellID", for: indexPath) as? PurchaseDetailARTableViewCell)!

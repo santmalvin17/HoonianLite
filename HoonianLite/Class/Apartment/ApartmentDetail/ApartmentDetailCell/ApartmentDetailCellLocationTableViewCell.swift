@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol ApartmentDetailCellLocationTableViewCellDelegate{
+    func mapsClicked()
+}
+
 class ApartmentDetailCellLocationTableViewCell: UITableViewCell {
+    
+    var delegate:ApartmentDetailCellLocationTableViewCellDelegate?
 
     @IBOutlet weak var mapsImageView: UIImageView!
     @IBOutlet weak var locationLabel: UILabel!
@@ -16,6 +22,16 @@ class ApartmentDetailCellLocationTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        mapsImageView.isUserInteractionEnabled = true
+        mapsImageView.addGestureRecognizer(tapGestureRecognizer)
+        mapsImageView.clipsToBounds = true
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        delegate?.mapsClicked()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

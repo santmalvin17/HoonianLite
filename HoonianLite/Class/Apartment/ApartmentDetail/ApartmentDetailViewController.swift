@@ -323,6 +323,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
                     return cell
                 case .location:
                     let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailCellLocationTableViewCell", for: indexPath) as? ApartmentDetailCellLocationTableViewCell)!
+                    cell.delegate = self
                     cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
                     return cell
                 case .description:
@@ -476,7 +477,15 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
     
 }
 
-extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate, AddReferredContentTableViewCellDelegate, AddReferredMarketingTableViewCellDelegate {
+extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate, AddReferredContentTableViewCellDelegate, AddReferredMarketingTableViewCellDelegate ,ApartmentDetailCellLocationTableViewCellDelegate{
+    func mapsClicked() {
+        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
+                UIApplication.shared.open(URL(string:"comgooglemaps://?center=-6.240932,106.628454&zoom=14&views=traffic&q=-6.240932,,106.628454")!, options: [:], completionHandler: nil)
+            } else {
+                print("Can't use comgooglemaps://")
+            }
+    }
+    
     func addContactPressed() {
         CNContactStore().requestAccess(for: .contacts) { (access, error) in
             print("Access: \(access)")

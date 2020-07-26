@@ -58,7 +58,7 @@ class HomeData:NSObject{
     var id = ""
     var title = ""
     var name = ""
-    var city = ""
+    var city = CityData()
     var image = ""
     
     func objectMapping(json: JSON){
@@ -66,7 +66,7 @@ class HomeData:NSObject{
         title = json["title"].stringValue
         image = json["image"].stringValue
         name = json["name"].stringValue
-        city = json["city"].stringValue
+        city.objectMapping(json: json["city"])
     }
     
 }

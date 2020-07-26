@@ -10,7 +10,7 @@ import Foundation
 
 class ACUrl:NSObject{
     
-    static let MAIN = "https://dev.api.hoonian.com"
+    static let MAIN = "https://staging.api.hoonian.com"
     
     static let AGENT_LOGIN = MAIN + "/api/agent/login"
     static let REGISTER = MAIN + "/api/agent/register"

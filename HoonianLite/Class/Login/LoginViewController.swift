@@ -47,7 +47,6 @@ class LoginViewController: UIViewController {
     @objc func loginButtonAction() {
         ACRequest.POST_LOGIN(phoneNumber: phoneNumberTextField.text!, password: passwordTextField.text!,successCompletion: { (loginData) in
             ACData.LOGINDATA = loginData
-
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
             appDelegate?.goToHome()
         }) { (message) in

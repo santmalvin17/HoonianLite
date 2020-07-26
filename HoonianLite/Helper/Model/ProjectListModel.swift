@@ -46,7 +46,7 @@ class ProjectListData:NSObject{
     var id = ""
     var name = ""
     var image = ""
-    var city = ""
+    var city = CityData()
     var availUnit = 0
     var startPrice = 0
     
@@ -54,9 +54,20 @@ class ProjectListData:NSObject{
         id = json["id"].stringValue
         name = json["name"].stringValue
         image = json["image"].stringValue
-        city = json["city"].stringValue
+        city.objectMapping(json: json["city"])
         availUnit = json["available_unit"].intValue
         startPrice = json["start_from"].intValue
+    }
+}
+
+class CityData:NSObject{
+    var id = ""
+    var name = ""
+    
+    func objectMapping(json:JSON){
+        id = json["id"].stringValue
+        name = json["name"].stringValue
+        
     }
 }
 

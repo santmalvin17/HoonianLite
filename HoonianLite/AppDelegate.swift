@@ -85,13 +85,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }) { (message) in
         }
         
-        let menuDictionary: [Int: UINavigationController] = [
-            1: home,
-            2: purchase,
-            3: contacts,
-            4: scanAR]
+        let menuDictionary: [String: UINavigationController] = [
+            ACData.LOGINDATA.menuNavBar[0].mobileMenuId: home,
+            ACData.LOGINDATA.menuNavBar[1].mobileMenuId: purchase,
+            ACData.LOGINDATA.menuNavBar[2].mobileMenuId: contacts,
+            ACData.LOGINDATA.menuNavBar[3].mobileMenuId: scanAR]
         
-        var menuName: [Int: String] = [:]
+        var menuName: [String: String] = [:]
         for menuItem in ACData.LOGINDATA.menuNavBar {
             let menu = menuItem.mobileMenuId
             guard let menuNav = menuDictionary[menu] else {

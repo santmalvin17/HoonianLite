@@ -78,12 +78,12 @@ class AgentData:NSObject{
 }
 
 class MenuNavBar:NSObject{
-    var mobileMenuId = 0
+    var mobileMenuId = ""
     var mobileMenuname = ""
     var sequenceNumber = 0
     
     func objectMapping(json:JSON){
-        mobileMenuId = json["mobile_menu_id"].intValue
+        mobileMenuId = json["mobile_menu_id"].stringValue
         mobileMenuname = json["mobile_menu_name"].stringValue
         sequenceNumber = json["sequence_number"].intValue
     }

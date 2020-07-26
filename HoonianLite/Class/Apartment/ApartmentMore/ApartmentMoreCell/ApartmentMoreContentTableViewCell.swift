@@ -84,7 +84,7 @@ class ApartmentMoreContentTableViewCell: UITableViewCell {
             options: .refreshCached
         )
         apartmentLabel.text = obj.name
-        locationLabel.text = obj.city
+        locationLabel.text = obj.city.name
         availableLabel.text = "Available : \(obj.availUnit)"
         let price = obj.startPrice/1000000
         priceLabel.text = "\(price) JT"

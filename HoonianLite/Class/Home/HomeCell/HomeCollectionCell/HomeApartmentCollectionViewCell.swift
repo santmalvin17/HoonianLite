@@ -36,6 +36,7 @@ class HomeApartmentCollectionViewCell: UICollectionViewCell {
             placeholderImage: UIImage(named: "Apartment Logo"),
             options: .refreshCached
         )
+        cityLabel.text = obj.apartment.projects[position].city.name
     }
 
 

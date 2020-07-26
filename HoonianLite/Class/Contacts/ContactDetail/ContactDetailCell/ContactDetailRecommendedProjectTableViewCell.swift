@@ -43,7 +43,7 @@ class ContactDetailRecommendedProjectTableViewCell: UITableViewCell {
             options: .refreshCached
         )
         nameLabel.text = obj.clientData.project[position].name
-        locationLabel.text = obj.clientData.project[position].city
+        locationLabel.text = obj.clientData.project[position].city.name
 
     }
     

@@ -50,7 +50,7 @@ class WarehouseLocationDetailTableViewCell: UITableViewCell {
             options: .refreshCached
         )
         warehouseNameLabel.text = obj.name
-        locationLabel.text = obj.city
+        locationLabel.text = obj.city.name
         availableLabel.text = "Available: \(obj.availUnit)"
         var text = "\(obj.startPrice)"
         priceLabel.text = "\(text.prefix(3))JT"

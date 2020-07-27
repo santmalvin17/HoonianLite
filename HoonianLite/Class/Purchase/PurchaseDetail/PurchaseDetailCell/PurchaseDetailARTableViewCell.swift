@@ -24,7 +24,7 @@ class PurchaseDetailARTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    var detailObj: ProjectPurchasedData? {
+    var detailObj: GalleryData? {
         didSet {
             cellConfig()
         }
@@ -32,7 +32,7 @@ class PurchaseDetailARTableViewCell: UITableViewCell {
     func cellConfig() {
     guard let obj = detailObj else { return }
         self.augmentedRealityImageView.sd_setImage(
-            with: URL(string: (obj.projectData.projectUnitType.augmentedReality[0].link)),
+            with: URL(string: (obj.link)),
             placeholderImage: UIImage(named: "School Logo"),
             options: .refreshCached
         )

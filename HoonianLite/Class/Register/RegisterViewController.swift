@@ -21,9 +21,9 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var accountNoTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     var thePicker = UIPickerView()
-    var myPickerData = ["SELECT BANK","BCA","MANDIRI","BRI","BNI"]
+    var myPickerData = [String]()
     var pickerViewSelect = ""
-
+    var selectKe = 0
     override func viewDidLoad() {
          super.viewDidLoad()
          self.thePicker.delegate = self
@@ -79,6 +79,10 @@ class RegisterViewController: UIViewController {
         registerButton.layer.masksToBounds = true
         registerButton.layer.cornerRadius = 5
         bankTextField.inputView = thePicker
+        myPickerData.append("Select Bank")
+        for data in 0..<ACData.BANKMODEL.bankData.count{
+            myPickerData.append(ACData.BANKMODEL.bankData[data].name)
+        }
          
      }
     @IBAction func registerAction(_ sender: Any) {
@@ -88,7 +92,7 @@ class RegisterViewController: UIViewController {
             "country_code":"+62",
             "phone_number":phoneNumberTextField.text!,
             "id_card_number":idNoTextField.text!,
-            "bank_id":"BCA",
+            "bank_id":ACData.BANKMODEL.bankData[selectKe-1].id,
             "account_number":accountNoTextField.text!,
         ]
         print(parameter)
@@ -124,6 +128,7 @@ extension RegisterViewController:UIPickerViewDelegate,UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectKe = row
         return pickerViewSelect = myPickerData[row]
         
     }

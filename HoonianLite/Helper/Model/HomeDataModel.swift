@@ -45,7 +45,7 @@ class CategoryData:NSObject{
     var categoryId = ""
     var projects = [HomeData]()
     func objectMapping(json: JSON){
-        categoryId = json["project_category_id"].stringValue
+        categoryId = json["category_id"].stringValue
         for data in json["projects"].arrayValue{
             let d = HomeData()
             d.objectMapping(json: data)

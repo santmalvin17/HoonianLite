@@ -43,9 +43,9 @@ class ApartmentUnitDetailHeaderTableViewCell: UITableViewCell {
             options: .refreshCached
         )
         sizeLabel.text = ": \(obj.projectTypeDetail.size)"
-        priceLabel.text = "Rp \(obj.projectTypeDetail.startPrice)"
-        totalUnitLabel.text = ": \(obj.projectTypeDetail.projectUnit.totalUnit) Unit"
-        availableUnitLabel.text = ": \(obj.projectTypeDetail.projectUnit.availableUnit) Unit"
+        priceLabel.text = "Rp \(obj.projectTypeDetail.startPrice.formattedWithSeparator)"
+        totalUnitLabel.text = ": \(obj.projectTypeDetail.totalUnit) Unit"
+        availableUnitLabel.text = ": \(obj.projectTypeDetail.availUnit) Unit"
     }
     
 }

@@ -65,10 +65,10 @@ class PurchaseItemTableViewCell: UITableViewCell {
             options: .refreshCached
         )
         purchaseName.text = obj.projectPurchaseList[position].project.name
-        unitTypeLabel.text = ": \(obj.projectPurchaseList[position].projectUnit.name)"
+        unitTypeLabel.text = ": \(obj.projectPurchaseList[position].projectUnit.projectUnitType.name)"
         priceLabel.text = ": Rp  \(obj.projectPurchaseList[position].price)"
         buyerLabel.text = ": \(obj.projectPurchaseList[position].client.name)"
-        agentLabel.text = ": \(obj.projectPurchaseList[position].agent.name)"
+        agentLabel.text = ": \(ACData.LOGINDATA.agent.name)"
         statusLabel.textColor = UIColor(hex: "\(obj.projectPurchaseList[position].status.colorCode)")
         statusLabel.text = ": \(obj.projectPurchaseList[position].status.name)"
         comission = 750000000 * obj.projectPurchaseList[position].project.commisionRate

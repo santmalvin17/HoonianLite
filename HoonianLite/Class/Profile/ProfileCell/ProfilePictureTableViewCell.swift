@@ -42,6 +42,7 @@ class ProfilePictureTableViewCell: UITableViewCell {
             placeholderImage: UIImage(named: "Profile Image"),
             options: .refreshCached
         )
+        nameLabel.text = obj.agent.name
 
     }
     

@@ -67,6 +67,7 @@ extension EditProfileViewController:UITableViewDelegate,UITableViewDataSource{
 extension EditProfileViewController:EditTableViewCellDelegate{
     func saveClicked(name:String,phone:String,id:String,bank:String,account:String,email:String,address:String,company:String,position:String,birth:String,birthPlace:String) {
         let parameter: Parameters = [
+            "id":ACData.LOGINDATA.agent.id,
             "name":name,
             "phone_number":phone,
             "email":email,
@@ -84,8 +85,13 @@ extension EditProfileViewController:EditTableViewCellDelegate{
             ACRequest.GET_PROFILE( agentId: ACData.LOGINDATA.agent.id, successCompletion: { (profileData) in
                 ACData.PROFILEMODEL = profileData
                 SVProgressHUD.dismiss()
-                let vc = ProfileViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                ACRequest.GET_PROFILE( agentId: ACData.LOGINDATA.agent.id, successCompletion: { (profileData) in
+                    ACData.PROFILEMODEL = profileData
+                    SVProgressHUD.dismiss()
+                    self.navigationController?.popToRootViewController(animated: true)
+                }) { (message) in
+                }
+
             }) { (message) in
             }
 

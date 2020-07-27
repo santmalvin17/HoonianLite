@@ -10,6 +10,11 @@ import UIKit
 import SwiftyJSON
 
 class PurchaseListModel:NSObject{
+    var totalData = 0
+    var totalDisplayed = 0
+    var totalPage = 0
+    var currentPage = 0
+    var limitPerPage = 0
     var projectPurchaseList = [PurchaseListData]()
     
     func objectMapping(json:JSON){
@@ -18,6 +23,11 @@ class PurchaseListModel:NSObject{
             d.objectMapping(json: data)
             projectPurchaseList.append(d)
         }
+        totalData = json["data"]["total_data"].intValue
+        totalDisplayed = json["data"]["total_data_displayed"].intValue
+        totalPage = json["data"]["total_page"].intValue
+        currentPage = json["data"]["current_page"].intValue
+        limitPerPage = json["data"]["limit_per_page"].intValue
     }
     
 }
@@ -25,6 +35,9 @@ class PurchaseListModel:NSObject{
 class PurchaseListData:NSObject{
     var id = ""
     var price = ""
+    var agentId = ""
+    var clientId = ""
+    var projectId = ""
     var status = StatusDetailModel()
     var project = ProjectData()
     var projectUnit = ProjectUnitData()
@@ -33,6 +46,9 @@ class PurchaseListData:NSObject{
     func objectMapping(json:JSON){
         id = json["id"].stringValue
         price = json["price"].stringValue
+        agentId = json["agent_id"].stringValue
+        clientId = json["client_id"].stringValue
+        projectId = json["project_id"].stringValue
         status.objectMapping(json: json["purchase_status"])
         project.objectMapping(json: json["project"])
         projectUnit.objectMapping(json: json["project_unit"])
@@ -57,13 +73,13 @@ class ProjectData:NSObject{
 }
 
 class ProjectUnitData:NSObject{
-    var id = ""
-    var name = ""
-    var projectUnitTypes = ProjectUnitTypesData()
+    var unitTypeId = ""
+    var unitCode = ""
+    var projectUnitType = ProjectUnitTypesData()
     func objectMapping(json:JSON){
-        id = json["id"].stringValue
-        name = json["name"].stringValue
-        projectUnitTypes.objectMapping(json: json["project_unit_types"])
+        unitTypeId = json["unit_type_id"].stringValue
+        unitCode = json["unit_code"].stringValue
+        projectUnitType.objectMapping(json: json["project_unit_type"])
     }
 }
 

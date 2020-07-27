@@ -35,14 +35,13 @@ class ApartmentDetailVideoTableViewCell: UITableViewCell {
     }
     func cellConfig() {
     guard let obj = detailObj else { return }
-        let url = URL(string:"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
+        let url = URL(string:"https://hoonian-bucket-047.s3-ap-southeast-1.amazonaws.com/Agung+Podomoro+TVC+Jingle.mp4")
         player = AVPlayer(url: url!)
         avpController.player = player
         avpController.view.frame.size.height = videoView.frame.size.height
         avpController.view.frame.size.width = videoView.frame.size.width
         self.videoView.addSubview(avpController.view)
         avpController.player = player
-        avpController.player!.play()
     }
 
     

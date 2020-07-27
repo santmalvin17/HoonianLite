@@ -118,6 +118,7 @@ class ApartmentDetailViewController: UIViewController {
         tableView.register(UINib(nibName: "AddReferredContentTableViewCell", bundle: nil), forCellReuseIdentifier: "AddReferredContentTableViewCellID")
         tableView.register(UINib(nibName: "AddReferredMarketingTableViewCell", bundle: nil), forCellReuseIdentifier: "AddReferredMarketingTableViewCellID")
         tableView.register(UINib(nibName: "AddReferredButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "AddReferredButtonTableViewCellID")
+        tableView.register(UINib(nibName: "AddReferredButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "AddReferredButtonTableViewCellID")
     }
     
     func configSections() {
@@ -274,10 +275,19 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
                     return 1
                 case .facilityContent:
                     return ACData.PROJECTDETAILMODEL.projectData.facilities.count
+                    
                 case .gallery:
-                    return 1
+                    if ACData.PROJECTDETAILMODEL.projectData.gallery.count == 0{
+                        return 0
+                    }else{
+                      return 1
+                    }
                 case .video:
-                    return 1
+                    if ACData.PROJECTDETAILMODEL.projectData.videos.count == 0{
+                        return 0
+                    }else{
+                      return 1
+                    }
                 }
             }
             else if passedType == "Unit" {
@@ -319,7 +329,8 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
                 switch sectionsDetail[indexPath.section] {
                 case .header:
                     let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentLocationDetailTableViewCell", for: indexPath) as? ApartmentLocationDetailTableViewCell)!
-                    cell.detailObj = ACData.PROJECTLISTMODEL.projects[indexPath.row]
+                    cell.detailObj2 = ACData.PROJECTDETAILMODEL.projectData
+                    print(ACData.PROJECTDETAILMODEL.projectData.image)
                     return cell
                 case .location:
                     let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailCellLocationTableViewCell", for: indexPath) as? ApartmentDetailCellLocationTableViewCell)!
@@ -417,7 +428,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
 
 extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDelegate,ApartmentUnitContentTableViewCellDelegate,ApartmentUnitHeaderTableViewCellDelegate{
     func unitClicked(indexKe: Int,sectionKe: Int) {
-        ACRequest.GET_UNITPRICE_DETAIL(projectId: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, unitTypeId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id,successCompletion: { (getUnitDetail) in
+        ACRequest.GET_UNITPRICE_DETAIL(projectId: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, unitTypeId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, clusterId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].clusterId,successCompletion: { (getUnitDetail) in
             ACData.UNITDETAILMODEL = getUnitDetail
             SVProgressHUD.dismiss()
             let vc = ApartmentUnitDetailViewController()
@@ -431,20 +442,21 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
     }
     
     func towerClicked(indexKe: Int,sectionKe:Int) {
-        ACRequest.GET_CLUSTERDETAIL(id: ACData.UNITLISTMODEL.projectClusterData[indexKe].projectId, successCompletion: { (getTower) in
+        ACRequest.GET_CLUSTERDETAIL(id: "cf4ba781-4ad6-4a66-89e2-2bd9bba49a78", successCompletion: { (getTower) in
             ACData.TOWERMODEL = getTower
             SVProgressHUD.dismiss()
-            ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, clusterId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, page: 1, successCompletion: { (getFloorPlan) in
-                ACData.FLOORPLANMODEL = getFloorPlan
-                SVProgressHUD.dismiss()
-                let vc = TowerViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
-            }) { (message) in
-                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
-            
+//            ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, clusterId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, page: 1, successCompletion: { (getFloorPlan) in
+//                ACData.FLOORPLANMODEL = getFloorPlan
+//                SVProgressHUD.dismiss()
+//                let vc = TowerViewController()
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }) { (message) in
+//                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//            }
+                            let vc = TowerViewController()
+                            self.navigationController?.pushViewController(vc, animated: true)
         }) { (message) in
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
@@ -478,9 +490,9 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
 }
 
 extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate, AddReferredContentTableViewCellDelegate, AddReferredMarketingTableViewCellDelegate ,ApartmentDetailCellLocationTableViewCellDelegate{
-    func mapsClicked() {
+    func mapsClicked(lattitude:String,longtitude:String) {
         if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
-                UIApplication.shared.open(URL(string:"comgooglemaps://?center=-6.240932,106.628454&zoom=14&views=traffic&q=-6.240932,,106.628454")!, options: [:], completionHandler: nil)
+                UIApplication.shared.open(URL(string:"comgooglemaps://?center=\(lattitude),\(longtitude)&zoom=14&views=traffic&q=\(lattitude),\(longtitude)")!, options: [:], completionHandler: nil)
             } else {
                 print("Can't use comgooglemaps://")
             }

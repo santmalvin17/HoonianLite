@@ -156,7 +156,7 @@ class EditContactViewController: UIViewController {
             let parameter: Parameters = [
                 "name":nameTextField.text!,
                 "phone_number":phoneNumberTextField.text!,
-                "id_card_no":idNumberTextField.text!,
+                "id_card_number":idNumberTextField.text!,
                 "occupation":workTextField.text!,
                 "city_id":ACData.EDITCONTACTDETAIL.cities[getCityId-1].id,
                 "relation":relationTextField.text!,
@@ -179,7 +179,7 @@ class EditContactViewController: UIViewController {
             "agent_id":ACData.LOGINDATA.agent.id,
             "name":nameTextField.text!,
             "phone_number":phoneNumberTextField.text!,
-            "id_card_no":idNumberTextField.text!,
+            "id_card_number":idNumberTextField.text!,
             "occupation":workTextField.text!,
             "city_id":ACData.HOMEDATAMODEL.homeData.cities[getCityId-1].id,
             "relation":relationTextField.text!,
@@ -187,8 +187,20 @@ class EditContactViewController: UIViewController {
         ]
         ACRequest.POST_ADD_NEW_CONTACT(parameters: parameter, successCompletion: { (result) in
             SVProgressHUD.dismiss()
-            self.navigationController?.popToRootViewController(animated: true)
-            self.trigerNya = ""
+            ACRequest.GET_CONTACT_LIST(agentId: ACData.LOGINDATA.agent.id,successCompletion: { (getContactList) in
+                ACData.CONTACTLISTMODEL = getContactList
+                SVProgressHUD.dismiss()
+                let vc = ContactsViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+                self.trigerNya = ""
+            }) { (message) in
+                SVProgressHUD.dismiss()
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+
         }) { (message) in
             SVProgressHUD.dismiss()
             ACAlert.show(message: message)

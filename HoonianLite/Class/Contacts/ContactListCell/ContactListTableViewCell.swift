@@ -61,20 +61,6 @@ class ContactListTableViewCell: UITableViewCell {
         nameLabel.text = obj.contacts[position].name
         recommendNumber.text = "\(obj.contacts[position].referred)"
         purchaseNumber.text = "\(obj.contacts[position].purchased)"
-        if obj.contacts[position].referred == 0{
-            recommendLabel.isHidden = true
-            recommendNumber.isHidden = true
-        }else{
-            recommendLabel.isHidden = false
-            recommendNumber.isHidden = false
-        }
-        if obj.contacts[position].purchased == 0{
-            purchaseLabel.isHidden = true
-            purchaseNumber.isHidden = true
-        }else{
-            purchaseLabel.isHidden = false
-            purchaseNumber.isHidden = false
-        }
         
     }
     

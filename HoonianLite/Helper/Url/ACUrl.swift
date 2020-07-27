@@ -26,7 +26,7 @@ class ACUrl:NSObject{
     static let ADD_NEW_CONTACT = MAIN + "/api/agent/contact/"
     static let EDIT_CONTACT_DETAIL = MAIN + "/api/agent/contact/detail/edit?agent_id"
     static let UPDATE_EDITED_CONTACT = MAIN + "/api/agent/contact/detail"
-    static let PURCHASE_DETAIL = MAIN + "/api/agent/purchase/detail?agent_id"
+    static let PURCHASE_DETAIL = MAIN + "/api/agent/purchase/detail?id"
     static let FAVOURITE_CLICKED = MAIN + "/api/agent/favorite"
     static let REFERRED_LIST = MAIN + "/api/agent/referred?agent_id"
     static let FLOORPLAN = MAIN + "/api/project/detail/cluster/floorplan?project_id"
@@ -35,7 +35,8 @@ class ACUrl:NSObject{
     static let EMAIL_FORGOT_PASSWORD = MAIN + "/api/agent/password/forgot"
     static let PASSWORD_UPDATE = MAIN + "/api/agent/password/forgot"
     static let UPDATE_PROFILE = MAIN + "/api/agent/profile/update"
-    static let PROFILE_DATA = MAIN + "api/agent/profile?id"
+    static let PROFILE_DATA = MAIN + "/api/agent/profile?id"
     static let ADD_REFERRED_LIST = MAIN + "/api/agent/referred/create?agent_id"
     static let REFERRED_PROJECT_TOCONNTACT = MAIN + "/api/agent/referred"
+    static let BANK_LIST = MAIN + "/api/bank"
 }

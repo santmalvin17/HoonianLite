@@ -15,14 +15,14 @@ class ApartmentUnitDetailViewController: UIViewController {
         case virtualTour
         case video
     }
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var sections = [ApartmentUnitDetailCellList]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configTable()
         configSections()
     }
@@ -44,24 +44,24 @@ class ApartmentUnitDetailViewController: UIViewController {
         tableView.register(UINib(nibName: "ApartmentUnitDetailVirtualTourTableViewCell", bundle: nil), forCellReuseIdentifier: "ApartmentUnitDetailVirtualTourTableViewCellID")
         tableView.register(UINib(nibName: "ApartmentUnitDetailVideoTableViewCell", bundle: nil), forCellReuseIdentifier: "ApartmentUnitDetailVideoTableViewCellID")
     }
-
+    
     func configSections() {
         sections.append(.header)
         sections.append(.gallery)
         sections.append(.virtualTour)
         sections.append(.video)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension ApartmentUnitDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -74,11 +74,23 @@ extension ApartmentUnitDetailViewController: UITableViewDelegate, UITableViewDat
         case .header:
             return 1
         case .gallery:
-            return 1
+            if ACData.UNITDETAILMODEL.projectTypeDetail.gallery.count == 0{
+                return 0
+            }else{
+                return 1
+            }
         case .virtualTour:
-            return 1
+            if ACData.UNITDETAILMODEL.projectTypeDetail.virtualTour.count == 0{
+                return 0
+            }else{
+                return 1
+            }
         case .video:
-            return 1
+            if ACData.UNITDETAILMODEL.projectTypeDetail.videos.count == 0{
+                return 0
+            }else{
+                return 1
+            }
         }
     }
     
@@ -97,7 +109,7 @@ extension ApartmentUnitDetailViewController: UITableViewDelegate, UITableViewDat
             return cell
         case .video:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentUnitDetailVideoTableViewCellID", for: indexPath) as? ApartmentUnitDetailVideoTableViewCell)!
-             cell.detailObj = ACData.UNITDETAILMODEL
+            cell.detailObj = ACData.UNITDETAILMODEL
             return cell
         }
     }

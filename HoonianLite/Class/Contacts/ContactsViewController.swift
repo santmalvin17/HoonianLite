@@ -72,13 +72,13 @@ extension ContactsViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: "ContactListTableViewCellID", for: indexPath) as? ContactListTableViewCell)!
-        cell.position = 0
+        cell.position = indexPath.row
         cell.detailObj = ACData.CONTACTLISTMODEL
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        ACRequest.GET_CONTACT_DETAIL(id: ACData.CONTACTLISTMODEL.contacts[indexPath.row].id,successCompletion: { (getContactDetail) in
+        ACRequest.GET_CONTACT_DETAIL(agentId: ACData.LOGINDATA.agent.id, id: ACData.CONTACTLISTMODEL.contacts[indexPath.row].id,successCompletion: { (getContactDetail) in
             ACData.CONTACTDETAILMODEL = getContactDetail
             SVProgressHUD.dismiss()
             let vc = ContactDetailViewController()

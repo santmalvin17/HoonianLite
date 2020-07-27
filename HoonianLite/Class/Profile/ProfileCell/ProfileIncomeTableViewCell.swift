@@ -38,6 +38,8 @@ class ProfileIncomeTableViewCell: UITableViewCell {
     }
     func cellConfig() {
     guard let obj = detailObj else { return }
+        incomeLabel.text = obj.agent.totalPaid
+        
     }
     
 }

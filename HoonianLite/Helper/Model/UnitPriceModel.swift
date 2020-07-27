@@ -24,7 +24,7 @@ class UnitPriceModel:NSObject{
 class ProjectClusterData:NSObject{
     var projectId = ""
     var name = ""
-    var soldPercentage = ""
+    var soldPercentage:Float = 0.0
     var totalUnit = ""
     var image = ""
     var gallery = [GalleryData]()
@@ -36,7 +36,7 @@ class ProjectClusterData:NSObject{
     func objectMapping(json:JSON){
         projectId = json["project_id"].stringValue
         name = json["name"].stringValue
-        soldPercentage = json["sold_percentage"].stringValue
+        soldPercentage = json["sold_percentage"].floatValue
         totalUnit = json["total_unit"].stringValue
         image = json["image"].stringValue
         for data in json["project_unit_types"].arrayValue{

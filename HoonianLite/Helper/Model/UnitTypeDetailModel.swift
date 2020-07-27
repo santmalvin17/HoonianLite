@@ -19,10 +19,12 @@ class UnitTypeDetailModel:NSObject{
 
 class ProjectClusterType:NSObject{
     var id = ""
+    var clusterId = ""
     var name = ""
     var startPrice = 0
     var size = ""
     var image = ""
+    var totalUnit = 0
     var projectUnit = TotalUnitModel()
     var gallery = [GalleryData]()
     var facilities = [FacilityData]()
@@ -33,11 +35,13 @@ class ProjectClusterType:NSObject{
     var availUnit = 0
     func objectMapping(json:JSON){
         id = json["id"].stringValue
+        clusterId = json["cluster_id"].stringValue
         name = json["name"].stringValue
         startPrice = json["start_price"].intValue
         size = json["size"].stringValue
         projectUnit.objectMapping(json: json["project_unit"])
         image = json["image"].stringValue
+        totalUnit = json["total_unit"].intValue
         for data in json["facilities"].arrayValue{
             let d = FacilityData()
             d.objectMapping(json: data)
@@ -68,17 +72,17 @@ class ProjectClusterType:NSObject{
         }
         
         priceList.objectMapping(json: json["price_list"])
-        availUnit = json["available_unit"].intValue
+        availUnit = json["total_available"].intValue
     }
 }
 
 class TotalUnitModel:NSObject{
-    var totalUnit = ""
-    var availableUnit = ""
+    var totalUnit = 0
+    var availableUnit = 0
     
     func objectMapping(json:JSON){
-        totalUnit = json["total_unit"].stringValue
-        availableUnit = json["available_unit"].stringValue
+        totalUnit = json["total_unit"].intValue
+        availableUnit = json["available_unit"].intValue
     }
 }
 

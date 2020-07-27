@@ -82,7 +82,7 @@ extension PurchaseViewController: UITableViewDelegate, UITableViewDataSource {
 }
 extension PurchaseViewController:PurchaseItemTableViewCellDelegate{
     func detailPurchase(indexKe: Int) {
-        ACRequest.GET_PURCHASED_DETAIL(agentId: ACData.LOGINDATA.agent.id, purchaseId: ACData.PURCHASELISTMODEL.projectPurchaseList[indexKe].id,  successCompletion: { (purchaseDetail) in
+        ACRequest.GET_PURCHASED_DETAIL(purchaseId: ACData.PURCHASELISTMODEL.projectPurchaseList[indexKe].id,  successCompletion: { (purchaseDetail) in
             ACData.PURCHASEDETAILMODEL = purchaseDetail
             SVProgressHUD.dismiss()
             let vc = PurchaseDetailViewController()

@@ -41,8 +41,8 @@ class PurchaseDetailSelectedUnitTableViewCell: UITableViewCell {
 
     }
     
-    let pointArrX = [0, 200, 200, 0]
-    let pointArrY = [0, 0, 200, 200]
+    let pointArrX = [100, 100, 300, 300]
+    let pointArrY = [100, 300, 300, 100]
     
     func drawPolygon() {
         let path = UIBezierPath()

@@ -39,11 +39,11 @@ class UnitDataModel:NSObject{
     
     func objectMapping(json: JSON){
         id = json["id"].stringValue
-        name = json["name"].stringValue
+        name = json["unit_code"].stringValue
         coordinate = json["coodinate"].stringValue
         projectBlock.objectMapping(json: json["project_block"])
         projectStatusData.objectMapping(json: json["project_unit_status"])
-        projectUnitType.objectMapping(json: json["project_unit_types"])
+        projectUnitType.objectMapping(json: json["project_unit_type"])
     }
     
 }
@@ -53,7 +53,7 @@ class StatusDetailModel:NSObject{
     var colorCode = ""
     
     func objectMapping(json:JSON){
-        name = json["status"].stringValue
+        name = json["name"].stringValue
         colorCode = json["color_code"].stringValue
     }
 }

@@ -16,7 +16,7 @@ class LocationDetailViewController: UIViewController {
     @IBOutlet weak var warehouseImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     var passedType: String = "Apartment"
-    
+    var position = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         config()
@@ -27,7 +27,7 @@ class LocationDetailViewController: UIViewController {
     
     func configNavigation() {
         detectAdaptiveClass()
-        backStyleNavigationController(pageTitle: "CITY NAME", isLeftLogoHide: "", isLeftSecondLogoHide: "")
+        backStyleNavigationController(pageTitle: "\(ACData.LOGINDATA.homeData.cities[position].name)", isLeftLogoHide: "", isLeftSecondLogoHide: "")
     }
 
     func config() {
@@ -55,12 +55,13 @@ class LocationDetailViewController: UIViewController {
         tableView.register(UINib(nibName: "ApartmentLocationDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "apartmentLocationDetailTableViewCell")
         tableView.register(UINib(nibName: "LandedLocationDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "landedLocationDetailTableViewCell")
         tableView.register(UINib(nibName: "WarehouseLocationDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "warehouseLocationDetailTableViewCell")
+        tableView.register(UINib(nibName: "NoDataTableViewCell", bundle: nil), forCellReuseIdentifier: "NoDataTableViewCellID")
     }
     
     @objc func apartmentAction() {
         print("apartment pressed")
         passedType = "Apartment"
-        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.PROJECTLISTMODEL.cityId, selectCategoryId: ACData.LOGINDATA.homeData.apartment.categoryId,  successCompletion: { (projectList) in
+        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.LOGINDATA.homeData.cities[position].id, selectCategoryId: ACData.PROJECTLISTMODEL.projectCategory[0].id,  successCompletion: { (projectList) in
             ACData.PROJECTLISTMODEL = projectList
             SVProgressHUD.dismiss()
             self.tableView.reloadData()
@@ -77,7 +78,7 @@ class LocationDetailViewController: UIViewController {
     @objc func landedAction() {
         print("landed pressed")
         passedType = "Landed"
-        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.PROJECTLISTMODEL.cityId, selectCategoryId: ACData.LOGINDATA.homeData.landedProperty.categoryId,  successCompletion: { (projectList) in
+        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.LOGINDATA.homeData.cities[position].id, selectCategoryId: ACData.PROJECTLISTMODEL.projectCategory[1].id,  successCompletion: { (projectList) in
             ACData.PROJECTLISTMODEL = projectList
             SVProgressHUD.dismiss()
             self.tableView.reloadData()
@@ -94,7 +95,7 @@ class LocationDetailViewController: UIViewController {
     @objc func warehouseAction() {
         print("warehouse pressed")
         passedType = "Warehouse"
-        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.PROJECTLISTMODEL.cityId, selectCategoryId: ACData.LOGINDATA.homeData.wareHouse.categoryId,  successCompletion: { (projectList) in
+        ACRequest.GET_PROJECT_LIST(limitPage: "5", page: "1", selectCityId: ACData.LOGINDATA.homeData.cities[position].id, selectCategoryId: ACData.PROJECTLISTMODEL.projectCategory[2].id,  successCompletion: { (projectList) in
             ACData.PROJECTLISTMODEL = projectList
             SVProgressHUD.dismiss()
             self.tableView.reloadData()
@@ -112,18 +113,27 @@ class LocationDetailViewController: UIViewController {
 
 extension LocationDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if ACData.PROJECTLISTMODEL.projects.count == 0{
+            return 1
+        }else{
         if passedType == "Apartment" {
+            print(ACData.PROJECTLISTMODEL.projects.count)
             return ACData.PROJECTLISTMODEL.projects.count
         }
         else if passedType == "Landed" {
-            return 1
+            return ACData.PROJECTLISTMODEL.projects.count
         }
         else {
-            return 3
+            return ACData.PROJECTLISTMODEL.projects.count
+        }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if ACData.PROJECTLISTMODEL.projects.count == 0 {
+          let cell = (tableView.dequeueReusableCell(withIdentifier: "NoDataTableViewCellID", for: indexPath) as? NoDataTableViewCell)!
+            return cell
+        }else{
         if passedType == "Apartment" {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentLocationDetailTableViewCell", for: indexPath) as? ApartmentLocationDetailTableViewCell)!
             cell.detailObj = ACData.PROJECTLISTMODEL.projects[indexPath.row]
@@ -138,6 +148,7 @@ extension LocationDetailViewController: UITableViewDelegate, UITableViewDataSour
             let cell = (tableView.dequeueReusableCell(withIdentifier: "warehouseLocationDetailTableViewCell", for: indexPath) as? WarehouseLocationDetailTableViewCell)!
             cell.detailObj = ACData.PROJECTLISTMODEL.projects[indexPath.row]
             return cell
+        }
         }
     }
     

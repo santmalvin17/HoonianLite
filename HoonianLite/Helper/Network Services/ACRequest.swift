@@ -73,12 +73,11 @@ class ACRequest:NSObject{
     }
     
     static func GET_PURCHASED_DETAIL(
-         agentId:String,
          purchaseId:String,
          successCompletion:@escaping (PurchaseDetailModel) -> Void,
          failCompletion:@escaping (String) -> Void) {
          let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
-         ACAPI.GET(url: "\(ACUrl.PURCHASE_DETAIL)=\(agentId)&purchase_id=\(purchaseId)", header: headers, showHUD: true, completion: { (jsonData) in
+         ACAPI.GET(url: "\(ACUrl.PURCHASE_DETAIL)=\(purchaseId)", header: headers, showHUD: true, completion: { (jsonData) in
              let json = JSON(jsonData)
              print("get purchase detail: \(json)")
              if(json["status_desc"] == "Success") {
@@ -166,11 +165,12 @@ class ACRequest:NSObject{
     }
     
     static func GET_CONTACT_DETAIL(
+        agentId:String,
         id:String,
         successCompletion:@escaping (ContactDetailModel) -> Void,
         failCompletion:@escaping (String) -> Void) {
         let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
-        ACAPI.GET(url: "\(ACUrl.CONTACT_DETAIL)=\(id)", header: headers, showHUD: true, completion: { (jsonData) in
+        ACAPI.GET(url: "\(ACUrl.CONTACT_DETAIL)=\(id)&agent_id=\(agentId)", header: headers, showHUD: true, completion: { (jsonData) in
             let json = JSON(jsonData)
             print("get contact detail: \(json)")
             if(json["status_desc"] == "Success") {
@@ -204,10 +204,11 @@ class ACRequest:NSObject{
     static func GET_UNITPRICE_DETAIL(
          projectId:String,
          unitTypeId:String,
+         clusterId:String,
          successCompletion:@escaping (UnitTypeDetailModel) -> Void,
          failCompletion:@escaping (String) -> Void) {
          let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
-         ACAPI.GET(url: "\(ACUrl.UNIT_PRICE_TYPE_DETAIL)=\(projectId)&unit_type_id=\(unitTypeId)", header: headers, showHUD: true, completion: { (jsonData) in
+         ACAPI.GET(url: "\(ACUrl.UNIT_PRICE_TYPE_DETAIL)=\(projectId)&unit_type_id=\(unitTypeId)&cluster_id=\(clusterId)", header: headers, showHUD: true, completion: { (jsonData) in
              let json = JSON(jsonData)
              print("get unit price detail: \(json)")
              if(json["status_desc"] == "Success") {
@@ -297,7 +298,7 @@ class ACRequest:NSObject{
         ACAPI.POST(url: "\(ACUrl.REGISTER)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
             let jsonValue = JSON(jsonData)
             print(jsonValue)
-            if(jsonValue["status_desc"] == "Created") {
+            if(jsonValue["status_desc"] == "Success") {
                 successCompletion("Success add new contact.")
             } else {
                 failCompletion(jsonValue["status"].stringValue)
@@ -341,8 +342,8 @@ class ACRequest:NSObject{
         parameters: Parameters,
         successCompletion: @escaping (String) -> Void,
         failCompletion: @escaping (String) -> Void) {
-        let headers:HTTPHeaders = [:]
-        ACAPI.PUT(url: "\(ACUrl.PASSWORD_UPDATE)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
+        let headers:HTTPHeaders = ["Authorization":"Bearer \(ACData.LOGINDATA.accessToken)","Content-Type":"application/json"]
+        ACAPI.PUT(url: "\(ACUrl.UPDATE_PROFILE)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
             let jsonValue = JSON(jsonData)
             print(jsonValue)
             if(jsonValue["status_desc"] == "Success") {
@@ -429,7 +430,7 @@ class ACRequest:NSObject{
          successCompletion:@escaping (ProfileData) -> Void,
          failCompletion:@escaping (String) -> Void) {
          let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
-        ACAPI.GET(url: "https://dev.api.hoonian.com/api/agent/profile?id=\(agentId)", header: headers, showHUD: true, completion: { (jsonData) in
+        ACAPI.GET(url: "\(ACUrl.PROFILE_DATA)=\(agentId)", header: headers, showHUD: true, completion: { (jsonData) in
              let json = JSON(jsonData)
              print("get profile list: \(json)")
              if(json["status_desc"] == "Success") {
@@ -455,6 +456,23 @@ class ACRequest:NSObject{
                  let contactList = ContactListModel()
                  contactList.objectMapping(json: json)
                  successCompletion(contactList)
+             } else {
+                 failCompletion(json["status"].stringValue)
+             }
+         })
+     }
+    
+    static func GET_BANK_LIST(
+         successCompletion:@escaping (BankListModel) -> Void,
+         failCompletion:@escaping (String) -> Void) {
+        let headers:HTTPHeaders = [:]
+        ACAPI.GET(url: "\(ACUrl.BANK_LIST)", header: headers, showHUD: true, completion: { (jsonData) in
+             let json = JSON(jsonData)
+             print("get referred list: \(json)")
+             if(json["status_desc"] == "Success") {
+                 let bankModel = BankListModel()
+                 bankModel.objectMapping(json: json)
+                 successCompletion(bankModel)
              } else {
                  failCompletion(json["status"].stringValue)
              }

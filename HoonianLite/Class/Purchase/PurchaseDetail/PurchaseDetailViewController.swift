@@ -57,10 +57,19 @@ extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSour
             return 1
         case .selectedUnit:
             return 1
+            
         case .augmentedReality:
-            return 1
+            if ACData.PURCHASEDETAILMODEL.purchaseDetailData.projectData.projectUnitType.augmentedReality.count == 0 {
+                return 0
+            }else{
+                return 1
+            }
         case .virtualTour:
-            return 1
+            if ACData.PURCHASEDETAILMODEL.purchaseDetailData.projectData.projectUnitType.virtualTour.count == 0 {
+                return 0
+            }else{
+                return 1
+            }
         }
     }
     
@@ -79,7 +88,7 @@ extension PurchaseDetailViewController: UITableViewDelegate, UITableViewDataSour
         case .augmentedReality:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "PurchaseDetailARTableViewCellID", for: indexPath) as? PurchaseDetailARTableViewCell)!
             
-            cell.detailObj = ACData.PURCHASEDETAILMODEL.purchaseDetailData
+            cell.detailObj = ACData.PURCHASEDETAILMODEL.purchaseDetailData.projectData.projectUnitType.augmentedReality[indexPath.row]
             return cell
         case .virtualTour:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "PurchaseDetailVirtualTourTableViewCellID", for: indexPath) as? PurchaseDetailVirtualTourTableViewCell)!

@@ -67,8 +67,18 @@ class LoginViewController: UIViewController {
     }
     
     @objc func createAccountButtonAction() {
-        let vc = RegisterViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        ACRequest.GET_BANK_LIST(successCompletion: { (bankData) in
+            ACData.BANKMODEL = bankData
+            SVProgressHUD.dismiss()
+            let vc = RegisterViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            SVProgressHUD.dismiss()
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
     }
     
     

@@ -29,13 +29,13 @@
                         <constraint firstAttribute="width" secondItem="VvB-sf-4Gq" secondAttribute="height" multiplier="15:8" id="XgQ-O6-wZ4"/>
                     </constraints>
                 </imageView>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Vj-IQ-An1">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="08127174320" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Vj-IQ-An1">
                     <rect key="frame" x="60" y="331" width="294" height="16"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43L-ip-fmo">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43L-ip-fmo">
                     <rect key="frame" x="60" y="367" width="294" height="16"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>

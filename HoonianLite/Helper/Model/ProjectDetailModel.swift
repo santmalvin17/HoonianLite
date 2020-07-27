@@ -22,7 +22,7 @@ class ProjectDetailModel:NSObject{
     var name = ""
     var image = ""
     var deskripsi = ""
-    var  city  = ""
+    var  city  = CityData()
     var category = ""
     var availableUnit = 0
     var startPrice = 0
@@ -41,7 +41,7 @@ class ProjectDetailModel:NSObject{
         name = json["name"].stringValue
         image = json["image"].stringValue
         deskripsi = json["description"].stringValue
-        city = json["city"].stringValue
+        city.objectMapping(json:json["city"])
         category = json["category"].stringValue
         availableUnit = json["available_unit"].intValue
         startPrice = json["start_from"].intValue

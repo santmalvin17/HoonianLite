@@ -56,6 +56,14 @@ extension UIViewController {
         self.view.addSubview(statusBarView)
     }
     
+    @objc func profileButtonPressed() {
+        print("profile pressed")
+    }
+    
+    @objc func notificationButtonPressed() {
+        print("notification pressed")
+    }
+    
     func backStyleNavigationController(pageTitle:String, isLeftLogoHide:String, isLeftSecondLogoHide:String){
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = ACColor.OLD_BLUE
@@ -75,12 +83,17 @@ extension UIViewController {
             self.navigationItem.rightBarButtonItem = notificationBarButton
             
             //Wekiddo Logo
-            let imageView = UIImageView(frame: CGRect(x: 0, y: -7, width: 55, height: 55))
-            imageView.image = UIImage(named: isLeftLogoHide)
-            let view = UIView(frame: CGRect(x: 0, y: 0, width: 55, height: 55))
+            let imageView = UIImageView(frame: CGRect(x: 0, y: -3, width: 100, height: 35))
+            imageView.image = UIImage(named: "Logo Hoonian")
+            let view = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 35))
             view.addSubview(imageView)
             let backBarItem = UIBarButtonItem(customView: view)
             self.navigationItem.leftBarButtonItem = backBarItem
+            let profileBarItem = UIBarButtonItem(image: UIImage.init(systemName: "person"), style: .plain, target: self, action: #selector(profileButtonPressed))
+            profileBarItem.tintColor = .white
+            let notificationBarItem = UIBarButtonItem(image: UIImage.init(systemName: "bell"), style: .plain, target: self, action: #selector(notificationButtonPressed))
+            notificationBarItem.tintColor = .white
+            self.navigationItem.rightBarButtonItems = [profileBarItem, notificationBarItem]
         }
         else if pageTitle == "" {
             if isLeftLogoHide == "ic_back_blue" && isLeftSecondLogoHide == "" {

@@ -265,6 +265,7 @@ extension HomeViewController: HomeLocationContentTableViewCellDelegate, HomeApar
             ACData.PROJECTDETAILMODEL = projectDetail
             SVProgressHUD.dismiss()
             let vc = ApartmentDetailViewController()
+            vc.passedType = "Detail"
             self.navigationController?.pushViewController(vc, animated: true)
         }) { (message) in
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)

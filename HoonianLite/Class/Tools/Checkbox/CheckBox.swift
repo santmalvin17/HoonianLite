@@ -34,6 +34,7 @@ class CheckBox: UIButton {
             isChecked = !isChecked
             if isChecked {
                 print("checked")
+                
             }
             else {
                 print("unchecked")

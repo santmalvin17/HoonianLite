@@ -61,7 +61,7 @@ class ApartmentDetailViewController: UIViewController {
     var sectionsAdd = [AddReferredCellList]()
     var passedType: String = "Detail"
     var isAdd: Bool = false
-    
+    var contactKeId = -1
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -143,7 +143,6 @@ class ApartmentDetailViewController: UIViewController {
                 sectionsUnit.append(.content)
             }
         }
-        
         sectionsAdd.append(.header)
         sectionsAdd.append(.content)
         sectionsAdd.append(.marketing)
@@ -226,8 +225,12 @@ class ApartmentDetailViewController: UIViewController {
     
     @objc func addButtonAction() {
         isAdd = true
+        if passedType == "Contact"{
+            
+        }else{
         addButton.isHidden = true
         addButton.isEnabled = false
+        }
         ACRequest.GET_REFERRED_ADD_CONTACT(agentId: ACData.LOGINDATA.agent.id, projectId: ACData.PROJECTDETAILMODEL.projectData.id,successCompletion: { (getReferList) in
             ACData.CONTACTLISTMODEL = getReferList
             SVProgressHUD.dismiss()
@@ -406,6 +409,7 @@ extension ApartmentDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .content:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "AddReferredContentTableViewCellID", for: indexPath) as? AddReferredContentTableViewCell)!
                 cell.delegate = self
+                cell.position = indexPath.row
                 cell.detailObj = ACData.CONTACTLISTMODEL.contacts[indexPath.row]
                 return cell
             case .marketing:
@@ -489,6 +493,11 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
 }
 
 extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate, AddReferredContentTableViewCellDelegate, AddReferredMarketingTableViewCellDelegate ,ApartmentDetailCellLocationTableViewCellDelegate{
+    func contactId(contactKe: Int) {
+        contactKeId = contactKe
+        print(contactKeId)
+    }
+    
     func mapsClicked(lattitude:String,longtitude:String) {
         if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
                 UIApplication.shared.open(URL(string:"comgooglemaps://?center=\(lattitude),\(longtitude)&zoom=14&views=traffic&q=\(lattitude),\(longtitude)")!, options: [:], completionHandler: nil)
@@ -507,9 +516,12 @@ extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate,
     }
     
     func cancelButtonPressed() {
+        if contactKeId < 0{
+            
+        }else{
         let parameter: Parameters = [
             "agent_id":ACData.LOGINDATA.agent.id,
-            "contact_id":"2c5ea4c0-1233-11e9-8bad-9b1deb4d3b7d",
+            "contact_id":ACData.CONTACTLISTMODEL.contacts[contactKeId].id,
             "project_id":ACData.PROJECTDETAILMODEL.projectData.id
         ]
         print(parameter)
@@ -532,6 +544,7 @@ extension ApartmentDetailViewController: AddReferredButtonTableViewCellDelegate,
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
+        }
         }
         
     }

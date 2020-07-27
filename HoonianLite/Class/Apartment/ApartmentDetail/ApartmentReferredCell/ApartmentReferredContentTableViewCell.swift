@@ -74,8 +74,9 @@ class ApartmentReferredContentTableViewCell: UITableViewCell {
     func cellConfig() {
         guard let obj = detailObj else { return }
         nameLabel.text = obj.contacts.name
-        agentNameLabel.text = obj.agent.name
+        agentNameLabel.text = ACData.LOGINDATA.agent.name
         statusLabel.text = obj.referStatus.name
+        unitLabel.text = obj.project.name
     }
     
 }

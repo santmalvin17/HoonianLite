@@ -21,7 +21,6 @@ class FloorListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var floorLabel: UILabel!
     @IBOutlet weak var imageFloor: UIImageView!
     var position = 0
-    var xy = [String]()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -60,12 +59,14 @@ class FloorListCollectionViewCell: UICollectionViewCell {
         let component = ACData.FLOORPLANMODEL.projectUnitType[position].coordinate.components(separatedBy: "|")
         
         print("Ini = \(component)")
-        
+        var xy = [[String]]()
         for data in 0..<component.count{
-            xy.append(contentsOf: component[data].components(separatedBy: "."))
+           var xz = component[data].components(separatedBy: ".")
+            xy.append(xz)
         }
-        
         print(xy)
+        
+        
         
     }
     

@@ -10,6 +10,7 @@ import UIKit
 
 protocol AddReferredContentTableViewCellDelegate {
     func notesButtonPressed()
+    func contactId(contactKe:Int)
 }
 
 class AddReferredContentTableViewCell: UITableViewCell {
@@ -19,10 +20,9 @@ class AddReferredContentTableViewCell: UITableViewCell {
     @IBOutlet weak var notesButton: UIButton!
     
     var delegate: AddReferredContentTableViewCellDelegate?
-    
+    var position = -1
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         config()
     }
 
@@ -34,10 +34,19 @@ class AddReferredContentTableViewCell: UITableViewCell {
     
     func config() {
         notesButton.addTarget(self, action: #selector(notesButtonAction), for: .touchUpInside)
+        contactCheckbox.addTarget(self, action: #selector(contactButtonChecked), for: .touchUpInside)
     }
     
     @objc func notesButtonAction() {
         delegate?.notesButtonPressed()
+    }
+    
+    @objc func contactButtonChecked(){
+        if contactCheckbox.isChecked == false{
+            delegate?.contactId(contactKe: position)
+        }else{
+            
+        }
     }
     
     var detailObj: ClientData? {

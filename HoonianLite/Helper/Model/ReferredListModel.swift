@@ -22,16 +22,23 @@ class ReferredListModel:NSObject{
 }
 
 class ReferredListData:NSObject{
+    var contactId = ""
+    var projectId = ""
+    var referStatusId = ""
+    var note = ""
     var agent = ReferredData()
     var contacts = ReferredData()
     var project = ReferredData()
-    var note = ""
     var referStatus = ReferredData()
     
     func objectMapping(json:JSON){
+        contactId = json["contact_id"].stringValue
+        projectId = json["project_id"].stringValue
+        referStatusId = json["referred_status_id"].stringValue
+        note = json["note"].stringValue
         agent.objectMapping(json: json["agents"])
-        contacts.objectMapping(json: json["contacts"])
-        project.objectMapping(json: json["projects"])
+        contacts.objectMapping(json: json["contact"])
+        project.objectMapping(json: json["project"])
         note = json["note"].stringValue
         referStatus.objectMapping(json: json["referred_status"])
     }

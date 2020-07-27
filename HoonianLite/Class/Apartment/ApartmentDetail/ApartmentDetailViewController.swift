@@ -445,18 +445,16 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
         ACRequest.GET_CLUSTERDETAIL(id: "cf4ba781-4ad6-4a66-89e2-2bd9bba49a78", successCompletion: { (getTower) in
             ACData.TOWERMODEL = getTower
             SVProgressHUD.dismiss()
-//            ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, clusterId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, page: 1, successCompletion: { (getFloorPlan) in
-//                ACData.FLOORPLANMODEL = getFloorPlan
-//                SVProgressHUD.dismiss()
-//                let vc = TowerViewController()
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }) { (message) in
-//                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-//                self.present(alert, animated: true, completion: nil)
-//            }
-                            let vc = TowerViewController()
-                            self.navigationController?.pushViewController(vc, animated: true)
+            ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectId, clusterId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].clusterId, page: 1, successCompletion: { (getFloorPlan) in
+                ACData.FLOORPLANMODEL = getFloorPlan
+                SVProgressHUD.dismiss()
+                let vc = TowerViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }) { (message) in
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }) { (message) in
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
@@ -466,9 +464,10 @@ extension ApartmentDetailViewController:ApartmentReferredContentTableViewCellDel
     }
     
     func floorPlanClicked(indexKe: Int,sectionKe:Int) {
-        ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, clusterId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].id, page: 1, successCompletion: { (getFloorPlan) in
+        ACRequest.GET_FLOORPLAN(projectId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectId, clusterId: ACData.UNITLISTMODEL.projectClusterData[sectionKe].projectClusterType[indexKe].clusterId, page: 1, successCompletion: { (getFloorPlan) in
             ACData.FLOORPLANMODEL = getFloorPlan
             SVProgressHUD.dismiss()
+            print(ACData.FLOORPLANMODEL.projectUnitType[0].colorCode)
             self.passedType = "FloorPlan"
             self.configSections()
             self.tableView.reloadData()

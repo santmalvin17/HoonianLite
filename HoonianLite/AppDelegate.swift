@@ -52,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let purchaseViewController = PurchaseViewController(nibName: "PurchaseViewController", bundle: nil)
         let contactsViewController = ContactsViewController(nibName: "ContactsViewController", bundle: nil)
         let scanARViewController = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+        let moreViewController = MoreViewController(nibName: "MoreViewController", bundle: nil)
         
         UITabBar.appearance().tintColor = #colorLiteral(red: 0.3933430612, green: 0.5921664834, blue: 0.6682108641, alpha: 1)
         
@@ -85,6 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }) { (message) in
         }
         
+        let more = UINavigationController(rootViewController: moreViewController)
+        
         let menuDictionary: [String: UINavigationController] = [
             ACData.LOGINDATA.menuNavBar[0].mobileMenuId: home,
             ACData.LOGINDATA.menuNavBar[1].mobileMenuId: purchase,
@@ -100,6 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             menuName[menuItem.mobileMenuId] = menuItem.mobileMenuname
             navArrayMenu.append(menuNav)
         }
+        navArrayMenu.append(more)
         
         let homeTab = UITabBarItem(title: "Home", image: .checkmark, selectedImage: .add)
         homeViewController.tabBarItem = homeTab
@@ -112,6 +116,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let scanARTab = UITabBarItem(title: "Scan AR", image: .checkmark, selectedImage: .add)
         scanARViewController.tabBarItem = scanARTab
+        
+        let moreTab = UITabBarItem(title: "More", image: .checkmark, selectedImage: .add)
+        moreViewController.tabBarItem = moreTab
         
         tabBarController.viewControllers = navArrayMenu
         tabBarController.selectedIndex = 0

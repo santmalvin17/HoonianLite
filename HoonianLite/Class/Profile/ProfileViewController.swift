@@ -30,7 +30,15 @@ class ProfileViewController: UIViewController {
         configTable()
         configSections()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        configNavigation()
+    }
 
+    func configNavigation() {
+        detectAdaptiveClass()
+        backStyleNavigationController(pageTitle: "Profile", isLeftLogoHide: "", isLeftSecondLogoHide: "")
+    }
 
     func configTable() {
         tableView.delegate = self

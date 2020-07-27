@@ -70,6 +70,7 @@ extension UIViewController {
         self.navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationItem.title = pageTitle
+        self.navigationController?.navigationBar.tintColor = .white
 
         if /*pageTitle == "Dashboard" || pageTitle == "Calendar" || pageTitle == "Score" || pageTitle == "More" || pageTitle == "Others"*/self == self.navigationController?.viewControllers[0] && pageTitle != "Add Student" {
             

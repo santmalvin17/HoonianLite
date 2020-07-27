@@ -395,7 +395,7 @@ class ACRequest:NSObject{
          successCompletion:@escaping (FloorPlanModel) -> Void,
          failCompletion:@escaping (String) -> Void) {
          let headers:HTTPHeaders = ["Content-Type":"application/json","Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
-        ACAPI.GET(url: "\(ACUrl.FLOORPLAN)=\(projectId)&cluster_id=\(clusterId)&page=\(page)", header: headers, showHUD: true, completion: { (jsonData) in
+        ACAPI.GET(url: "https://staging.api.hoonian.com/api/project/detail/cluster/floorplan?project_id=\(projectId)&cluster_id=\(clusterId)&page=1", header: headers, showHUD: true, completion: { (jsonData) in
              let json = JSON(jsonData)
              print("get floorplan data: \(json)")
              if(json["status_desc"] == "Success") {

@@ -10,11 +10,19 @@ import UIKit
 import SwiftyJSON
 
 class FloorPlanModel:NSObject{
+    var totalData = 0
+    var totalPage = 0
+    var currentPage = 0
+    var limitPerPage = 0
     var projectUnitType = [FloorPlanUnitTypeData]()
     var projectBlock = FloorPlanBlockData()
  
     func objectMapping(json:JSON){
-        for data in json["data"]["project_unit_type"].arrayValue{
+        totalData = json["total_data"].intValue
+        totalPage = json["total_page"].intValue
+        currentPage = json["current_page"].intValue
+        limitPerPage = json["limit_per_page"].intValue
+        for data in json["data"]["project_units"].arrayValue{
             let d = FloorPlanUnitTypeData()
             d.objectMapping(json: data)
             projectUnitType.append(d)
@@ -24,16 +32,21 @@ class FloorPlanModel:NSObject{
 }
 
 class FloorPlanUnitTypeData:NSObject{
+    var unitCode = ""
+    var coordinate = ""
+    var unitTypeId = ""
     var name = ""
-    var totalUnit = 0
-    var availUnit = 0
-    var startPrice = 0
+    var colorCode = ""
+
     
     func objectMapping(json: JSON){
+        unitCode = json["unit_code"].stringValue
+        coordinate = json["coordinate"].stringValue
+        unitTypeId = json["unit_type_id"].stringValue
         name = json["name"].stringValue
-        totalUnit = json["total_unit"].intValue
-        availUnit = json["available_unit"].intValue
-        startPrice = json["start_price"].intValue
+        colorCode = json["color_code"].stringValue
+        
+        
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hex
 
 class FloorListCollectionViewCell: UICollectionViewCell {
     
@@ -19,7 +20,7 @@ class FloorListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var floorLabel: UILabel!
     @IBOutlet weak var imageFloor: UIImageView!
-    
+    var position = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -54,10 +55,23 @@ class FloorListCollectionViewCell: UICollectionViewCell {
         header2.layer.borderColor = UIColor.black.cgColor
         header3.layer.borderWidth = 0.5
         header3.layer.borderColor = UIColor.black.cgColor
+        
+        let component = ACData.FLOORPLANMODEL.projectUnitType[position].coordinate.components(separatedBy: "|")
+        
+        print("Ini = \(component)")
+        var xy = [[String]]()
+        for data in 0..<component.count{
+           var xz = component[data].components(separatedBy: ".")
+            xy.append(xz)
+        }
+        print(xy)
+        
+        
+        
     }
     
-    let pointArrX = [0, 200, 200, 0, 214]
-    let pointArrY = [0, 0, 200, 200, 87]
+    let pointArrX = [100, 100, 300, 300]
+    let pointArrY = [100, 300, 300, 100]
     
     func drawPolygon() {
         let path = UIBezierPath()
@@ -71,9 +85,8 @@ class FloorListCollectionViewCell: UICollectionViewCell {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.black.cgColor
-        shapeLayer.fillColor = UIColor.orange.cgColor
-        shapeLayer.lineWidth = 3
-        
+        shapeLayer.fillColor = UIColor(hex: "\(ACData.FLOORPLANMODEL.projectUnitType[position].colorCode)").cgColor
+        shapeLayer.lineWidth = 1
         imageFloor.layer.addSublayer(shapeLayer)
     }
 }

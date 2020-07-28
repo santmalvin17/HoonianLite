@@ -337,6 +337,21 @@ class ACRequest:NSObject{
             }
         }
     }
+    static func PUT_CHANGE_PASSWORD(
+        parameters: Parameters,
+        successCompletion: @escaping (String) -> Void,
+        failCompletion: @escaping (String) -> Void) {
+        let headers:HTTPHeaders = ["Authorization":"Bearer \(ACData.LOGINDATA.accessToken)"]
+        ACAPI.PUT(url: "\(ACUrl.CHANGE_PASSWORD)", parameter: parameters, header: headers, showHUD: true) { (jsonData) in
+            let jsonValue = JSON(jsonData)
+            print(jsonValue)
+            if(jsonValue["status_desc"] == "Success") {
+                successCompletion("Success forgot password.")
+            } else {
+                failCompletion(jsonValue["status"].stringValue)
+            }
+        }
+    }
     
     static func PUT_UPDATE_PROFILE(
         parameters: Parameters,

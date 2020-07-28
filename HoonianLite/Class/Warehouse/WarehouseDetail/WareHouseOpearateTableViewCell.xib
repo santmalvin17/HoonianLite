@@ -133,6 +133,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="minimumRent" destination="jI1-ga-n4n" id="h1y-4V-4qp"/>
+                <outlet property="operateHours" destination="GX5-c6-Fd2" id="7QE-Wb-NXh"/>
+                <outlet property="pricePerMeter" destination="tSl-os-XVT" id="bOu-0e-exm"/>
+                <outlet property="warehouseSize" destination="GhT-Um-VyB" id="jHS-q1-LqW"/>
+            </connections>
             <point key="canvasLocation" x="205.79710144927537" y="142.96875"/>
         </tableViewCell>
     </objects>

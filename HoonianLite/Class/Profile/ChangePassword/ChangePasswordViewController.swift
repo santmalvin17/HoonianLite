@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
 
 class ChangePasswordViewController: UIViewController {
 
     @IBOutlet weak var oldPasswordTextField: UITextField!
-    @IBOutlet weak var newPasswordTextField: UILabel!
-    @IBOutlet weak var confirmNewPasswordTextField: UILabel!
+
+    @IBOutlet weak var newPassword: UITextField!
+    @IBOutlet weak var confirmPassword: UITextField!
     @IBOutlet weak var changePasswordButton: UIButton!
     
     override func viewDidLoad() {
@@ -29,7 +32,34 @@ class ChangePasswordViewController: UIViewController {
     }
     
     @objc func changePasswordButtonAction() {
-        print("change password button pressed")
+        let parameter: Parameters = [
+            "id":ACData.LOGINDATA.agent.id,
+            "old_password":oldPasswordTextField.text!,
+            "new_password":newPassword.text!,
+            "confirm_password":confirmPassword.text!
+        ]
+        print(parameter)
+        ACRequest.PUT_CHANGE_PASSWORD(parameters: parameter, successCompletion: { (result) in
+            SVProgressHUD.dismiss()
+            ACRequest.GET_PROFILE( agentId: ACData.LOGINDATA.agent.id, successCompletion: { (profileData) in
+                ACData.PROFILEMODEL = profileData
+                SVProgressHUD.dismiss()
+                ACRequest.GET_PROFILE( agentId: ACData.LOGINDATA.agent.id, successCompletion: { (profileData) in
+                    ACData.PROFILEMODEL = profileData
+                    SVProgressHUD.dismiss()
+                    self.navigationController?.popToRootViewController(animated: true)
+                }) { (message) in
+                }
+
+            }) { (message) in
+            }
+
+        }) { (message) in
+            SVProgressHUD.dismiss()
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
 }

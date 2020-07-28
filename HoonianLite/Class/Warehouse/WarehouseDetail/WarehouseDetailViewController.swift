@@ -26,7 +26,7 @@ class WarehouseDetailViewController: UIViewController {
     }
     
     var passedType: String = "Detail"
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var detailButton: UIButton!
     @IBOutlet weak var referredButton: UIButton!
@@ -38,7 +38,7 @@ class WarehouseDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configTable()
         configSections()
         config()
@@ -51,7 +51,7 @@ class WarehouseDetailViewController: UIViewController {
         detailButton.addTarget(self, action: #selector(detailButtonAction), for: .touchUpInside)
         referredButton.addTarget(self, action: #selector(referredButtonAction), for: .touchUpInside)
     }
-
+    
     func configTable() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -70,7 +70,7 @@ class WarehouseDetailViewController: UIViewController {
         tableView.register(UINib(nibName: "ApartmentReferredSearchTableViewCell", bundle: nil), forCellReuseIdentifier: "ApartmentReferredSearchTableViewCellID")
         tableView.register(UINib(nibName: "ApartmentReferredContentTableViewCell", bundle: nil), forCellReuseIdentifier: "ApartmentReferredContentTableViewCellID")
     }
-
+    
     func configSections() {
         //DETAIL
         sectionsDetail.append(.header)
@@ -118,7 +118,7 @@ extension WarehouseDetailViewController: UITableViewDelegate, UITableViewDataSou
             return sectionsReferred.count
         }
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if passedType == "Detail" {
             switch sectionsDetail[section] {
@@ -131,11 +131,19 @@ extension WarehouseDetailViewController: UITableViewDelegate, UITableViewDataSou
             case .facility:
                 return 1
             case .facilityContent:
-                return 10
+                return ACData.PROJECTDETAILMODEL.projectData.facilities.count
             case .gallery:
-                return 1
+                if ACData.PROJECTDETAILMODEL.projectData.gallery.count == 0 {
+                    return 0
+                }else{
+                    return 1
+                }
             case .video:
-                return 1
+                if ACData.PROJECTDETAILMODEL.projectData.videos.count == 0 {
+                    return 0
+                }else{
+                    return 1
+                }
             case .operate:
                 return 1
             }
@@ -149,41 +157,41 @@ extension WarehouseDetailViewController: UITableViewDelegate, UITableViewDataSou
             }
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if passedType == "Detail" {
             switch sectionsDetail[indexPath.section] {
             case .header:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentLocationDetailTableViewCell", for: indexPath) as? ApartmentLocationDetailTableViewCell)!
-                
+                cell.detailObj2 = ACData.PROJECTDETAILMODEL.projectData
                 return cell
             case .location:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailCellLocationTableViewCell", for: indexPath) as? ApartmentDetailCellLocationTableViewCell)!
-                
+                cell.delegate = self
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
                 return cell
             case .description:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailDescriptionTableViewCell", for: indexPath) as? ApartmentDetailDescriptionTableViewCell)!
-                
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
                 return cell
             case .facility:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityTableViewCell", for: indexPath) as? ApartmentDetailFacilityTableViewCell)!
-                
                 return cell
             case .facilityContent:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailFacilityContentTableViewCell", for: indexPath) as? ApartmentDetailFacilityContentTableViewCell)!
-                
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.facilities[indexPath.row]
                 return cell
             case .gallery:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailGalleryTableViewCell", for: indexPath) as? ApartmentDetailGalleryTableViewCell)!
-                
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.gallery[indexPath.row]
                 return cell
             case .video:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "apartmentDetailVideoTableViewCell", for: indexPath) as? ApartmentDetailVideoTableViewCell)!
-                
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData.videos[indexPath.row]
                 return cell
             case .operate:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "WareHouseOperateTableViewCellID", for: indexPath) as? WareHouseOpearateTableViewCell)!
-                
+                cell.detailObj = ACData.PROJECTDETAILMODEL.projectData
                 return cell
             }
         }
@@ -195,11 +203,23 @@ extension WarehouseDetailViewController: UITableViewDelegate, UITableViewDataSou
                 return cell
             case .content:
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "ApartmentReferredContentTableViewCellID", for: indexPath) as? ApartmentReferredContentTableViewCell)!
-    
+                
                 return cell
             }
         }
     }
+    
+    
+}
 
-
+extension WarehouseDetailViewController:ApartmentDetailCellLocationTableViewCellDelegate{
+    func mapsClicked(lattitude:String,longtitude:String) {
+        if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
+            UIApplication.shared.open(URL(string:"comgooglemaps://?center=\(lattitude),\(longtitude)&zoom=14&views=traffic&q=\(lattitude),\(longtitude)")!, options: [:], completionHandler: nil)
+        } else {
+            print("Can't use comgooglemaps://")
+        }
+    }
+    
+    
 }

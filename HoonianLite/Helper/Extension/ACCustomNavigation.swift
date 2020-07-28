@@ -57,7 +57,13 @@ extension UIViewController {
     }
     
     @objc func profileButtonPressed() {
-        print("profile pressed")
+        ACRequest.GET_PROFILE( agentId: ACData.LOGINDATA.agent.id, successCompletion: { (profileData) in
+            ACData.PROFILEMODEL = profileData
+            SVProgressHUD.dismiss()
+            let vc = ProfileViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+        }
     }
     
     @objc func notificationButtonPressed() {
@@ -71,14 +77,14 @@ extension UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         self.navigationItem.title = pageTitle
         self.navigationController?.navigationBar.tintColor = .white
-
+        
         if /*pageTitle == "Dashboard" || pageTitle == "Calendar" || pageTitle == "Score" || pageTitle == "More" || pageTitle == "Others"*/self == self.navigationController?.viewControllers[0] && pageTitle != "Add Student" {
             
             //Notification
             let notificationView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
             let notificationButton = UIButton(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 44, height: 44)))
             notificationButton.setImage(UIImage(named: "ic_bell"), for: .normal)
-//            notificationButton.addTarget(self, action: #selector(goToNotification), for: .touchUpInside)
+            //            notificationButton.addTarget(self, action: #selector(goToNotification), for: .touchUpInside)
             notificationView.addSubview(notificationButton)
             let notificationBarButton = UIBarButtonItem(customView: notificationView)
             self.navigationItem.rightBarButtonItem = notificationBarButton
@@ -142,11 +148,11 @@ extension UIViewController {
                 self.navigationController?.interactivePopGestureRecognizer!.delegate = nil
                 let backImageView = UIImageView(frame: CGRect(x: 0, y: 8, width: 15, height: 25))
                 backImageView.image = UIImage(named: "ic_arrow_left")
-
+                
                 let backView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 44))
                 backView.addSubview(backImageView)
                 backView.addSubview(backButton)
-
+                
                 let backBarItem = UIBarButtonItem(customView: backView)
                 self.navigationItem.leftBarButtonItem = backBarItem
             } else if isLeftLogoHide == "ic_arrow_left" && isLeftSecondLogoHide != "" {
@@ -162,7 +168,7 @@ extension UIViewController {
                 backImageView.image = UIImage(named: "ic_arrow_left")
                 let secondImageView = UIImageView(frame: CGRect(x: 18, y: -7, width: 55, height: 55))
                 secondImageView.image = UIImage(named: isLeftSecondLogoHide)
-
+                
                 let backView = UIView(frame: CGRect(x: 0, y: 0, width: 65, height: 55))
                 backView.addSubview(backImageView)
                 backView.addSubview(backButton)
@@ -193,10 +199,10 @@ extension UIViewController {
         }
     }
     
-//    @objc func goToNotification() {
-//        let notificationVC = NotificationViewController()
-//        self.navigationController?.pushViewController(notificationVC, animated: true)
-//    }
+    //    @objc func goToNotification() {
+    //        let notificationVC = NotificationViewController()
+    //        self.navigationController?.pushViewController(notificationVC, animated: true)
+    //    }
     
     @objc func closeVC() {
         self.navigationController?.dismiss(animated: true, completion: nil)

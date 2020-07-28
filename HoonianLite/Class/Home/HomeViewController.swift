@@ -282,11 +282,19 @@ extension HomeViewController: HomeLocationContentTableViewCellDelegate, HomeApar
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func homeWarehouseSelected() {
+    func homeWarehouseSelected(indexKe:Int) {
         print("Warehouse selected")
-        
-        let vc = WarehouseDetailViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        ACRequest.GET_PROJECT_DETAIL(id: ACData.LOGINDATA.homeData.wareHouse.projects[indexKe].id,  successCompletion: { (projectDetail) in
+            ACData.PROJECTDETAILMODEL = projectDetail
+            SVProgressHUD.dismiss()
+            let vc = WarehouseDetailViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }) { (message) in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
     }
 }
 

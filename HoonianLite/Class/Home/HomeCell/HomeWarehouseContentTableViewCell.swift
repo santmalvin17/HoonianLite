@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HomeWarehouseContentTableViewCellDelegate {
-    func homeWarehouseSelected()
+    func homeWarehouseSelected(indexKe: Int)
 }
 
 class HomeWarehouseContentTableViewCell: UITableViewCell {
@@ -17,7 +17,6 @@ class HomeWarehouseContentTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var delegate: HomeWarehouseContentTableViewCellDelegate?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -51,7 +50,7 @@ extension HomeWarehouseContentTableViewCell: UICollectionViewDelegate, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.homeWarehouseSelected()
+        delegate?.homeWarehouseSelected(indexKe: indexPath.row)
     }
     
 }
